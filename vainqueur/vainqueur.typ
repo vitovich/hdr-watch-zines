@@ -18,7 +18,7 @@
 // cover
 
 #block({
-  image("img_2.jpeg", width: 100%, height: 100%, fit: "cover")  
+  image("vainqueur_front.jpeg", width: 100%, height: 100%, fit: "cover")  
   place(top + center, dy: 5mm, text(white, size: 20pt)[
       *RSWC*\ 
       *Vainqueur*
@@ -60,19 +60,19 @@ El cristal de zafiro con tratamiento antirreflejante protege la esfera.
 
 *PALETA DE COLORES*
 
-Negro Carbón\ 
+*Negro Carbón: (Limitado a 34 unidades)*\ 
 Elegancia pura y atemporal. Versátil para cualquier circunstancia.
 
-Púrpura Nocturno\ 
+*Púrpura Nocturno: (44 uds.)*\ 
 Una edición pensada para los audaces. 
 
-Azul Côte d'Azur\ 
+*Azul Côte d'Azur: (156 uds.)*\ 
 Inspirado en la serenidad mediterránea. 
 
-Rosso Italia\ 
+*Rosso Italia: (39 uds.)*\ 
 Homenaje al color legendario de la Fórmula 1.
 
-Azul/Amarillo Nano\ 
+*Azul/Amarillo Nano: (70 uds.)*\ 
 Edición especial que evoca duelos épicos. Rivalidades legendarias grabadas en acero.
 
 #pagebreak()
@@ -125,14 +125,14 @@ a las 9 es el que marcará los segundos del reloj.
 
 #pagebreak()
 
-#image("img_1.jpeg", width: 100%, height: 50%, fit: "cover")
+#image("vainqueur_back.jpeg", width: 100%, height: 50%, fit: "cover")
 
-#block(inset: 5mm)[
+#place(top + left, dx: 5mm, dy: 45mm, box(width: 100% - 10mm, text(black, size: 7pt)[
 La trasera atornillada alberga una ventana de cristal de 
 zafiro que permite contemplar la rueda de balancín del 
 movimiento Peacock SL4617 en su danza continua.
+]))
 
-RSWC – Hablemos de Relojes
-]
-
-
+#place(bottom + left, dx: 5mm, dy: -5mm, text(black, size: 7pt)[
+_RSWC · Hablemos de Relojes_
+])

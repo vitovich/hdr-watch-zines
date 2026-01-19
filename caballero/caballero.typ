@@ -16,16 +16,16 @@
 // cover
 #block({
   // Replace with your actual cover image file
-  image("img_cover_caballero.jpeg", width: 100%, height: 100%, fit: "cover")
+  image("caballero_front.jpeg", width: 100%, height: 100%, fit: "cover")
   place(top + center, dy: 5mm, text(white, size: 20pt)[
-    *Sol y Sombra*\\
+    *Sol y Sombra*\ 
     *Caballero*
   ])
 })
 #pagebreak()
 
 *ESPECIFICACIONES TÉCNICAS*
-- Caja de acero 316L, 35×34mm, espesor: 13,2mm, lug to lug: 46mm, anchura de asas: 22mm
+- Caja de acero 316L, caja: 35×34mm, espesor: 13,2mm, lug to lug: 46mm, anchura de asas: 22mm
 - Cristal de zafiro curvo con tratamiento antirreflejos (AR) interno
 - Calibre: Sellita SW-200, automático suizo con 28.800 alternancias/h
 - Fecha
@@ -79,11 +79,6 @@ complementa perfectamente la estética del reloj.
 
 #pagebreak()
 
-// --- IMAGENES ---
-#image("img_back_caballero.jpeg", width: 100%, height: 50%, fit: "cover")
-#image("img_dial_caballero.jpeg", width: 100%, height: 50%, fit: "cover")
-#pagebreak()
-
 // --- ESPIRITU VINTAGE ---
 *ESPÍRITU VINTAGE CON MATERIALES MODERNOS*
 
@@ -91,24 +86,42 @@ El Sol y Sombra Caballero es un homenaje al Duward Diplomatic
 cuadrado, manteniendo la esencia de aquella estética que marcó una época.
 
 Se recoge ese carácter de un diseño histórico que muchos siguen apreciando hoy.
-Su construcción y proporciones buscan honrar aquel espíritu original con materiales y movimientos contemporáneos, dando como resultado un reloj para quienes valoran la continuidad histórica con visión moderna.
-Un proyecto que rescata la sabiduría del pasado y la trae al presente con respeto y coherencia.
+
+Su construcción y proporciones buscan honrar aquel espíritu original con materiales 
+y movimientos contemporáneos, dando como resultado un reloj para quienes valoran 
+la continuidad histórica con visión moderna.
+
+Un proyecto que rescata la sabiduría del pasado y la trae al presente con
+respeto y coherencia.
+
 #pagebreak()
 
 // --- INSTRUCCIONES ---
 *INSTRUCCIONES DE CUIDADO Y MANTENIMIENTO*
-Ajuste de hora: Tira corona hasta la posición dos. Gira suavemente hasta la hora deseada.
-Ajuste de fecha: Tira corona hasta la posición uno. Gira hacia adelante para avanzar fecha. *Evita cambios entre 22h y 2h.*
-La caja de acero 316L requiere limpieza ocasional con un paño suave. Evita productos químicos agresivos.
-Mantén seca la correa de cuero. Ocasionalmente, hidrata la correa con grasa de caballo para preservar su flexibilidad y longevidad.
+
+Ajuste de hora: Tira corona hasta la posición dos. Gira suavemente 
+hasta la hora deseada.
+
+Ajuste de fecha: Tira corona hasta la posición uno. Gira hacia adelante 
+para avanzar fecha. *Evita cambios entre 22h y 2h.*
+
+La caja de acero 316L requiere limpieza ocasional con un paño suave. 
+Evita productos químicos agresivos.
+
+Mantén seca la correa de cuero. Ocasionalmente, hidrata la correa con 
+grasa de caballo para preservar su flexibilidad y longevidad.
+
 #pagebreak()
 
-// --- TRASERA ---
-#block(inset: 5mm)[
-La tapa trasera atornillada con cristal de zafiro permite admirar el movimiento Sellita SW-200 en su funcionamiento constante.
-En la parte superior izquierda figura el emblema de Sol y Sombra, mientras que en la inferior derecha se graba el número de serie del 1 al 75.
-]
+#image("caballero_back.jpeg", width: 100%, height: 50%, fit: "cover")
 
-// --- MINI BOOKLET GUIDE ---
-#image("img_booklet_guide.jpeg", width: 100%, height: 50%, fit: "cover")
+#place(top + left, dx: 5mm, dy: 45mm, box(width: 100% - 10mm, text(black, size: 7pt)[
+La tapa trasera atornillada con cristal de zafiro permite admirar el 
+movimiento Sellita SW-200 en su funcionamiento constante. En la parte superior 
+izquierda figura el emblema de Sol y Sombra y en la inferior derecha se
+graba el número de serie del 1 al 75.
+]))
 
+#place(bottom + left, dx: 5mm, dy: -5mm, text(black, size: 7pt)[
+_Sol y Sombra · Hablemos de Relojes_
+])

@@ -18,7 +18,7 @@
 // cover
 
 #block({
-  image("img_2.jpeg", width: 100%, height: 100%, fit: "cover")  
+  image("iberia_front.jpeg", width: 100%, height: 100%, fit: "cover")  
   place(top + center, dy: 5mm, text(white, size: 20pt)[
       *RSWC*\ 
       *Suite Iberia*
@@ -38,7 +38,7 @@
 
 #pad(
   x: -5mm,  
-  image("img_3.jpeg", width: 100%,  height: 40%, fit: "cover")
+  image("iberia_detail.jpeg", width: 100%,  height: 40%, fit: "cover")
 )
 
 #pagebreak()
@@ -129,9 +129,9 @@ Gira hacia atrás para cambiar día.
 #pagebreak()
 
 
-#image("img_1.jpeg", width: 100%, height: 50%, fit: "cover")
+#image("iberia_back.jpeg", width: 100%, height: 50%, fit: "cover")
 
-#block(inset: 5mm)[
+#place(top + left, dx: 5mm, dy: 45mm, box(width: 100% - 10mm, text(black, size: 7pt)[
 Trasera con epitafio de Federico García Lorca para Isaac Albéniz:
 
 #text(size: 6pt)[
@@ -140,7 +140,13 @@ que erige en agua su perpetuo muro,\
 en caballo andaluz de acento duro\ 
 tu sombra gime por la luz dorada._
 ]
+]))
 
-]
+#place(bottom + left, dx: 5mm, dy: -5mm, text(black, size: 7pt)[
+_RSWC · Hablemos de Relojes_
+])
+
+
+
 
 

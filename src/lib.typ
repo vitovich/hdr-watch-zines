@@ -271,7 +271,7 @@
     // Place a small image in the bottom-right margin inside the A4 page
     // kept within page bounds and not overlapping the frames
     place(bottom + right, dx: -10mm, dy: -10mm)[
-      #image("img_3.jpeg", width: 50mm, fit: "contain")
+      #image("folding_schema.jpeg", width: 50mm, fit: "contain")
     ]    
   }
 }
