@@ -6,7 +6,7 @@ set -e
 
 # Configuration
 FONT_PATH="$HOME/.local/share/fonts"
-OUTPUT_DIR="HdR booklets"
+OUTPUT_DIR="HdR zines"
 
 # Colors
 RED='\033[0;31m'
@@ -55,9 +55,9 @@ build_zine() {
     
     # Build print version
     echo -e "${YELLOW}Building print version...${NC}"
-    local print_output="$zine_output_dir/${name} booklet.pdf"
+    local print_output="$zine_output_dir/${name} zine.pdf"
     if typst compile --root "$script_dir" --font-path "$FONT_PATH" --input digital=false "$typ_file" "$print_output"; then
-        echo -e "${GREEN}✓ Print version built successfully: $output_subdir/${name} booklet.pdf${NC}"
+        echo -e "${GREEN}✓ Print version built successfully: $output_subdir/${name} zine.pdf${NC}"
     else
         echo -e "${RED}✗ Print version failed${NC}"
         return 1

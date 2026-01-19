@@ -1,12 +1,12 @@
-Project for creating small typst watch zines for your watch case. Includes booklets for a number of watches created in the "Hablemos de Relojes" watch forum.
+Project for creating small typst watch zines for your watch case. Includes zines for a number of watches created in the "Hablemos de Relojes" watch forum.
 
 # Credits
 
 ## Text and Photographs
 
-The watch descriptions for the RSWC and SyS (Sol y Sombra) booklets are based on the watch descriptions from the "Hablemos de Relojes" forum, primarily written by user **@Gasparacha**.
+The watch descriptions for the RSWC and SyS (Sol y Sombra) zines are based on the watch descriptions from the "Hablemos de Relojes" forum, primarily written by user **@Gasparacha**.
 
-Photographs featured in the booklets were taken from the forum and were created by:
+Photographs featured in the zines were taken from the forum and were created by:
 - **@Gasparacha**
 - **@submariner**
 
@@ -29,7 +29,7 @@ This project is built with [Typst](https://typst.app/), a modern typesetting sys
 
 # Usage
 
-The `watch_zine` function in `src/lib.typ` is based on the zen-zine template, adapted for creating watch instruction booklets. The template enables the creation of foldable booklets with proper page ordering for printing.
+The `watch_zine` function in `src/lib.typ` is based on the zen-zine template, adapted for creating watch instruction zines. The template enables the creation of foldable zines with proper page ordering for printing.
 
 ## Prerequisites
 
@@ -39,21 +39,21 @@ Follow the installation instructions at [typst.app](https://typst.app/).
 
 ### Install Carlito Font
 
-The booklets use the Carlito font (a free, metric-compatible alternative to Calibri). Install it on your system.
+The zines use the Carlito font (a free, metric-compatible alternative to Calibri). Install it on your system:
 https://fonts.google.com/specimen/Carlito 
 
-## Building Booklets
+## Building Zines
 
 ### Using the Build Script (Linux/WSL)
 
 The project includes `build.sh` for automated building:
 
-**Build all booklets:**
+**Build all zines:**
 ```bash
 ./build.sh
 ```
 
-**Build a specific booklet:**
+**Build a specific zine:**
 ```bash
 ./build.sh caballero    # SyS Caballero
 ./build.sh iberia       # RSWC Suite Iberia
@@ -75,26 +75,26 @@ The project includes `build.sh` for automated building:
 
 ### Output Structure
 
-PDFs are generated in the `HdR booklets/` directory:
+PDFs are generated in the `HdR zines/` directory:
 ```
-HdR booklets/
+HdR zines/
 ├── RSWC Suite Iberia/
-│   └── iberia booklet.pdf
+│   └── iberia zine.pdf
 ├── RSWC Vainqueur/
-│   ├── vainqueur booklet.pdf
-│   └── vainqueur_de booklet.pdf
+│   ├── vainqueur zine.pdf
+│   └── vainqueur_de zine.pdf
 ├── RSWC Super Stellar Ala 14/
-│   └── ala14 booklet.pdf
+│   └── ala14 zine.pdf
 ├── RSWC Super Stellar Typhoon/
-│   └── typhoon booklet.pdf
+│   └── typhoon zine.pdf
 └── SyS Caballero/
-    └── caballero booklet.pdf
+    └── caballero zine.pdf
 ```
 
 
-## Creating Your Own Booklet
+## Creating Your Own Zine
 
-1. Copy an existing booklet directory (e.g., `template/`)
+1. Copy an existing zine directory (e.g., `template/`)
 2. Modify the `.typ` file with your content
 3. Add your images
 4. Add to `build.sh`:
