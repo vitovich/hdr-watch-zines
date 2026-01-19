@@ -25,6 +25,7 @@ declare -A ZINES=(
     ["ala14"]="ala14/ala14.typ"
     ["typhoon"]="typhoon/typhoon.typ"
     ["roquina"]="roquina/roquina.typ"
+    ["digimatico"]="digimatico/digimatico.typ"
 )
 
 # Output directory mapping
@@ -36,6 +37,7 @@ declare -A OUTPUT_SUBDIRS=(
     ["ala14"]="RSWC Super Stellar Ala 14"
     ["typhoon"]="RSWC Super Stellar Typhoon"
     ["roquina"]="SyS Roquina"
+    ["digimatico"]="SyS Digimático"
 )
 
 # Function to build a single zine

@@ -62,6 +62,7 @@ The project includes `build.sh` for automated building:
 ./build.sh ala14        # RSWC Super Stellar Ala 14
 ./build.sh typhoon      # RSWC Super Stellar Typhoon
 ./build.sh roquina      # SyS Roquina
+./build.sh digimatico   # SyS Digimático
 ```
 
 **Clean output directory:**
@@ -90,6 +91,8 @@ HdR zines/
 │   └── typhoon zine.pdf
 ├── SyS Caballero/
 │   └── caballero zine.pdf
+├── SyS Digimático/
+│   └── digimatico zine.pdf
 └── SyS Roquina/
     └── roquina zine.pdf
 ```
