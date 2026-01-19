@@ -177,6 +177,12 @@
             
             <div class="zines-grid">
                 <div class="zine-card">
+                    <h3>RSWC Forest Defender</h3>
+                    <p id="forest-defender-desc"></p>
+                    <a href="HdR zines/RSWC Forest Defender/forest_defender zine.pdf" class="download-btn" download><span id="download-btn-fd">📥 Descargar</span></a>
+                </div>
+                
+                <div class="zine-card">
                     <h3>RSWC Suite Iberia</h3>
                     <p id="iberia-desc"></p>
                     <a href="HdR zines/RSWC Suite Iberia/iberia zine.pdf" class="download-btn" download><span id="download-btn">📥 Descargar</span></a>
@@ -236,6 +242,7 @@
                 headerSubtitle: 'Folletos de instrucciones imprimibles para aficionados a la relojería',
                 introText1: 'Descarga zines listos para imprimir de tus relojes favoritos de la comunidad "Hablemos de Relojes".',
                 introText2: 'Cada zine está diseñado para plegarse en un folleto compacto que encaja perfectamente en tu estuche de reloj.',
+                forestDefenderDesc: 'Cronógrafo de bomberos con escala especial y pulsómetro',
                 vainqueurDesc: 'Cronógrafo automático inspirado en las carreras de Fórmula 1',
                 iberiaDesc: 'Reloj elegante de la colección RSWC',
                 ala14Desc: 'Reloj de piloto de combate validado por el Ejército del Aire',
@@ -256,6 +263,7 @@
                 headerSubtitle: 'Druckbare Anleitungshefte für Uhrenliebhaber',
                 introText1: 'Lade druckfertige Zines für deine Lieblingsuhren aus der "Hablemos de Relojes"-Community herunter.',
                 introText2: 'Jedes Zine ist so gestaltet, dass es zu einem kompakten Heft gefaltet werden kann, das perfekt in dein Uhrenetui passt.',
+                forestDefenderDesc: 'Feuerwehr-Chronograph mit Spezialskala und Pulsmesser',
                 vainqueurDesc: 'Automatik-Chronograph inspiriert von Formel-1-Rennen',
                 iberiaDesc: 'Elegante Uhr aus der RSWC-Kollektion',
                 ala14Desc: 'Kampfpilotenuhr validiert durch die spanische Luftwaffe',
@@ -276,6 +284,7 @@
                 headerSubtitle: 'Printable instruction booklets for watch enthusiasts',
                 introText1: 'Download ready-to-print zines for your favorite watches from the "Hablemos de Relojes" community.',
                 introText2: 'Each zine is designed to be folded into a compact booklet that fits perfectly in your watch case.',
+                forestDefenderDesc: 'Firefighter chronograph with special scale and pulsometer',
                 vainqueurDesc: 'Automatic chronograph inspired by Formula 1 racing',
                 iberiaDesc: 'Elegant timepiece from the RSWC collection',
                 ala14Desc: 'Fighter pilot watch validated by the Spanish Air Force',
@@ -306,6 +315,7 @@
             document.getElementById('header-subtitle').textContent = t.headerSubtitle;
             document.getElementById('intro-text-1').textContent = t.introText1;
             document.getElementById('intro-text-2').textContent = t.introText2;
+            document.getElementById('forest-defender-desc').textContent = t.forestDefenderDesc;
             document.getElementById('vainqueur-desc').textContent = t.vainqueurDesc;
             document.getElementById('iberia-desc').textContent = t.iberiaDesc;
             document.getElementById('ala14-desc').textContent = t.ala14Desc;
@@ -315,6 +325,7 @@
             document.getElementById('digimatico-desc').textContent = t.digimaticoDesc;
             document.getElementById('download-es').textContent = t.downloadEs;
             document.getElementById('download-de').textContent = t.downloadDe;
+            document.getElementById('download-btn-fd').textContent = t.downloadBtn;
             document.getElementById('download-btn').textContent = t.downloadBtn;
             document.getElementById('download-btn-2').textContent = t.downloadBtn;
             document.getElementById('download-btn-3').textContent = t.downloadBtn;

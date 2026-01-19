@@ -55,14 +55,15 @@ The project includes `build.sh` for automated building:
 
 **Build a specific zine:**
 ```bash
-./build.sh caballero    # SyS Caballero
-./build.sh iberia       # RSWC Suite Iberia
-./build.sh vainqueur    # RSWC Vainqueur (Spanish)
-./build.sh vainqueur_de # RSWC Vainqueur (German)
-./build.sh ala14        # RSWC Super Stellar Ala 14
-./build.sh typhoon      # RSWC Super Stellar Typhoon
-./build.sh roquina      # SyS Roquina
-./build.sh digimatico   # SyS Digimático
+./build.sh caballero       # SyS Caballero
+./build.sh iberia          # RSWC Suite Iberia
+./build.sh vainqueur       # RSWC Vainqueur (Spanish)
+./build.sh vainqueur_de    # RSWC Vainqueur (German)
+./build.sh ala14           # RSWC Super Stellar Ala 14
+./build.sh typhoon         # RSWC Super Stellar Typhoon
+./build.sh roquina         # SyS Roquina
+./build.sh digimatico      # SyS Digimático
+./build.sh forest_defender # RSWC Forest Defender
 ```
 
 **Clean output directory:**
@@ -80,6 +81,8 @@ The project includes `build.sh` for automated building:
 PDFs are generated in the `HdR zines/` directory:
 ```
 HdR zines/
+├── RSWC Forest Defender/
+│   └── forest_defender zine.pdf
 ├── RSWC Suite Iberia/
 │   └── iberia zine.pdf
 ├── RSWC Vainqueur/
