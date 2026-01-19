@@ -1,11 +1,12 @@
 #!/bin/bash
 # Build script for all watch zines
-# Builds both digital and print versions using typst
+# Builds print versions using typst
 
 set -e
 
 # Configuration
 FONT_PATH="$HOME/.local/share/fonts"
+OUTPUT_DIR="HdR booklets"
 
 # Colors
 RED='\033[0;31m'
@@ -20,7 +21,17 @@ declare -A ZINES=(
     ["caballero"]="caballero/caballero.typ"
     ["iberia"]="iberia/iberia.typ"
     ["vainqueur"]="vainqueur/vainqueur.typ"
-    ["template"]="template/main.typ"
+    ["ala14"]="ala14/ala14.typ"
+    ["typhoon"]="typhoon/typhoon.typ"
+)
+
+# Output directory mapping
+declare -A OUTPUT_SUBDIRS=(
+    ["caballero"]="SyS Caballero"
+    ["iberia"]="RSWC Suite Iberia"
+    ["vainqueur"]="RSWC Vainqueur"
+    ["ala14"]="RSWC Super Stellar Ala 14"
+    ["typhoon"]="RSWC Super Stellar Typhoon"
 )
 
 # Function to build a single zine
@@ -30,30 +41,21 @@ build_zine() {
     
     echo -e "\n${CYAN}=== Building $name ===${NC}"
     
-    local dir=$(dirname "$typ_file")
-    local output_dir="$dir/output"
-    
-    # Create output directory
-    mkdir -p "$output_dir"
-    
     # Get script directory as project root
     local script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
     
-    # Build digital version
-    echo -e "${YELLOW}Building digital version...${NC}"
-    local digital_output="$output_dir/${name}_digital.pdf"
-    if typst compile --root "$script_dir" --font-path "$FONT_PATH" --input digital=true "$typ_file" "$digital_output"; then
-        echo -e "${GREEN}✓ Digital version built successfully${NC}"
-    else
-        echo -e "${RED}✗ Digital version failed${NC}"
-        return 1
-    fi
+    # Get output subdirectory for this zine
+    local output_subdir="${OUTPUT_SUBDIRS[$name]}"
+    local zine_output_dir="$OUTPUT_DIR/$output_subdir"
+    
+    # Create zine-specific output directory
+    mkdir -p "$zine_output_dir"
     
     # Build print version
     echo -e "${YELLOW}Building print version...${NC}"
-    local print_output="$output_dir/${name}_print.pdf"
+    local print_output="$zine_output_dir/${name} booklet.pdf"
     if typst compile --root "$script_dir" --font-path "$FONT_PATH" --input digital=false "$typ_file" "$print_output"; then
-        echo -e "${GREEN}✓ Print version built successfully${NC}"
+        echo -e "${GREEN}✓ Print version built successfully: $output_subdir/${name} booklet.pdf${NC}"
     else
         echo -e "${RED}✗ Print version failed${NC}"
         return 1
@@ -62,21 +64,17 @@ build_zine() {
     return 0
 }
 
-# Function to clean output directories
+# Function to clean output directory
 clean_outputs() {
-    echo -e "\n${CYAN}=== Cleaning output directories ===${NC}"
+    echo -e "\n${CYAN}=== Cleaning output directory ===${NC}"
     
-    for name in "${!ZINES[@]}"; do
-        local typ_file="${ZINES[$name]}"
-        local dir=$(dirname "$typ_file")
-        local output_dir="$dir/output"
-        
-        if [ -d "$output_dir" ]; then
-            echo -e "${YELLOW}Cleaning $name...${NC}"
-            rm -rf "$output_dir"
-            echo -e "${GREEN}✓ Cleaned $name${NC}"
-        fi
-    done
+    if [ -d "$OUTPUT_DIR" ]; then
+        echo -e "${YELLOW}Cleaning $OUTPUT_DIR...${NC}"
+        rm -rf "$OUTPUT_DIR"
+        echo -e "${GREEN}✓ Cleaned output directory${NC}"
+    else
+        echo -e "${YELLOW}Output directory does not exist${NC}"
+    fi
 }
 
 # Show usage
@@ -123,6 +121,9 @@ if [ "$CLEAN" = true ]; then
     clean_outputs
     exit 0
 fi
+
+# Create output directory
+mkdir -p "$OUTPUT_DIR"
 
 # Build specified zine(s)
 success=true
