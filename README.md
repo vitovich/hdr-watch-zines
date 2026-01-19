@@ -2,8 +2,6 @@ Project for creating small typst watch zines for your watch case. Includes bookl
 
 # Credits
 
-## Zen Zine Template
-
 ## Text and Photographs
 
 The watch descriptions for the RSWC and SyS (Sol y Sombra) booklets are based on the watch descriptions from the "Hablemos de Relojes" forum, primarily written by user **@Gasparacha**.
@@ -13,6 +11,8 @@ Photographs featured in the booklets were taken from the forum and were created 
 - **@submariner**
 
 All content is used with appreciation for the collaborative spirit of the watch enthusiast community.
+
+## Zen Zine Template
 
 This project derives from the **Zen Zine** template for Typst, created by Tom Eichlersmith.
 
