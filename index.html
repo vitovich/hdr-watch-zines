@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -34,6 +34,35 @@
             color: white;
             padding: 40px 30px;
             text-align: center;
+            position: relative;
+        }
+        
+        .lang-switcher {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+        }
+        
+        .lang-btn {
+            background: rgba(255,255,255,0.2);
+            border: 1px solid rgba(255,255,255,0.3);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+        
+        .lang-btn:hover {
+            background: rgba(255,255,255,0.3);
+        }
+        
+        .lang-btn.active {
+            background: rgba(255,255,255,0.9);
+            color: #667eea;
         }
         
         header h1 {
@@ -99,20 +128,11 @@
             font-weight: 600;
             transition: opacity 0.2s;
             margin-top: 10px;
+            margin-right: 8px;
         }
         
         .download-btn:hover {
             opacity: 0.9;
-        }
-        
-        .language-badge {
-            display: inline-block;
-            padding: 4px 10px;
-            background: #e9ecef;
-            border-radius: 4px;
-            font-size: 0.85em;
-            color: #666;
-            margin-left: 8px;
         }
         
         footer {
@@ -131,62 +151,177 @@
         footer a:hover {
             text-decoration: underline;
         }
+        
+        .hidden {
+            display: none;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
+            <div class="lang-switcher">
+                <button class="lang-btn active" onclick="setLanguage('es')">ES</button>
+                <button class="lang-btn" onclick="setLanguage('de')">DE</button>
+                <button class="lang-btn" onclick="setLanguage('en')">EN</button>
+            </div>
             <h1>⌚ HdR Watch Zines</h1>
-            <p>Printable instruction booklets for watch enthusiasts</p>
+            <p id="header-subtitle"></p>
         </header>
         
         <div class="content">
             <div class="intro">
-                <p>Download ready-to-print zines for your favorite watches from the "Hablemos de Relojes" community.</p>
-                <p>Each zine is designed to be folded into a compact booklet that fits perfectly in your watch case.</p>
+                <p id="intro-text-1"></p>
+                <p id="intro-text-2"></p>
             </div>
             
             <div class="zines-grid">
                 <div class="zine-card">
                     <h3>RSWC Vainqueur</h3>
-                    <p>Automatic chronograph inspired by Formula 1 racing</p>
-                    <a href="HdR zines/RSWC Vainqueur/vainqueur zine.pdf" class="download-btn" download>📥 Download ES</a>
-                    <a href="HdR zines/RSWC Vainqueur/vainqueur_de zine.pdf" class="download-btn" download>📥 Download DE</a>
+                    <p id="vainqueur-desc"></p>
+                    <a href="HdR zines/RSWC Vainqueur/vainqueur zine.pdf" class="download-btn" download><span id="download-es">📥 Descargar ES</span></a>
+                    <a href="HdR zines/RSWC Vainqueur/vainqueur_de zine.pdf" class="download-btn" download><span id="download-de">📥 Descargar DE</span></a>
                 </div>
                 
                 <div class="zine-card">
                     <h3>RSWC Suite Iberia</h3>
-                    <p>Elegant timepiece from the RSWC collection</p>
-                    <a href="HdR zines/RSWC Suite Iberia/iberia zine.pdf" class="download-btn" download>📥 Download</a>
+                    <p id="iberia-desc"></p>
+                    <a href="HdR zines/RSWC Suite Iberia/iberia zine.pdf" class="download-btn" download><span id="download-btn">📥 Descargar</span></a>
                 </div>
                 
                 <div class="zine-card">
                     <h3>RSWC Super Stellar Ala 14</h3>
-                    <p>Fighter pilot watch validated by the Spanish Air Force</p>
-                    <a href="HdR zines/RSWC Super Stellar Ala 14/ala14 zine.pdf" class="download-btn" download>📥 Download</a>
+                    <p id="ala14-desc"></p>
+                    <a href="HdR zines/RSWC Super Stellar Ala 14/ala14 zine.pdf" class="download-btn" download><span id="download-btn-2">📥 Descargar</span></a>
                 </div>
                 
                 <div class="zine-card">
                     <h3>RSWC Super Stellar Typhoon</h3>
-                    <p>Aerospace-grade instrument for extreme conditions</p>
-                    <a href="HdR zines/RSWC Super Stellar Typhoon/typhoon zine.pdf" class="download-btn" download>📥 Download</a>
+                    <p id="typhoon-desc"></p>
+                    <a href="HdR zines/RSWC Super Stellar Typhoon/typhoon zine.pdf" class="download-btn" download><span id="download-btn-3">📥 Descargar</span></a>
                 </div>
                 
                 <div class="zine-card">
                     <h3>Sol y Sombra Caballero</h3>
-                    <p>Classic design from the SyS collection</p>
-                    <a href="HdR zines/SyS Caballero/caballero zine.pdf" class="download-btn" download>📥 Download</a>
+                    <p id="caballero-desc"></p>
+                    <a href="HdR zines/SyS Caballero/caballero zine.pdf" class="download-btn" download><span id="download-btn-4">📥 Descargar</span></a>
                 </div>
             </div>
         </div>
         
         <footer>
-            <p><strong>About this project:</strong></p>
-            <p>These zines are created with <a href="https://typst.app/" target="_blank">Typst</a> using the zen-zine template.</p>
-            <p>Content based on descriptions from the "Hablemos de Relojes" forum community.</p>
-            <p><a href="https://github.com/jefebus/hdr-watch-zines" target="_blank">View on GitHub</a> | 
-               <a href="README.md">Documentation</a></p>
+            <p><strong id="footer-about"></strong></p>
+            <p id="footer-text-1"></p>
+            <p id="footer-text-2"></p>
+            <p><a href="https://github.com/jefebus/hdr-watch-zines" target="_blank" id="footer-github">Ver en GitHub</a> | 
+               <a href="README.md" id="footer-docs">Documentación</a></p>
         </footer>
     </div>
+
+    <script>
+        const translations = {
+            es: {
+                headerSubtitle: 'Folletos de instrucciones imprimibles para aficionados a la relojería',
+                introText1: 'Descarga zines listos para imprimir de tus relojes favoritos de la comunidad "Hablemos de Relojes".',
+                introText2: 'Cada zine está diseñado para plegarse en un folleto compacto que encaja perfectamente en tu estuche de reloj.',
+                vainqueurDesc: 'Cronógrafo automático inspirado en las carreras de Fórmula 1',
+                iberiaDesc: 'Reloj elegante de la colección RSWC',
+                ala14Desc: 'Reloj de piloto de combate validado por el Ejército del Aire',
+                typhoonDesc: 'Instrumento aeroespacial para condiciones extremas',
+                caballeroDesc: 'Diseño clásico de la colección Sol y Sombra',
+                downloadEs: '📥 Descargar ES',
+                downloadDe: '📥 Descargar DE',
+                downloadBtn: '📥 Descargar',
+                footerAbout: 'Acerca de este proyecto:',
+                footerText1: 'Estos zines se crean con Typst usando la plantilla zen-zine.',
+                footerText2: 'Contenido basado en descripciones de la comunidad del foro "Hablemos de Relojes".',
+                footerGithub: 'Ver en GitHub',
+                footerDocs: 'Documentación'
+            },
+            de: {
+                headerSubtitle: 'Druckbare Anleitungshefte für Uhrenliebhaber',
+                introText1: 'Lade druckfertige Zines für deine Lieblingsuhren aus der "Hablemos de Relojes"-Community herunter.',
+                introText2: 'Jedes Zine ist so gestaltet, dass es zu einem kompakten Heft gefaltet werden kann, das perfekt in dein Uhrenetui passt.',
+                vainqueurDesc: 'Automatik-Chronograph inspiriert von Formel-1-Rennen',
+                iberiaDesc: 'Elegante Uhr aus der RSWC-Kollektion',
+                ala14Desc: 'Kampfpilotenuhr validiert durch die spanische Luftwaffe',
+                typhoonDesc: 'Luft- und Raumfahrtinstrument für extreme Bedingungen',
+                caballeroDesc: 'Klassisches Design aus der Sol y Sombra Kollektion',
+                downloadEs: '📥 Download ES',
+                downloadDe: '📥 Download DE',
+                downloadBtn: '📥 Download',
+                footerAbout: 'Über dieses Projekt:',
+                footerText1: 'Diese Zines werden mit Typst unter Verwendung der zen-zine-Vorlage erstellt.',
+                footerText2: 'Inhalte basierend auf Beschreibungen aus der "Hablemos de Relojes" Forum-Community.',
+                footerGithub: 'Auf GitHub ansehen',
+                footerDocs: 'Dokumentation'
+            },
+            en: {
+                headerSubtitle: 'Printable instruction booklets for watch enthusiasts',
+                introText1: 'Download ready-to-print zines for your favorite watches from the "Hablemos de Relojes" community.',
+                introText2: 'Each zine is designed to be folded into a compact booklet that fits perfectly in your watch case.',
+                vainqueurDesc: 'Automatic chronograph inspired by Formula 1 racing',
+                iberiaDesc: 'Elegant timepiece from the RSWC collection',
+                ala14Desc: 'Fighter pilot watch validated by the Spanish Air Force',
+                typhoonDesc: 'Aerospace-grade instrument for extreme conditions',
+                caballeroDesc: 'Classic design from the Sol y Sombra collection',
+                downloadEs: '📥 Download ES',
+                downloadDe: '📥 Download DE',
+                downloadBtn: '📥 Download',
+                footerAbout: 'About this project:',
+                footerText1: 'These zines are created with Typst using the zen-zine template.',
+                footerText2: 'Content based on descriptions from the "Hablemos de Relojes" forum community.',
+                footerGithub: 'View on GitHub',
+                footerDocs: 'Documentation'
+            }
+        };
+
+        function setLanguage(lang) {
+            // Update active button
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Update content
+            const t = translations[lang];
+            document.getElementById('header-subtitle').textContent = t.headerSubtitle;
+            document.getElementById('intro-text-1').textContent = t.introText1;
+            document.getElementById('intro-text-2').textContent = t.introText2;
+            document.getElementById('vainqueur-desc').textContent = t.vainqueurDesc;
+            document.getElementById('iberia-desc').textContent = t.iberiaDesc;
+            document.getElementById('ala14-desc').textContent = t.ala14Desc;
+            document.getElementById('typhoon-desc').textContent = t.typhoonDesc;
+            document.getElementById('caballero-desc').textContent = t.caballeroDesc;
+            document.getElementById('download-es').textContent = t.downloadEs;
+            document.getElementById('download-de').textContent = t.downloadDe;
+            document.getElementById('download-btn').textContent = t.downloadBtn;
+            document.getElementById('download-btn-2').textContent = t.downloadBtn;
+            document.getElementById('download-btn-3').textContent = t.downloadBtn;
+            document.getElementById('download-btn-4').textContent = t.downloadBtn;
+            document.getElementById('footer-about').textContent = t.footerAbout;
+            document.getElementById('footer-text-1').textContent = t.footerText1;
+            document.getElementById('footer-text-2').textContent = t.footerText2;
+            document.getElementById('footer-github').textContent = t.footerGithub;
+            document.getElementById('footer-docs').textContent = t.footerDocs;
+            
+            // Update HTML lang attribute
+            document.documentElement.lang = lang;
+            
+            // Save preference
+            localStorage.setItem('preferredLanguage', lang);
+        }
+
+        // Load saved language or default to Spanish
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('preferredLanguage') || 'es';
+            const btn = document.querySelector(`.lang-btn[onclick="setLanguage('${savedLang}')"]`);
+            if (btn) {
+                btn.click();
+            } else {
+                setLanguage('es');
+            }
+        });
+    </script>
 </body>
 </html>
