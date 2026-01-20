@@ -64,6 +64,7 @@ The project includes `build.sh` for automated building:
 ./build.sh roquina         # SyS Roquina
 ./build.sh digimatico      # SyS Digimático
 ./build.sh forest_defender # RSWC Forest Defender
+./build.sh inmortal_reserva_especial # SyS Inmortal Reserva Especial
 ```
 
 **Clean output directory:**
@@ -96,6 +97,8 @@ HdR zines/
 │   └── caballero zine.pdf
 ├── SyS Digimático/
 │   └── digimatico zine.pdf
+├── SyS Inmortal Reserva Especial/
+│   └── inmortal_reserva_especial zine.pdf
 └── SyS Roquina/
     └── roquina zine.pdf
 ```

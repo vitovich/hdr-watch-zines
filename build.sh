@@ -27,6 +27,7 @@ declare -A ZINES=(
     ["roquina"]="roquina/roquina.typ"
     ["digimatico"]="digimatico/digimatico.typ"
     ["forest_defender"]="forest_defender/forest_defender.typ"
+    ["inmortal_reserva_especial"]="inmortal_reserva_especial/inmortal_reserva_especial.typ"
 )
 
 # Output directory mapping
@@ -40,6 +41,7 @@ declare -A OUTPUT_SUBDIRS=(
     ["roquina"]="SyS Roquina"
     ["digimatico"]="SyS Digimático"
     ["forest_defender"]="RSWC Forest Defender"
+    ["inmortal_reserva_especial"]="SyS Inmortal Reserva Especial"
 )
 
 # Function to build a single zine
