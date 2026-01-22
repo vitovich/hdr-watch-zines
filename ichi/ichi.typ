@@ -137,5 +137,5 @@ Watch Forum, uniendo dos comunidades en una pasión común.
 ]))
 
 #place(bottom + left, dx: 5mm, dy: -5mm, text(black, size: 7pt)[
-_RSWF Ichi · Hablemos de Relojes_
+_RSWF · Hablemos de Relojes_
 ])
