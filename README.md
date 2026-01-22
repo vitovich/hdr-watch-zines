@@ -59,6 +59,7 @@ The project includes `build.sh` for automated building:
 ./build.sh iberia          # RSWC Suite Iberia
 ./build.sh vainqueur       # RSWC Vainqueur (Spanish)
 ./build.sh vainqueur_de    # RSWC Vainqueur (German)
+./build.sh verne           # RSWC Verne
 ./build.sh ala14           # RSWC Super Stellar Ala 14
 ./build.sh typhoon         # RSWC Super Stellar Typhoon
 ./build.sh roquina         # SyS Roquina
@@ -89,6 +90,8 @@ HdR zines/
 ├── RSWC Vainqueur/
 │   ├── vainqueur zine.pdf
 │   └── vainqueur_de zine.pdf
+├── RSWC Verne/
+│   └── verne zine.pdf
 ├── RSWC Super Stellar Ala 14/
 │   └── ala14 zine.pdf
 ├── RSWC Super Stellar Typhoon/
