@@ -44,38 +44,38 @@ https://fonts.google.com/specimen/Carlito
 
 ## Building Zines
 
-### Using the Build Script (Linux/WSL)
+### Using Make
 
-The project includes `build.sh` for automated building:
+The project includes a `Makefile` for automated building:
 
 **Build all zines:**
 ```bash
-./build.sh
+make
 ```
 
 **Build a specific zine:**
 ```bash
-./build.sh caballero       # SyS Caballero
-./build.sh iberia          # RSWC Suite Iberia
-./build.sh vainqueur       # RSWC Vainqueur (Spanish)
-./build.sh vainqueur_de    # RSWC Vainqueur (German)
-./build.sh verne           # RSWC Verne
-./build.sh ala14           # RSWC Super Stellar Ala 14
-./build.sh typhoon         # RSWC Super Stellar Typhoon
-./build.sh roquina         # SyS Roquina
-./build.sh digimatico      # SyS Digimático
-./build.sh forest_defender # RSWC Forest Defender
-./build.sh inmortal_reserva_especial # SyS Inmortal Reserva Especial
+make caballero              # SyS Caballero
+make iberia                 # RSWC Suite Iberia
+make vainqueur              # RSWC Vainqueur (Spanish)
+make vainqueur_de           # RSWC Vainqueur (German)
+make verne                  # RSWC Verne
+make ala14                  # RSWC Super Stellar Ala 14
+make typhoon                # RSWC Super Stellar Typhoon
+make roquina                # SyS Roquina
+make digimatico             # SyS Digimático
+make forest_defender        # RSWC Forest Defender
+make inmortal_reserva_especial  # SyS Inmortal Reserva Especial
 ```
 
 **Clean output directory:**
 ```bash
-./build.sh --clean
+make clean
 ```
 
 **Show help:**
 ```bash
-./build.sh --help
+make help
 ```
 
 ### Output Structure
@@ -112,15 +112,16 @@ HdR zines/
 1. Copy an existing zine directory (e.g., `template/`)
 2. Modify the `.typ` file with your content
 3. Add your images
-4. Add to `build.sh`:
-   ```bash
-   # In ZINES array:
-   ["mywatch"]="mywatch/mywatch.typ"
-   
-   # In OUTPUT_SUBDIRS array:
-   ["mywatch"]="My Watch Name"
+4. Add a new target to the `Makefile`:
+   ```makefile
+   mywatch:
+       @echo "$(CYAN)=== Building mywatch ===$(NC)"
+       @mkdir -p "$(OUTPUT_DIR)/My Watch Name"
+       @$(TYPST) mywatch/mywatch.typ "$(OUTPUT_DIR)/My Watch Name/mywatch zine.pdf"
+       @echo "$(GREEN)✓ My Watch built: My Watch Name/mywatch zine.pdf$(NC)"
    ```
-5. Build: `./build.sh mywatch`
+5. Add `mywatch` to the `all` target dependencies
+6. Build: `make mywatch`
 
 
 # License Notice
