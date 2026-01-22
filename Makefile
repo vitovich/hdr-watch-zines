@@ -4,7 +4,7 @@
 
 # Configuration
 FONT_PATH := $(HOME)/.local/share/fonts
-TYPST := typst compile --root . --font-path $(FONT_PATH) --input digital=false
+TYPST := /snap/bin/typst compile --root . --font-path $(FONT_PATH) --input digital=false
 
 # Source directories and files
 SRC_LIB := $(wildcard src/*.typ)
@@ -23,6 +23,7 @@ TARGETS := \
 	HdR\ zines/SyS\ Roquina/roquina\ zine.pdf \
 	HdR\ zines/SyS\ Digimático/digimatico\ zine.pdf \
 	HdR\ zines/RSWC\ Forest\ Defender/forest_defender\ zine.pdf \
+	HdR\ zines/RSWC\ Salto\ de\ Fe/salto_de_fe\ zine.pdf \
 	HdR\ zines/Ferroviario/ferroviario\ zine.pdf \
 	HdR\ zines/SyS\ Inmortal/inmortal\ zine.pdf \
 	HdR\ zines/SyS\ Inmortal\ Reserva\ Especial/inmortal_reserva_especial\ zine.pdf
@@ -92,6 +93,10 @@ HdR\ zines/SyS\ Digimático/digimatico\ zine.pdf: $(wildcard digimatico/*.typ di
 HdR\ zines/RSWC\ Forest\ Defender/forest_defender\ zine.pdf: $(wildcard forest_defender/*.typ forest_defender/*.jpeg) $(SRC_LIB)
 	@mkdir -p "HdR zines/RSWC Forest Defender"
 	$(TYPST) forest_defender/forest_defender.typ "$@"
+
+HdR\ zines/RSWC\ Salto\ de\ Fe/salto_de_fe\ zine.pdf: $(wildcard salto_de_fe/*.typ salto_de_fe/*.jpeg) $(SRC_LIB)
+	@mkdir -p "HdR zines/RSWC Salto de Fe"
+	$(TYPST) salto_de_fe/salto_de_fe.typ "$@"
 
 HdR\ zines/Ferroviario/ferroviario\ zine.pdf: $(wildcard ferroviario/*.typ ferroviario/*.jpeg) $(SRC_LIB)
 	@mkdir -p "HdR zines/Ferroviario"

@@ -70,6 +70,7 @@ make typhoon                # RSWC Super Stellar Typhoon
 make roquina                # SyS Roquina
 make digimatico             # SyS Digimático
 make forest_defender        # RSWC Forest Defender
+make salto_de_fe            # RSWC Salto de Fe
 make ferroviario            # Ferroviario
 make inmortal               # SyS Inmortal
 make inmortal_reserva_especial  # SyS Inmortal Reserva Especial
@@ -94,6 +95,8 @@ HdR zines/
 │   └── ferroviario zine.pdf
 ├── RSWC Forest Defender/
 │   └── forest_defender zine.pdf
+├── RSWC Salto de Fe/
+│   └── salto_de_fe zine.pdf
 ├── RSWC Suite Iberia/
 │   └── iberia zine.pdf
 ├── RSWC Vainqueur/
