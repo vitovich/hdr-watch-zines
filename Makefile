@@ -21,6 +21,7 @@ TARGETS := \
 	HdR\ zines/SyS\ Roquina/roquina\ zine.pdf \
 	HdR\ zines/SyS\ Digimático/digimatico\ zine.pdf \
 	HdR\ zines/RSWC\ Forest\ Defender/forest_defender\ zine.pdf \
+	HdR\ zines/SyS\ Inmortal/inmortal\ zine.pdf \
 	HdR\ zines/SyS\ Inmortal\ Reserva\ Especial/inmortal_reserva_especial\ zine.pdf
 
 all: $(TARGETS)
@@ -80,6 +81,10 @@ HdR\ zines/SyS\ Digimático/digimatico\ zine.pdf: $(wildcard digimatico/*.typ di
 HdR\ zines/RSWC\ Forest\ Defender/forest_defender\ zine.pdf: $(wildcard forest_defender/*.typ forest_defender/*.jpeg) $(SRC_LIB)
 	@mkdir -p "HdR zines/RSWC Forest Defender"
 	$(TYPST) forest_defender/forest_defender.typ "$@"
+
+HdR\ zines/SyS\ Inmortal/inmortal\ zine.pdf: $(wildcard inmortal/*.typ inmortal/*.jpeg) $(SRC_LIB)
+	@mkdir -p "HdR zines/SyS Inmortal"
+	$(TYPST) inmortal/inmortal.typ "$@"
 
 HdR\ zines/SyS\ Inmortal\ Reserva\ Especial/inmortal_reserva_especial\ zine.pdf: $(wildcard inmortal_reserva_especial/*.typ inmortal_reserva_especial/*.jpeg) $(SRC_LIB)
 	@mkdir -p "HdR zines/SyS Inmortal Reserva Especial"

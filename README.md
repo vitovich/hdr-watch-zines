@@ -9,6 +9,7 @@ The watch descriptions for the RSWC and SyS (Sol y Sombra) zines are based on th
 Photographs featured in the zines were taken from the forum and were created by:
 - **@Gasparacha**
 - **@submariner**
+- **@Pirlo**
 
 All content is used with appreciation for the collaborative spirit of the watch enthusiast community.
 
@@ -65,6 +66,7 @@ make typhoon                # RSWC Super Stellar Typhoon
 make roquina                # SyS Roquina
 make digimatico             # SyS Digimático
 make forest_defender        # RSWC Forest Defender
+make inmortal               # SyS Inmortal
 make inmortal_reserva_especial  # SyS Inmortal Reserva Especial
 ```
 
@@ -100,6 +102,8 @@ HdR zines/
 │   └── caballero zine.pdf
 ├── SyS Digimático/
 │   └── digimatico zine.pdf
+├── SyS Inmortal/
+│   └── inmortal zine.pdf
 ├── SyS Inmortal Reserva Especial/
 │   └── inmortal_reserva_especial zine.pdf
 └── SyS Roquina/
