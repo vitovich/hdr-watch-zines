@@ -148,6 +148,5 @@ por y para la comunidad HdR.
 ]))
 
 #place(bottom + left, dx: 5mm, dy: -5mm, text(black, size: 7pt)[
-_RSWC Supersharkomatic · \ 
-Hablemos de Relojes_
+_RSWC · Hablemos de Relojes_
 ])
