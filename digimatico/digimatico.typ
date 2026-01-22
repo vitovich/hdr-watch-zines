@@ -70,42 +70,50 @@ CNC de 5 ejes para su acabado perfecto. El zafiro frontal, aunque plano,
 requiere trabajo extra por su forma característica.
 
 El interior es aún más complejo: no hay agujas, sino cuatro discos 
-giratorios que muestran hora, minutos, segundos y fecha en dígitos. 
-Cada disco se fabrica con moldes a medida, sumando 3.1mm de altura total.
+giratorios que muestran hora, minutos, segundos y fecha en dígitos, sumando
+3.10mm de altura total. 
+La profundidad de estos discos superpuestos hace necesarias lupas 
+de zafiro para facilitar la lectura. 
 
-La profundidad de estos discos superpuestos hace necesarias las lupas 
-de zafiro para facilitar la lectura. El Miyota Premium 9015, con solo 
-3.90mm de altura, fue la elección perfecta para este desafío técnico.
+Movimiento Miyota Premium 9015, con solo 3.90mm de altura.
+
+Correa de piel de calidad con hebilla grabada Sol y Sombra.
 
 #pagebreak()
 
-*VERSIONES Y ESTRELLA DE MARIANO*
+*DISEÑO Y CONSTRUCCIÓN (CONTINUACIÓN)*
 
-Versiones vintage: Azul clásico, Naranja, Negro y especiales como 
-Gibraltar Español y Uhrforum (textos en alemán para amigos alemanes).
+DOS TAPAS intercambiables
 
-Edición Pilón: Tabaco y caja dorada con logotipo del suavizante en 
-oro de 24 pilones. Referencia al suavizante Pilón que aparece en 
-"Los bingueros", otra gran película de Pajares y Esteso.
+*Tapa 1:* Dibujo a todo color de la escena de la báscula de 
+"Yo hice a Roque III" protegido por cristal de zafiro.
+
+*Tapa 2:* Sello Sol y Sombra en placado IP oro y relieve.
+
+Sistema de anclaje por tornillos mantiene ambas siempre rectas.
+
+ESTRELLA EN EL DIAL
 
 La estrella metálica en el dial honra a Mariano Ozores (1926-2025), 
 director de estas obras maestras del humor español. Una estrella que 
 merece estar en el Paseo de la Fama.
 
+
 #pagebreak()
 
-*DOBLE TAPA Y CORREA*
+*AGUJAS VS DISCOS: DOS FORMAS DE MOSTRAR EL TIEMPO*
 
-Dos tapas intercambiables:
+En un reloj tradicional con agujas, el movimiento hace girar tres 
+ejes concéntricos a diferentes velocidades: uno para las horas, otro 
+para los minutos y otro para los segundos. Cada aguja señala un número 
+en la esfera, y nosotros interpretamos la hora según su posición angular.
 
-Tapa 1: Dibujo a todo color de la escena de la báscula de 
-"Yo hice a Roque III" protegido por cristal de zafiro.
+El Digimático funciona de manera radicalmente diferente. No hay agujas 
+que apunten a números: hay discos giratorios que muestran directamente 
+los dígitos. 
 
-Tapa 2: Sello Sol y Sombra en placado IP oro y relieve.
-
-Sistema de anclaje por tornillos mantiene ambas siempre rectas.
-
-Correa de piel de calidad con hebilla grabada Sol y Sombra.
+Este sistema de lectura ofrece una lectura inmediata y sin ambigüedades. 
+Es la fusión perfecta entre mecánica tradicional y lectura digital.
 
 #pagebreak()
 
@@ -118,5 +126,5 @@ color va protegido por cristal de zafiro con sistema de anclaje por tornillos.
 ]))
 
 #place(bottom + left, dx: 5mm, dy: -5mm, text(black, size: 7pt)[
-_Sol y Sombra · Hablemos de Relojes · Homenaje a Mariano Ozores (1926-2025)_
+_Sol y Sombra · Hablemos de Relojes_
 ])
