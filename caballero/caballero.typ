@@ -1,6 +1,6 @@
 #import "../src/lib.typ": watch_zine
 
-#set document(author: "Jefebus", title: "Sol y Sombra – Caballero")
+#set document(author: "HdR", title: "Sol y Sombra – Caballero")
 #set text(font: "Carlito", size: 7pt, lang: "es")
 #set page("a4")
 

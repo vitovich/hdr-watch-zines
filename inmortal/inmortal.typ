@@ -1,6 +1,6 @@
 #import "../src/lib.typ": watch_zine
 
-#set document(author: "Gasparacha", title: "Sol y Sombra – SyS Inmortal")
+#set document(author: "HdR", title: "Sol y Sombra – SyS Inmortal")
 #set text(font: "Carlito", size: 7pt, lang: "es")
 #set page("a4")
 

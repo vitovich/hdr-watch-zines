@@ -1,6 +1,6 @@
 #import "../src/lib.typ": watch_zine
 
-#set document(author: "Gasparacha", title: "RSWF Ichi – Rising Sun Watch Forum")
+#set document(author: "HdR", title: "RSWF Ichi – Rising Sun Watch Forum")
 #set text(font: "Carlito", size: 7pt, lang: "es")
 #set page("a4")
 

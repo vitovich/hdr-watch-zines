@@ -1,6 +1,6 @@
 #import "../src/lib.typ": watch_zine
 
-#set document(author: "Jefebus", title: "RSWC Forest Defender")
+#set document(author: "HdR", title: "RSWC Forest Defender")
 #set text(font: "Carlito", size: 7pt, lang: "es")
 #set page("a4")
 
