@@ -23,3 +23,7 @@ __pycache__/
 
 # Commercial watch zines (not for public distribution)
 other/
+
+# support files not ready to share
+indice_proyectos.txt
+AGENTS.md

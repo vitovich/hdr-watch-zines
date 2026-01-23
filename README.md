@@ -60,21 +60,22 @@ make
 ```bash
 make caballero              # SyS Caballero
 make bushido                # RSWC Bushido (versiones roja y Midori)
+make digimatico             # SyS Digimático
+make ferroviario            # Ferroviario
+make forest_defender        # RSWC Forest Defender
+make heian                  # RSWC Heian
 make iberia                 # RSWC Suite Iberia
+make ichi                   # RSWF Ichi
+make inmortal               # SyS Inmortal
+make inmortal_reserva_especial  # SyS Inmortal Reserva Especial
+make ala14                  # RSWC Super Stellar Ala 14
+make roquina                # SyS Roquina
+make salto_de_fe            # RSWC Salto de Fe
+make supersharkomatic       # RSWC Supersharkomatic
+make typhoon                # RSWC Super Stellar Typhoon
 make vainqueur              # RSWC Vainqueur (Spanish)
 make vainqueur_de           # RSWC Vainqueur (German)
 make verne                  # RSWC Verne
-make ichi                   # RSWF Ichi
-make ala14                  # RSWC Super Stellar Ala 14
-make supersharkomatic       # RSWC Supersharkomatic
-make typhoon                # RSWC Super Stellar Typhoon
-make roquina                # SyS Roquina
-make digimatico             # SyS Digimático
-make forest_defender        # RSWC Forest Defender
-make salto_de_fe            # RSWC Salto de Fe
-make ferroviario            # Ferroviario
-make inmortal               # SyS Inmortal
-make inmortal_reserva_especial  # SyS Inmortal Reserva Especial
 ```
 
 **Clean output directory:**
@@ -89,8 +90,15 @@ make help
 
 ### Output Structure
 
-PDFs are generated in the `HdR zines/` directory:
+Source files are organized in `hdr_zines_src/` directory, and PDFs are generated in `HdR zines/`:
+
 ```
+hdr_zines_src/
+├── caballero/
+├── bushido/
+├── heian/
+├── ...
+│
 HdR zines/
 ├── Ferroviario/
 │   └── ferroviario zine.pdf
@@ -98,6 +106,8 @@ HdR zines/
 │   └── bushido zine.pdf (versiones roja y Midori)
 ├── RSWC Forest Defender/
 │   └── forest_defender zine.pdf
+├── RSWC Heian/
+│   └── heian zine.pdf
 ├── RSWC Salto de Fe/
 │   └── salto_de_fe zine.pdf
 ├── RSWC Suite Iberia/
