@@ -90,14 +90,12 @@ del espacio.
 original. Dial sunray amarillo 
 intenso, edición limitada 200 
 unidades. Vendida en 58 
-minutos. El legendario color 
-espacial.
+minutos. Color espacial.
 
 *Cevert (Azul):* Precioso azul 
 sunray intenso. Inspirado en 
-el reloj del piloto F1 François 
-Cevert y del baterista Nick 
-Mason. Hipnótico.
+el piloto F1 François Cevert 
+y Nick Mason. Hipnótico.
 
 *Silver Grey:* Combinación 
 sublime. Deportividad del 
@@ -105,11 +103,10 @@ bisel con austeridad de la
 esfera. Clasicismo y rareza.
 
 *Space Cowboy:* Edición 
-especial. Inspirado en una 
-rara tirada JDM de 1972. Dial 
-y agujas únicos. El más 
-deportivo. Una "crudité" para 
-los foreros.
+especial. Inspirado en rara 
+tirada JDM de 1972. Dial y 
+agujas únicos. El más 
+deportivo.
 
 Comparten caja y movimiento. 
 Difieren en dial, bisel y 
@@ -150,14 +147,10 @@ para la RSWC.
 *CRÉDITOS Y DESARROLLO*
 
 Proyecto desarrollado por 
-Gasparacha y Rafa (submariner) 
-con supervisión del equipo de 
-moderación HdR. 
-
-Cuatro meses de desarrollo: 50 
+el equipo de 
+moderación HdR. Cuatro meses de desarrollo: 50 
 cambios de diseño hasta el 
-resultado final. Tom Gan 
-(Astar) mostró gran 
+resultado final. El fabricante Astar mostró gran 
 predisposición y flexibilidad 
 técnica.
 
