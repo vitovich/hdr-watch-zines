@@ -68,7 +68,7 @@
   /// content on the final printer-ready page and seeing the margins
   /// of the zine pages
   /// -> boolean
-  draw-border: false,
+  draw-border: true,
   /// whether to draw crop marks on the zine pages
   /// -> boolean
   draw-crop-marks: false,
@@ -98,9 +98,27 @@
       inset: margin,
       width: 100%,
       height: 100%,
-      stroke: if draw-border { black } else { none },
+      stroke: none,
       body
     )
+    
+    // Draw extended cut lines to the page margins
+    #if draw-border {
+      // A4 flipped: 297×210mm, margins: 20mm, grid: 180×160mm
+      // Distance from frame edge to page margin:
+      // Horizontal: 20mm + (257-180)/2 = 58.5mm
+      // Vertical: 20mm + (170-160)/2 = 25mm
+      let h-extension = 58.5mm  // horizontal extension
+      let v-extension = 25mm    // vertical extension
+      
+      // Vertical cut lines (left and right edges)
+      place(left + top, dy: -v-extension, line(angle: 90deg, length: height + 2*v-extension, stroke: 0.3pt + black))
+      place(right + top, dy: -v-extension, line(angle: 90deg, length: height + 2*v-extension, stroke: 0.3pt + black))
+      
+      // Horizontal cut lines (top and bottom edges)
+      place(left + top, dx: -h-extension, line(length: width + 2*h-extension, stroke: 0.3pt + black))
+      place(left + bottom, dx: -h-extension, line(length: width + 2*h-extension, stroke: 0.3pt + black))
+    }
 
 
 
