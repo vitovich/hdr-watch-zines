@@ -37,7 +37,6 @@ Complete list of Hablemos de Relojes watch projects organized by brand/collectio
 
 - **Caballero**
 - **Competidor**: **Classic/Panda/Rally**, **Aquarally**
-- Digimático (postponed)
 - **Inmortal**
 - **Inmortal Reserva Especial**
 - **Monumental Taurino**
@@ -71,7 +70,7 @@ Complete list of Hablemos de Relojes watch projects organized by brand/collectio
 - Leonov ¡Poyejali!
 - Luch Monoaguja
 - Moeris Lacus Space
-- Okeah Final Edition
+- **Okeah Final Edition**
 - Parnis: GMT Master II/Explorer Zulu, Marina Militare, Portuguese
 - Piloto Checo
 - Radio Room Operator
@@ -82,5 +81,5 @@ Complete list of Hablemos de Relojes watch projects organized by brand/collectio
 ## Statistics
 
 - **Total Projects**: 64
-- **Projects with Zines**: 25
-- **Coverage**: ~39%
+- **Projects with Zines**: 26
+- **Coverage**: ~41%

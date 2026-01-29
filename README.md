@@ -7,13 +7,14 @@ Project for creating small typst watch zines for your watch case. Includes zines
 The watch descriptions for the RSWC and SyS (Sol y Sombra) zines are based on the watch descriptions from the "Hablemos de Relojes" forum, primarily written by user **@Gasparacha**.
 
 Photographs featured in the zines were taken from the forum and were created by:
+- **@submariner**
 - **@Gasparacha**
 - **@Girolamo**
 - **@luin**
 - **@Martins**
 - **@Pirlo**
-- **@submariner**
 - **@vegaban**
+- **@Drake**
 
 All content is used with appreciation for the collaborative spirit of the watch enthusiast community.
 
@@ -108,6 +109,8 @@ HdR zines/
 │   └── ferroviario zine.pdf
 ├── Galeno/
 │   └── galeno zine.pdf
+├── Okeah Final Edition/
+│   └── okeah zine.pdf
 ├── RSWC Bushido/
 │   └── bushido zine.pdf (versiones roja y Midori)
 ├── RSWC Dirty Fifteen/
