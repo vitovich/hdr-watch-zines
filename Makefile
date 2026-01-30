@@ -347,12 +347,12 @@ png-okeah: $(wildcard hdr_zines_src/okeah/*.typ hdr_zines_src/okeah/*.jpeg) $(SR
 .PHONY: pdf-racing
 pdf-racing: $(wildcard hdr_zines_src/racing/*.typ hdr_zines_src/racing/*.jpeg) $(SRC_LIB)
 	@mkdir -p "HdR zines/RSWC Racing"
-	$(TYPST) --input digital=false hdr_zines_src/racing/racing.typ "HdR zines/RSWC Racing/RSWC Racing.pdf"
+	$(TYPST) --input digital=false hdr_zines_src/racing/racing.typ "HdR zines/RSWC Racing/racing zine.pdf"
 
 .PHONY: png-racing
 png-racing: $(wildcard hdr_zines_src/racing/*.typ hdr_zines_src/racing/*.jpeg) $(SRC_LIB)
 	@mkdir -p "HdR zines/RSWC Racing"
-	$(TYPST) --input digital=true hdr_zines_src/racing/racing.typ "HdR zines/RSWC Racing/RSWC Racing-{p}.png"
+	$(TYPST) --input digital=true hdr_zines_src/racing/racing.typ "HdR zines/RSWC Racing/racing zine-{p}.png"
 
 .PHONY: pdf-viajero
 pdf-viajero: $(wildcard hdr_zines_src/viajero/*.typ hdr_zines_src/viajero/*.jpeg) $(SRC_LIB)
