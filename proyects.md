@@ -12,10 +12,11 @@ Complete list of Hablemos de Relojes watch projects organized by brand/collectio
 - Escuadrón 312
 - **Forest Defender**
 - **Gamma Gibraltar**
-- Goldmaster: Black, British Green
+- **Goldmaster: Black, British Green**
 - Grande Épreuve: Type I, Type II
 - **Heian**
 - **Suite Iberia**
+- **Karusell Racing, Moeris Lacus**
 - Rex Caeli
 - Rex Maris
 - Rex Terrae
@@ -61,7 +62,6 @@ Complete list of Hablemos de Relojes watch projects organized by brand/collectio
 - **Galeno**
 - **Candino Grand Belize**
 - Kaiju: Standard, Yuki-Otoko
-- **Karusell Racing, Moeris Lacus**
 - Komarov ¡Poyajali!
 - Laco Squad HdR
 - Landeron Compressor

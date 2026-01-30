@@ -13,14 +13,14 @@ SRC_LIB := $(wildcard src/*.typ)
 pdf-all: pdf-caballero pdf-competidor pdf-cosmotemp pdf-decotimer pdf-dirty_fifteen pdf-world_timer \
 	pdf-iberia pdf-vainqueur pdf-vainqueur_de pdf-verne pdf-ichi pdf-ala14 \
 	pdf-supersharkomatic pdf-typhoon pdf-roquina pdf-forest_defender pdf-salto_de_fe \
-	pdf-heian pdf-ferroviario pdf-galeno pdf-grand_belize pdf-gamma_gibraltar pdf-inmortal \
+	pdf-heian pdf-ferroviario pdf-galeno pdf-goldmaster pdf-grand_belize pdf-gamma_gibraltar pdf-inmortal \
 	pdf-inmortal_reserva_especial pdf-bushido pdf-skygraph \
 	pdf-monumental pdf-okeah pdf-racing pdf-viajero
 	
 png-all: png-caballero png-competidor png-cosmotemp png-decotimer png-dirty_fifteen png-world_timer \
 	png-iberia png-vainqueur png-vainqueur_de png-verne png-ichi png-ala14 \
 	png-supersharkomatic png-typhoon png-roquina png-forest_defender png-salto_de_fe \
-	png-heian png-ferroviario png-galeno png-grand_belize png-gamma_gibraltar png-inmortal \
+	png-heian png-ferroviario png-galeno png-goldmaster png-grand_belize png-gamma_gibraltar png-inmortal \
 	png-inmortal_reserva_especial png-bushido png-skygraph \
 	png-monumental png-okeah png-racing png-viajero
 
@@ -45,7 +45,7 @@ help:
 	@echo "  caballero, competidor, cosmotemp, decotimer, dirty_fifteen, world_timer,"
 	@echo "  iberia, vainqueur, vainqueur_de, verne, ichi, ala14,"
 	@echo "  supersharkomatic, typhoon, roquina, forest_defender, salto_de_fe,"
-	@echo "  heian, ferroviario, galeno, gamma_gibraltar, inmortal,"
+	@echo "  heian, ferroviario, galeno, goldmaster, gamma_gibraltar, inmortal,"
 	@echo "  inmortal_reserva_especial, bushido, skygraph,"
 	@echo "  monumental, okeah, racing, viajero"
 
@@ -253,6 +253,16 @@ pdf-galeno: $(wildcard hdr_zines_src/galeno/*.typ hdr_zines_src/galeno/*.jpeg) $
 png-galeno: $(wildcard hdr_zines_src/galeno/*.typ hdr_zines_src/galeno/*.jpeg) $(SRC_LIB)
 	@mkdir -p "HdR zines/Galeno"
 	$(TYPST) --input digital=true hdr_zines_src/galeno/galeno.typ "HdR zines/Galeno/galeno zine-{p}.png"
+
+.PHONY: pdf-goldmaster
+pdf-goldmaster: $(wildcard hdr_zines_src/goldmaster/*.typ hdr_zines_src/goldmaster/*.jpeg) $(SRC_LIB)
+	@mkdir -p "HdR zines/RSWC Goldmaster"
+	$(TYPST) --input digital=false hdr_zines_src/goldmaster/goldmaster.typ "HdR zines/RSWC Goldmaster/goldmaster zine.pdf"
+
+.PHONY: png-goldmaster
+png-goldmaster: $(wildcard hdr_zines_src/goldmaster/*.typ hdr_zines_src/goldmaster/*.jpeg) $(SRC_LIB)
+	@mkdir -p "HdR zines/RSWC Goldmaster"
+	$(TYPST) --input digital=true hdr_zines_src/goldmaster/goldmaster.typ "HdR zines/RSWC Goldmaster/goldmaster zine-{p}.png"
 
 .PHONY: pdf-grand_belize
 pdf-grand_belize: $(wildcard hdr_zines_src/grand_belize/*.typ hdr_zines_src/grand_belize/*.jpeg) $(SRC_LIB)

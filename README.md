@@ -120,6 +120,8 @@ HdR zines/
 │   └── forest_defender zine.pdf
 ├── RSWC Gamma Gibraltar/
 │   └── gamma_gibraltar zine.pdf
+├── RSWC Goldmaster/
+│   └── goldmaster zine.pdf
 ├── RSWC Heian/
 │   └── heian zine.pdf
 ├── RSWC Racing/
