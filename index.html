@@ -988,6 +988,62 @@
                 </div>           
                 
                 <div class="zine-card">
+                    <img src="hdr_zines_src/kingtuna/kingtuna_front.jpeg" alt="King Tuna" class="zine-card-image">
+                    <div class="zine-card-content">
+                        <h3>RSWF King Tuna 🦈</h3>
+                        <p id="kingtuna-desc"></p>
+                        <div>
+                            <a href="HdR zines/RSWF King Tuna/kingtuna zine.pdf" class="download-btn" download><span id="download-btn-kingtuna">📥 Descargar</span></a>
+                            <button class="unfold-btn" onclick="togglePages('kingtuna-pages')"><span class="unfoldBtn">📖 Ver páginas</span></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="kingtuna-pages" class="page-gallery">
+                    <img src="HdR zines/RSWF King Tuna/kingtuna zine-1.png" alt="Page 1" class="active-page">
+                    <img src="HdR zines/RSWF King Tuna/kingtuna zine-2.png" alt="Page 2">
+                    <img src="HdR zines/RSWF King Tuna/kingtuna zine-3.png" alt="Page 3">
+                    <img src="HdR zines/RSWF King Tuna/kingtuna zine-4.png" alt="Page 4">
+                    <img src="HdR zines/RSWF King Tuna/kingtuna zine-5.png" alt="Page 5">
+                    <img src="HdR zines/RSWF King Tuna/kingtuna zine-6.png" alt="Page 6">
+                    <img src="HdR zines/RSWF King Tuna/kingtuna zine-7.png" alt="Page 7">
+                    <img src="HdR zines/RSWF King Tuna/kingtuna zine-8.png" alt="Page 8">
+                    <div class="page-nav">
+                        <button class="page-nav-btn" onclick="navigatePage('kingtuna-pages', -1)">← <span class="prevBtn">Anterior</span></button>
+                        <span class="page-counter" id="kingtuna-counter">1 / 8</span>
+                        <button class="page-nav-btn" onclick="navigatePage('kingtuna-pages', 1)"><span class="nextBtn">Siguiente</span> →</button>
+                    </div>
+                </div>
+
+                <div class="zine-card">
+                    <img src="hdr_zines_src/sevenseas/sevenseas_front.jpeg" alt="SevenSeas" class="zine-card-image">
+                    <div class="zine-card-content">
+                        <h3>RSWF SevenSeas 🌊</h3>
+                        <p id="sevenseas-desc"></p>
+                        <div>
+                            <a href="HdR zines/RSWF SevenSeas/sevenseas zine.pdf" class="download-btn" download><span id="download-btn-sevenseas">📥 Descargar</span></a>
+                            <button class="unfold-btn" onclick="togglePages('sevenseas-pages')"><span class="unfoldBtn">📖 Ver páginas</span></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="sevenseas-pages" class="page-gallery">
+                    <img src="HdR zines/RSWF SevenSeas/sevenseas zine-1.png" alt="Page 1" class="active-page">
+                    <img src="HdR zines/RSWF SevenSeas/sevenseas zine-2.png" alt="Page 2">
+                    <img src="HdR zines/RSWF SevenSeas/sevenseas zine-3.png" alt="Page 3">
+                    <img src="HdR zines/RSWF SevenSeas/sevenseas zine-4.png" alt="Page 4">
+                    <img src="HdR zines/RSWF SevenSeas/sevenseas zine-5.png" alt="Page 5">
+                    <img src="HdR zines/RSWF SevenSeas/sevenseas zine-6.png" alt="Page 6">
+                    <img src="HdR zines/RSWF SevenSeas/sevenseas zine-7.png" alt="Page 7">
+                    <img src="HdR zines/RSWF SevenSeas/sevenseas zine-8.png" alt="Page 8">
+                    <div class="page-nav">
+                        <button class="page-nav-btn" onclick="navigatePage('sevenseas-pages', -1)">← <span class="prevBtn">Anterior</span></button>
+                        <span class="page-counter" id="sevenseas-counter">1 / 8</span>
+                        <button class="page-nav-btn" onclick="navigatePage('sevenseas-pages', 1)"><span class="nextBtn">Siguiente</span> →</button>
+                    </div>
+                </div>
+                
+                <div class="zine-card">
                     <img src="hdr_zines_src/caballero/caballero_front.jpeg" alt="Caballero" class="zine-card-image">
                     <div class="zine-card-content">
                         <h3>Sol y Sombra Caballero 🧐</h3>
@@ -1237,6 +1293,8 @@
                 roquinaDesc: 'Homenaje al cine español de los 70 con cristal facetado',
                 verneDesc: 'Homenaje al Nautilus y a Julio Verne con diseño deportivo-elegante',
                 ichiDesc: 'Primer proyecto colaborativo HdR basado en Orient Mako. Rising Sun Watch Forum',
+                kingtunaDesc: 'Homenaje al Seiko Tuna con caja de 47mm y brazalete Super Engineer. Dos variantes: Deep Black y Marine Blue. NH35A, 300m',
+                sevenseasDesc: 'Diver con caja monoblock de una pieza. Guardián de los siete mares con construcción impenetrable. NH35A, 300m',
                 downloadEs: '📥 Descargar ES',
                 downloadDe: '📥 Descargar DE',
                 downloadBtn: '📥 Descargar',
@@ -1285,6 +1343,8 @@
                 roquinaDesc: 'Hommage an das spanische Kino der 70er mit facettiertem Glas',
                 verneDesc: 'Hommage an den Nautilus und Jules Verne mit sportlich-elegantem Design',
                 ichiDesc: 'Erstes HdR-Gemeinschaftsprojekt basierend auf Orient Mako. Rising Sun Watch Forum',
+                kingtunaDesc: 'Hommage an die Seiko Tuna mit 47mm-Gehäuse und Super Engineer-Armband. Zwei Varianten: Deep Black und Marine Blue. NH35A, 300m',
+                sevenseasDesc: 'Taucheruhr mit Monoblock-Gehäuse aus einem Stück. Wächter der sieben Meere mit undurchdringlicher Konstruktion. NH35A, 300m',
                 downloadEs: '📥 Download ES',
                 downloadDe: '📥 Download DE',
                 downloadBtn: '📥 Download',
@@ -1333,6 +1393,8 @@
                 roquinaDesc: 'Tribute to 1970s Spanish cinema with faceted crystal',
                 verneDesc: 'Tribute to Nautilus and Jules Verne with sporty-elegant design',
                 ichiDesc: 'First HdR collaborative project based on Orient Mako. Rising Sun Watch Forum',
+                kingtunaDesc: 'Tribute to the Seiko Tuna with 47mm case and Super Engineer bracelet. Two variants: Deep Black and Marine Blue. NH35A, 300m',
+                sevenseasDesc: 'Diver with one-piece monoblock case. Guardian of the seven seas with impenetrable construction. NH35A, 300m',
                 downloadEs: '📥 Download ES',
                 downloadDe: '📥 Download DE',
                 downloadBtn: '📥 Download',
@@ -1447,6 +1509,8 @@
             document.getElementById('roquina-desc').textContent = t.roquinaDesc;
             document.getElementById('verne-desc').textContent = t.verneDesc;
             document.getElementById('ichi-desc').textContent = t.ichiDesc;
+            document.getElementById('kingtuna-desc').textContent = t.kingtunaDesc;
+            document.getElementById('sevenseas-desc').textContent = t.sevenseasDesc;
             document.getElementById('download-es').textContent = t.downloadEs;
             document.getElementById('download-de').textContent = t.downloadDe;
             document.getElementById('download-btn-fd').textContent = t.downloadBtn;
