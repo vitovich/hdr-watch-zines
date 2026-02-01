@@ -9,7 +9,7 @@ Complete list of Hablemos de Relojes watch projects organized by brand/collectio
 - **Deco Timer** (Oct 2023): **Challenger / Devil's Eye**
 - **Dirty Fifteen** (May 2022), **Afrika Korps**
 - Eagle: One (Jan 2023), Two
-- Escuadrón 312 (Jun 2023)
+- **Majetek** (Jun 2023): **Piloto Checo, Escuadrón 312**
 - **Forest Defender** (Nov 2025)
 - **Gamma Gibraltar** (Aug 2023)
 - **Goldmaster** (Mar 2021): **Black, British Green**
@@ -69,7 +69,6 @@ Complete list of Hablemos de Relojes watch projects organized by brand/collectio
 - Luch Monoaguja (Apr 2013)
 - **Okeah Final Edition** (Nov 2011)
 - Parnis (Jun 2009): GMT Master II/Explorer Zulu, Marina Militare, Portuguese
-- Piloto Checo (Jun 2023)
 - Radio Room Operator (Sep 2009)
 - Vostok: Amphibia AM 420, Amphibian AMM 710 (Oct 2012), K43 (Feb 2017)
 
@@ -77,6 +76,6 @@ Complete list of Hablemos de Relojes watch projects organized by brand/collectio
 
 ## Statistics
 
-- **Total Projects**: 64
-- **Projects with Zines**: 26
-- **Coverage**: ~41%
+- **Total Projects**: 63
+- **Projects with Zines**: 34
+- **Coverage**: ~54%

@@ -51,46 +51,53 @@ https://fonts.google.com/specimen/Carlito
 
 ## Building Zines
 
-### Using Make
+### Using CMake
 
-The project includes a `Makefile` for automated building:
+The project uses CMake for automated building with deterministic PDF output:
+
+**Initial Configuration:**
+```bash
+cmake .
+```
 
 **Build all PDFs and PNGs:**
 ```bash
-make all
-# or simply:
-make
+cmake --build .
+# or with specific target:
+cmake --build . --target all_zines
 ```
 
 **Build only PDFs:**
 ```bash
-make pdf-all
+cmake --build . --target pdf-all
 ```
 
 **Build only PNG pages:**
 ```bash
-make png-all
+cmake --build . --target png-all
 ```
 
 **Build specific zine PDF:**
 ```bash
-make pdf-caballero
+cmake --build . --target pdf-caballero
 ```
 
 **Build specific zine PNG pages:**
 ```bash
-make png-caballero
+cmake --build . --target png-caballero
 ```
 
 **Clean output directory:**
 ```bash
-make clean
+cmake --build . --target clean_zines
 ```
 
 **Show help:**
 ```bash
-make help
+cmake --build . --target help_zines
 ```
+
+**Note**: CMake uses qpdf to generate deterministic PDF files (same hash across builds).
 
 ### Output Structure
 
@@ -98,75 +105,16 @@ Source files are organized in `hdr_zines_src/` directory, and PDFs are generated
 
 ```
 hdr_zines_src/
-├── caballero/
 ├── bushido/
-├── heian/
 ├── ...
 │
 HdR zines/
-├── Candino Grand Belize/
-│   └── grand_belize zine.pdf
-├── Ferroviario/
-│   └── ferroviario zine.pdf
-├── Galeno/
-│   └── galeno zine.pdf
-├── Okeah Final Edition/
-│   └── okeah zine.pdf
 ├── RSWC Bushido/
-│   └── bushido zine.pdf (versiones roja y Midori)
-├── RSWC Dirty Fifteen/
-│   └── dirty_fifteen zine.pdf
-├── RSWC Forest Defender/
-│   └── forest_defender zine.pdf
-├── RSWC Gamma Gibraltar/
-│   └── gamma_gibraltar zine.pdf
-├── RSWC Goldmaster/
-│   └── goldmaster zine.pdf
-├── RSWC Heian/
-│   └── heian zine.pdf
-├── RSWC Racing/
-│   └── RSWC Racing.pdf
-├── RSWC Salto de Fe/
-│   └── salto_de_fe zine.pdf
-├── RSWC Skygraph/
-│   └── skygraph zine.pdf
-├── RSWC Suite Iberia/
-│   └── iberia zine.pdf
-├── RSWC Vainqueur/
-│   ├── vainqueur zine.pdf
-│   └── vainqueur_de zine.pdf
-├── RSWC Verne/
-│   └── verne zine.pdf
-├── RSWF Ichi/
-│   └── ichi zine.pdf
-├── RSWF King Tuna/
-│   └── kingtuna zine.pdf
-├── RSWF SevenSeas/
-│   └── sevenseas zine.pdf
-├── RSWC Super Stellar Ala 14/
-│   └── ala14 zine.pdf
-├── RSWC Super Stellar Cosmotemp/
-│   └── cosmotemp zine.pdf
-├── RSWC Super Stellar Typhoon/
-│   └── typhoon zine.pdf
-├── RSWC Super Stellar World Timer/
-│   └── world_timer zine.pdf
-├── RSWC Supersharkomatic/
-│   └── supersharkomatic zine.pdf
-├── Super Massive Colossus/
-│   └── colossus zine.pdf
-├── SyS Caballero/
-│   └── caballero zine.pdf
-├── SyS Inmortal/
-│   └── inmortal zine.pdf
-├── SyS Inmortal Reserva Especial/
-│   └── inmortal_reserva_especial zine.pdf
-├── SyS Monumental/
-│   └── monumental zine.pdf
-├── SyS Roquina/
-│   └── roquina zine.pdf
-└── SyS Viajero/
-    └── viajero zine.pdf
+│   └── bushido zine.pdf
+│   └── bushido zine-1.png
+│   ...
+│   └── bushido zine-8.png
+...
 ```
 
 
@@ -175,22 +123,20 @@ HdR zines/
 1. Create a new directory in `hdr_zines_src/` (e.g., `hdr_zines_src/mywatch/`)
 2. Create your `.typ` file with the watch zine content following the 8-page structure
 3. Add your watch images (`mywatch_front.jpeg` and `mywatch_back.jpeg`)
-4. Add your zine to the `pdf-all` and `png-all` target lists in the Makefile:
-   ```makefile
-   pdf-all: pdf-caballero ... pdf-mywatch
-   png-all: png-caballero ... png-mywatch
+4. Add your zine to `CMakeLists.txt` following the pattern of existing zines:
+   ```cmake
+   add_hdr_zine(mywatch "mywatch" "My Watch Collection" "mywatch.typ")
    ```
-5. Add the build rules following the pattern of existing zines:
-   ```makefile
-   .PHONY: pdf-mywatch
-   pdf-mywatch: $(wildcard hdr_zines_src/mywatch/*.typ hdr_zines_src/mywatch/*.jpeg) $(SRC_LIB)
-       @mkdir -p "HdR zines/My Watch Name"
-       $(TYPST) --input digital=false hdr_zines_src/mywatch/mywatch.typ "HdR zines/My Watch Name/mywatch zine.pdf"
-   
-   .PHONY: png-mywatch
-   png-mywatch: $(wildcard hdr_zines_src/mywatch/*.typ hdr_zines_src/mywatch/*.jpeg) $(SRC_LIB)
-       @mkdir -p "HdR zines/My Watch Name"
-       $(TYPST) --input digital=true hdr_zines_src/mywatch/mywatch.typ "HdR zines/My Watch Name/mywatch zine-{p}.png"
+   Where:
+   - First parameter: zine ID (used for target names: `pdf-mywatch`, `png-mywatch`)
+   - Second parameter: source directory name under `hdr_zines_src/`
+   - Third parameter: output subdirectory name under `HdR zines/`
+   - Fourth parameter: source `.typ` file name
+
+5. Run CMake to update the build configuration:
+   ```bash
+   cmake .
+   cmake --build . --target pdf-mywatch
    ```
 
 
