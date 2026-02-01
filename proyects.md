@@ -26,7 +26,7 @@ Complete list of Hablemos de Relojes watch projects organized by brand/collectio
 - **Super Stellar Ala 14**
 - **Super Stellar Cosmotemp**, **World Timer**
 - **Super Stellar Typhoon** (Jun 2025)
-- Super Massive Colossus (Jun 2024)
+- **Super Massive Colossus** (Jun 2024)
 - **Supersharkomatic** (May 2024 - Black, Dec 2024 - Blue Special Edition)
 - Typ VII-B (Dec 2022)
 - UME (Dec 2023): Tipo 1, Tipo 2, 3

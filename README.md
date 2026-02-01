@@ -149,6 +149,8 @@ HdR zines/
 │   └── world_timer zine.pdf
 ├── RSWC Supersharkomatic/
 │   └── supersharkomatic zine.pdf
+├── Super Massive Colossus/
+│   └── colossus zine.pdf
 ├── SyS Caballero/
 │   └── caballero zine.pdf
 ├── SyS Inmortal/

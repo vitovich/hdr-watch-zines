@@ -9,22 +9,23 @@ TYPST := /snap/bin/typst compile --root . --font-path $(FONT_PATH)
 # Source directories and files
 SRC_LIB := $(wildcard src/*.typ)
 
+all: pdf-all png-all
+
 # Target list - PDFs
 pdf-all: pdf-caballero pdf-competidor pdf-cosmotemp pdf-decotimer pdf-dirty_fifteen pdf-world_timer \
 	pdf-iberia pdf-vainqueur pdf-vainqueur_de pdf-verne pdf-ichi pdf-ala14 \
 	pdf-supersharkomatic pdf-typhoon pdf-roquina pdf-forest_defender pdf-salto_de_fe \
 	pdf-heian pdf-ferroviario pdf-galeno pdf-goldmaster pdf-grand_belize pdf-gamma_gibraltar pdf-inmortal \
 	pdf-inmortal_reserva_especial pdf-bushido pdf-skygraph \
-	pdf-monumental pdf-okeah pdf-racing pdf-viajero
+	pdf-monumental pdf-okeah pdf-racing pdf-viajero pdf-colossus
 	
 png-all: png-caballero png-competidor png-cosmotemp png-decotimer png-dirty_fifteen png-world_timer \
 	png-iberia png-vainqueur png-vainqueur_de png-verne png-ichi png-ala14 \
 	png-supersharkomatic png-typhoon png-roquina png-forest_defender png-salto_de_fe \
 	png-heian png-ferroviario png-galeno png-goldmaster png-grand_belize png-gamma_gibraltar png-inmortal \
 	png-inmortal_reserva_especial png-bushido png-skygraph \
-	png-monumental png-okeah png-racing png-viajero
+	png-monumental png-okeah png-racing png-viajero png-colossus
 
-all: pdf-all png-all
 
 # Help target
 help:
@@ -52,6 +53,18 @@ help:
 # Clean target
 clean:
 	rm -rf "HdR zines"
+
+# RSWC Super Massive Colossus
+.PHONY: pdf-colossus
+pdf-colossus: $(wildcard hdr_zines_src/colossus/*.typ hdr_zines_src/colossus/*.jpeg) $(SRC_LIB)
+	@mkdir -p "HdR zines/RSWC Super Massive Colossus"
+	$(TYPST) --input digital=false hdr_zines_src/colossus/colossus.typ "HdR zines/RSWC Super Massive Colossus/colossus zine.pdf"
+
+.PHONY: png-colossus
+png-colossus: $(wildcard hdr_zines_src/colossus/*.typ hdr_zines_src/colossus/*.jpeg) $(SRC_LIB)
+	@mkdir -p "HdR zines/RSWC Super Massive Colossus"
+	$(TYPST) --input digital=true hdr_zines_src/colossus/colossus.typ "HdR zines/RSWC Super Massive Colossus/colossus zine-{p}.png"
+
 
 # Build rules - PDFs
 .PHONY: pdf-caballero

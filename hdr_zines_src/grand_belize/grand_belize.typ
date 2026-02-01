@@ -29,39 +29,51 @@
 #pagebreak()
 
 *ESPECIFICACIONES TÉCNICAS*
-- Caja acero inoxidable 316L
-- Diámetro: 43mm
+
+- Caja acero inoxidable 316L de 43mm de diámetro
 - Resistencia: 300 metros
-- Movimiento automático A10 COSC
-- Certificación COSC individual
+- Movimiento automático A10 COSC con certificación  individual
 - Cristal de zafiro con AR
 - Bisel unidireccional zafiro
-- Aplicaciones de luminova
+- Aplicaciones de luminova BGW9 Swiss Made
 - Válvula de helio
 - Corona roscada
 - Trasera mecanizada y grabada
-- Acabados pulidos y satinados
 - Correa integrada acero
-- Swiss Made
-- Edición limitada 200 unidades
-- Calibres numerados
+- Edición limitada 200 unidades con calibres numerados
 #pagebreak()
 
 *HISTORIA DEL PROYECTO*
+
 El Grand Belize comenzó en 2011 como un sueño de los foreros de HdR. En 2012, el proyecto fue presentado al Grupo Festina en Basilea, iniciando una relación que duraría años. Fue en 2014 cuando el diseño evolucionó hasta su forma definitiva.
 
-En 2018, tras siete años de desarrollo, llegó el momento definitivo: Candino adoptó el Grand Belize como parte de su catálogo oficial. El presidente del Grupo Festina decidió apoyar la consecución del COSC e incorporar el GB a la marca Candino Swiss Made.
+En 2018, tras siete años de desarrollo, llegó el momento definitivo: Candino adoptó el Grand Belize como parte de su catálogo oficial. 
 #pagebreak()
 
 *EXCELENCIA TÉCNICA*
-El Grand Belize destaca por su meticulosa fabricación. La trasera mecanizada requirió cuatro prototipos hasta alcanzar la perfección. El inserto de zafiro del bisel presenta números y elementos desarrollados específicamente para este proyecto.
 
-La aplicación de luminova se realizó mediante pasta integrada en el bisel por vaciado, garantizando máxima visibilidad nocturna. Cada componente fue estudiado, corregido y validado tras múltiples muestras y mejoras iterativas.
+El Grand Belize destaca por
+su meticulosa fabricación.
+La trasera mecanizada requirió
+cuatro prototipos hasta lograr
+la perfección.
 
-El calibre A10 con certificación COSC individual asegura una precisión cronométrica excepcional, posicionando al GB entre los relojes de buceo más precisos del mercado.
+El inserto de zafiro del bisel
+presenta números desarrollados
+específicamente. La luminova
+se aplicó mediante pasta
+integrada por vaciado.
+
+El calibre A10 con certificación
+COSC individual asegura
+precisión cronométrica
+excepcional, posicionando al
+GB entre los divers más
+precisos del mercado.
 #pagebreak()
 
 *DISEÑO Y PRESENCIA*
+
 El Candino Grand Belize combina estética deportiva con elegancia suiza. Su caja de 43mm presenta acabados mixtos: superficies pulidas que contrastan con satinados mate, creando juegos de luz refinados.
 
 El bisel unidireccional de zafiro aporta resistencia extrema a los arañazos, superando a los biseles tradicionales de aluminio o cerámica. La esfera equilibrada permite lectura instantánea de la hora, incluso en condiciones submarinas adversas.
@@ -70,6 +82,7 @@ La válvula de helio hace del GB un verdadero instrumento profesional, preparado
 #pagebreak()
 
 *EL LEGADO CANDINO*
+
 La incorporación del logo Candino Swiss Made elevó el proyecto a otro nivel. De sueño comunitario a reloj oficial de una marca suiza con historia.
 
 Cada unidad incluye certificado COSC individual, documentando la precisión del calibre. Solo 200 ejemplares que fusionan la pasión de HdR con la tradición relojera suiza.
@@ -78,17 +91,24 @@ Dedicado a la memoria de Manuel Casva, cuyo trabajo desinteresado hizo posible e
 #pagebreak()
 
 *INSTRUCCIONES DE USO*
-*Puesta en hora:* Desenroscar corona, extraer a segunda posición, ajustar horario, empujar y enroscar firmemente.
 
-*Uso submarino:* Verificar corona roscada correctamente antes de sumergir. No manipular corona bajo el agua.
+*Puesta en hora:* Desenroscar
+corona, extraer a 2ª posición,
+ajustar y enroscar.
 
-*Válvula de helio:* Desenroscar tras inmersiones de saturación para liberar gases.
+*Uso submarino:* Verificar
+corona roscada antes de
+sumergir. No manipular
+corona bajo el agua.
 
-*Mantenimiento:* Revisión cada 3-5 años en servicio oficial. Enjuagar con agua dulce tras contacto con agua salada.
+*Válvula de helio:* Desenroscar
+tras inmersiones de saturación.
 
-*Bisel:* Girar solo en sentido antihorario para cronometrar inmersiones.
+*Bisel:* Girar solo antihorario.
 
-*Luminova:* Exponer a luz brillante 15 minutos para carga máxima.
+*Mantenimiento:* Revisión cada
+3-5 años. Enjuagar con agua
+dulce tras uso en mar.
 #pagebreak()
 
 #block({
@@ -100,5 +120,5 @@ La trasera del Grand Belize presenta un mecanizado complejo. El grabado incluye 
 ]))
 
 #place(bottom + left, dx: 5mm, dy: -5mm, text(black, size: 7pt)[
-_Candino Swiss Made · Hablemos de Relojes_
+_Hablemos de Relojes_
 ])
