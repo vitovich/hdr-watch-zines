@@ -63,8 +63,6 @@ cmake .
 **Build all PDFs and PNGs:**
 ```bash
 cmake --build .
-# or with specific target:
-cmake --build . --target all_zines
 ```
 
 **Build only PDFs:**
@@ -77,14 +75,10 @@ cmake --build . --target pdf-all
 cmake --build . --target png-all
 ```
 
-**Build specific zine PDF:**
+**Build specific zine (both PDF and PNG):**
 ```bash
-cmake --build . --target pdf-caballero
-```
-
-**Build specific zine PNG pages:**
-```bash
-cmake --build . --target png-caballero
+cmake --build . --target caballero
+cmake --build . --target majetek
 ```
 
 **Clean output directory:**

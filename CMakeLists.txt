@@ -64,6 +64,9 @@ function(add_hdr_zine ZINE_ID SOURCE_DIR OUTPUT_SUBDIR SOURCE_FILE)
     add_custom_target(pdf-${ZINE_ID} DEPENDS "${PDF_OUTPUT}")
     add_custom_target(png-${ZINE_ID} DEPENDS "${PNG_MARKER}")
     
+    # Create combined target that builds both PDF and PNG
+    add_custom_target(${ZINE_ID} DEPENDS pdf-${ZINE_ID} png-${ZINE_ID})
+    
     # Add to master lists
     list(APPEND ALL_PDF_TARGETS pdf-${ZINE_ID})
     list(APPEND ALL_PNG_TARGETS png-${ZINE_ID})
@@ -132,12 +135,15 @@ add_custom_target(help_zines
     COMMAND ${CMAKE_COMMAND} -E echo "  all_zines    Build all PDFs and PNGs - default"
     COMMAND ${CMAKE_COMMAND} -E echo "  pdf-all      Build all PDF versions"
     COMMAND ${CMAKE_COMMAND} -E echo "  png-all      Build all PNG page versions"
+    COMMAND ${CMAKE_COMMAND} -E echo "  NAME         Build both PDF and PNG for specific zine"
     COMMAND ${CMAKE_COMMAND} -E echo "  pdf-NAME     Build PDF for specific zine"
     COMMAND ${CMAKE_COMMAND} -E echo "  png-NAME     Build PNG pages for specific zine"
     COMMAND ${CMAKE_COMMAND} -E echo "  clean_zines  Remove all built zines"
     COMMAND ${CMAKE_COMMAND} -E echo "  help_zines   Show this help message"
     COMMAND ${CMAKE_COMMAND} -E echo ""
-    COMMAND ${CMAKE_COMMAND} -E echo "Example: cmake --build . --target pdf-caballero"
+    COMMAND ${CMAKE_COMMAND} -E echo "Examples:"
+    COMMAND ${CMAKE_COMMAND} -E echo "  cmake --build . --target caballero"
+    COMMAND ${CMAKE_COMMAND} -E echo "  cmake --build . --target pdf-caballero"
     COMMENT "Displaying help information"
 )
 
