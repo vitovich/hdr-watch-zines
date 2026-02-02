@@ -20,7 +20,7 @@ Complete list of Hablemos de Relojes watch projects organized by brand/collectio
 - **Suite Iberia** (Aug 2022)
 - **Karusell Racing, Moeris Lacus** (Mar 2023)
 - **Rex Caeli** (Sep 2023)
-- Rex Maris
+- **Rex Maris** (Sep 2021)
 - **Rex Terrae** (Aug 2022)
 - **Salto de Fe** (Jul 2023)
 - Scaphandre I (Mar 2021)
