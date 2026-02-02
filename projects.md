@@ -13,7 +13,7 @@ Complete list of Hablemos de Relojes watch projects organized by brand/collectio
 - **Forest Defender** (Nov 2025)
 - **Gamma Gibraltar** (Aug 2023)
 - **Goldmaster** (Mar 2021): **Black, British Green**
-- Grande Épreuve (Jan 2022): Type I, Type II
+- **Grande Épreuve** (Jan 2022)
 - **Heian** (Nov 2020)
 - **Suite Iberia** (Aug 2022)
 - **Karusell Racing, Moeris Lacus** (Mar 2023)
