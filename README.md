@@ -16,6 +16,7 @@ Photographs featured in the zines were taken from the forum and were created by:
 - **@vegaban**
 - **@Drake**
 - **@stef**
+- **@RubenG**
 
 All content is used with appreciation for the collaborative spirit of the watch enthusiast community.
 

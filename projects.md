@@ -17,7 +17,7 @@ Complete list of Hablemos de Relojes watch projects organized by brand/collectio
 - **Heian** (Nov 2020)
 - **Suite Iberia** (Aug 2022)
 - **Karusell Racing, Moeris Lacus** (Mar 2023)
-- Rex Caeli (Sep 2023)
+- **Rex Caeli** (Sep 2023)
 - Rex Maris
 - Rex Terrae (Aug 2022)
 - **Salto de Fe** (Jul 2023)
@@ -77,5 +77,5 @@ Complete list of Hablemos de Relojes watch projects organized by brand/collectio
 ## Statistics
 
 - **Total Projects**: 63
-- **Projects with Zines**: 34
-- **Coverage**: ~54%
+- **Projects with Zines**: 35
+- **Coverage**: ~56%
