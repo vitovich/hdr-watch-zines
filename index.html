@@ -235,14 +235,46 @@
             flex-direction: column;
             align-items: center;
             gap: 15px;
-            margin-top: 20px;
             padding: 20px;
             background: #1a1a1a;
             border-radius: 6px;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1000;
+            max-width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 10px 50px rgba(0,0,0,0.8);
         }
         
         .page-gallery.active {
             display: flex;
+        }
+        
+        .page-gallery-close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #0F82AF;
+            color: white;
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            font-size: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            transition: background 0.2s;
+            z-index: 10;
+        }
+        
+        .page-gallery-close:hover {
+            background: #0d6a8f;
         }
         
         .page-gallery img {
@@ -327,6 +359,7 @@
                 </div>
                 
                 <div id="ferroviario-pages" class="page-gallery">
+                    <button class="page-gallery-close" onclick="closeGallery('ferroviario-pages')">✕</button>
                     <img src="HdR zines/Ferroviario/ferroviario zine-1.png" alt="Page 1" class="active-page">
                     <img src="HdR zines/Ferroviario/ferroviario zine-2.png" alt="Page 2">
                     <img src="HdR zines/Ferroviario/ferroviario zine-3.png" alt="Page 3">
@@ -355,6 +388,7 @@
                 </div>
                 
                 <div id="galeno-pages" class="page-gallery">
+                    <button class="page-gallery-close" onclick="closeGallery('galeno-pages')">✕</button>
                     <img src="HdR zines/Galeno/galeno zine-1.png" alt="Page 1" class="active-page">
                     <img src="HdR zines/Galeno/galeno zine-2.png" alt="Page 2">
                     <img src="HdR zines/Galeno/galeno zine-3.png" alt="Page 3">
@@ -383,6 +417,7 @@
                 </div>
                 
                 <div id="grand_belize-pages" class="page-gallery">
+                    <button class="page-gallery-close" onclick="closeGallery('grand_belize-pages')">✕</button>
                     <img src="HdR zines/Candino Grand Belize/grand_belize zine-1.png" alt="Page 1" class="active-page">
                     <img src="HdR zines/Candino Grand Belize/grand_belize zine-2.png" alt="Page 2">
                     <img src="HdR zines/Candino Grand Belize/grand_belize zine-3.png" alt="Page 3">
@@ -411,6 +446,7 @@
                 </div>
                 
                 <div id="okeah-pages" class="page-gallery">
+                    <button class="page-gallery-close" onclick="closeGallery('okeah-pages')">✕</button>
                     <img src="HdR zines/Okeah Final Edition/okeah zine-1.png" alt="Page 1" class="active-page">
                     <img src="HdR zines/Okeah Final Edition/okeah zine-2.png" alt="Page 2">
                     <img src="HdR zines/Okeah Final Edition/okeah zine-3.png" alt="Page 3">
@@ -439,6 +475,7 @@
                 </div>
                 
                 <div id="bushido-pages" class="page-gallery">
+                    <button class="page-gallery-close" onclick="closeGallery('bushido-pages')">✕</button>
                     <img src="HdR zines/RSWC Bushido/bushido zine-1.png" alt="Page 1" class="active-page">
                     <img src="HdR zines/RSWC Bushido/bushido zine-2.png" alt="Page 2">
                     <img src="HdR zines/RSWC Bushido/bushido zine-3.png" alt="Page 3">
@@ -467,6 +504,7 @@
                 </div>
 
                 <div id="colossus-pages" class="page-gallery">
+                    <button class="page-gallery-close" onclick="closeGallery('colossus-pages')">✕</button>
                     <img src="HdR zines/RSWC Super Massive Colossus/colossus zine-1.png" alt="Page 1" class="active-page">
                     <img src="HdR zines/RSWC Super Massive Colossus/colossus zine-2.png" alt="Page 2">
                     <img src="HdR zines/RSWC Super Massive Colossus/colossus zine-3.png" alt="Page 3">
@@ -495,6 +533,7 @@
                 </div>
                 
                 <div id="decotimer-pages" class="page-gallery">
+                    <button class="page-gallery-close" onclick="closeGallery('decotimer-pages')">✕</button>
                     <img src="HdR zines/RSWC Deco-Timer/decotimer zine-1.png" alt="Page 1" class="active-page">
                     <img src="HdR zines/RSWC Deco-Timer/decotimer zine-2.png" alt="Page 2">
                     <img src="HdR zines/RSWC Deco-Timer/decotimer zine-3.png" alt="Page 3">
@@ -523,6 +562,7 @@
                 </div>
                 
                 <div id="dirty_fifteen-pages" class="page-gallery">
+                    <button class="page-gallery-close" onclick="closeGallery('dirty_fifteen-pages')">✕</button>
                     <img src="HdR zines/RSWC Dirty Fifteen/dirty_fifteen zine-1.png" alt="Page 1" class="active-page">
                     <img src="HdR zines/RSWC Dirty Fifteen/dirty_fifteen zine-2.png" alt="Page 2">
                     <img src="HdR zines/RSWC Dirty Fifteen/dirty_fifteen zine-3.png" alt="Page 3">
@@ -551,6 +591,7 @@
                 </div>
                 
                 <div id="forest_defender-pages" class="page-gallery">
+                    <button class="page-gallery-close" onclick="closeGallery('forest_defender-pages')">✕</button>
                     <img src="HdR zines/RSWC Forest Defender/forest_defender zine-1.png" alt="Page 1" class="active-page">
                     <img src="HdR zines/RSWC Forest Defender/forest_defender zine-2.png" alt="Page 2">
                     <img src="HdR zines/RSWC Forest Defender/forest_defender zine-3.png" alt="Page 3">
@@ -579,6 +620,7 @@
                 </div>
                 
                 <div id="gamma_gibraltar-pages" class="page-gallery">
+                    <button class="page-gallery-close" onclick="closeGallery('gamma_gibraltar-pages')">✕</button>
                     <img src="HdR zines/RSWC Gamma Gibraltar/gamma_gibraltar zine-1.png" alt="Page 1" class="active-page">
                     <img src="HdR zines/RSWC Gamma Gibraltar/gamma_gibraltar zine-2.png" alt="Page 2">
                     <img src="HdR zines/RSWC Gamma Gibraltar/gamma_gibraltar zine-3.png" alt="Page 3">
@@ -607,6 +649,7 @@
                 </div>
                 
                 <div id="goldmaster-pages" class="page-gallery">
+                    <button class="page-gallery-close" onclick="closeGallery('goldmaster-pages')">✕</button>
                     <img src="HdR zines/RSWC Goldmaster/goldmaster zine-1.png" alt="Page 1" class="active-page">
                     <img src="HdR zines/RSWC Goldmaster/goldmaster zine-2.png" alt="Page 2">
                     <img src="HdR zines/RSWC Goldmaster/goldmaster zine-3.png" alt="Page 3">
@@ -635,6 +678,7 @@
                 </div>
                 
                 <div id="grande_epreuve-pages" class="page-gallery">
+                    <button class="page-gallery-close" onclick="closeGallery('grande_epreuve-pages')">✕</button>
                     <img src="HdR zines/RSWC Grande Épreuve/grande_epreuve zine-1.png" alt="Page 1" class="active-page">
                     <img src="HdR zines/RSWC Grande Épreuve/grande_epreuve zine-2.png" alt="Page 2">
                     <img src="HdR zines/RSWC Grande Épreuve/grande_epreuve zine-3.png" alt="Page 3">
@@ -663,6 +707,7 @@
                 </div>
                 
                 <div id="heian-pages" class="page-gallery">
+                    <button class="page-gallery-close" onclick="closeGallery('heian-pages')">✕</button>
                     <img src="HdR zines/RSWC Heian/heian zine-1.png" alt="Page 1" class="active-page">
                     <img src="HdR zines/RSWC Heian/heian zine-2.png" alt="Page 2">
                     <img src="HdR zines/RSWC Heian/heian zine-3.png" alt="Page 3">
@@ -691,6 +736,7 @@
                 </div>
 
                 <div id="majetek-pages" class="page-gallery">
+                    <button class="page-gallery-close" onclick="closeGallery('majetek-pages')">✕</button>
                     <img src="HdR zines/RSWC Majetek/majetek zine-1.png" alt="Page 1" class="active-page">
                     <img src="HdR zines/RSWC Majetek/majetek zine-2.png" alt="Page 2">
                     <img src="HdR zines/RSWC Majetek/majetek zine-3.png" alt="Page 3">
@@ -719,6 +765,7 @@
                 </div>
                 
                 <div id="racing-pages" class="page-gallery">
+                    <button class="page-gallery-close" onclick="closeGallery('racing-pages')">✕</button>
                     <img src="HdR zines/RSWC Racing/racing zine-1.png" alt="Page 1" class="active-page">
                     <img src="HdR zines/RSWC Racing/racing zine-2.png" alt="Page 2">
                     <img src="HdR zines/RSWC Racing/racing zine-3.png" alt="Page 3">
@@ -747,6 +794,7 @@
                 </div>
                 
                 <div id="rex_caeli-pages" class="page-gallery">
+                    <button class="page-gallery-close" onclick="closeGallery('rex_caeli-pages')">✕</button>
                     <img src="HdR zines/RSWC Rex Caeli/rex_caeli zine-1.png" alt="Page 1" class="active-page">
                     <img src="HdR zines/RSWC Rex Caeli/rex_caeli zine-2.png" alt="Page 2">
                     <img src="HdR zines/RSWC Rex Caeli/rex_caeli zine-3.png" alt="Page 3">
@@ -775,6 +823,7 @@
                 </div>
                 
                 <div id="rex_maris-pages" class="page-gallery">
+                    <button class="page-gallery-close" onclick="closeGallery('rex_maris-pages')">✕</button>
                     <img src="HdR zines/RSWC Rex Maris/rex_maris zine-1.png" alt="Page 1" class="active-page">
                     <img src="HdR zines/RSWC Rex Maris/rex_maris zine-2.png" alt="Page 2">
                     <img src="HdR zines/RSWC Rex Maris/rex_maris zine-3.png" alt="Page 3">
@@ -803,6 +852,7 @@
                 </div>
                 
                 <div id="rex_terrae-pages" class="page-gallery">
+                    <button class="page-gallery-close" onclick="closeGallery('rex_terrae-pages')">✕</button>
                     <img src="HdR zines/RSWC Rex Terrae/rex_terrae zine-1.png" alt="Page 1" class="active-page">
                     <img src="HdR zines/RSWC Rex Terrae/rex_terrae zine-2.png" alt="Page 2">
                     <img src="HdR zines/RSWC Rex Terrae/rex_terrae zine-3.png" alt="Page 3">
@@ -831,6 +881,7 @@
                 </div>
                 
                 <div id="salto_de_fe-pages" class="page-gallery">
+                    <button class="page-gallery-close" onclick="closeGallery('salto_de_fe-pages')">✕</button>
                     <img src="HdR zines/RSWC Salto de Fe/salto_de_fe zine-1.png" alt="Page 1" class="active-page">
                     <img src="HdR zines/RSWC Salto de Fe/salto_de_fe zine-2.png" alt="Page 2">
                     <img src="HdR zines/RSWC Salto de Fe/salto_de_fe zine-3.png" alt="Page 3">
@@ -859,6 +910,7 @@
                 </div>
                 
                 <div id="skygraph-pages" class="page-gallery">
+                    <button class="page-gallery-close" onclick="closeGallery('skygraph-pages')">✕</button>
                     <img src="HdR zines/RSWC Skygraph/skygraph zine-1.png" alt="Page 1" class="active-page">
                     <img src="HdR zines/RSWC Skygraph/skygraph zine-2.png" alt="Page 2">
                     <img src="HdR zines/RSWC Skygraph/skygraph zine-3.png" alt="Page 3">
@@ -887,6 +939,7 @@
                 </div>
                 
                 <div id="iberia-pages" class="page-gallery">
+                    <button class="page-gallery-close" onclick="closeGallery('iberia-pages')">✕</button>
                     <img src="HdR zines/RSWC Suite Iberia/iberia zine-1.png" alt="Page 1" class="active-page">
                     <img src="HdR zines/RSWC Suite Iberia/iberia zine-2.png" alt="Page 2">
                     <img src="HdR zines/RSWC Suite Iberia/iberia zine-3.png" alt="Page 3">
@@ -915,6 +968,7 @@
                 </div>
                 
                 <div id="ala14-pages" class="page-gallery">
+                    <button class="page-gallery-close" onclick="closeGallery('ala14-pages')">✕</button>
                     <img src="HdR zines/RSWC Super Stellar Ala 14/ala14 zine-1.png" alt="Page 1" class="active-page">
                     <img src="HdR zines/RSWC Super Stellar Ala 14/ala14 zine-2.png" alt="Page 2">
                     <img src="HdR zines/RSWC Super Stellar Ala 14/ala14 zine-3.png" alt="Page 3">
@@ -943,6 +997,7 @@
                 </div>
                 
                 <div id="cosmotemp-pages" class="page-gallery">
+                    <button class="page-gallery-close" onclick="closeGallery('cosmotemp-pages')">✕</button>
                     <img src="HdR zines/RSWC Super Stellar Cosmotemp/cosmotemp zine-1.png" alt="Page 1" class="active-page">
                     <img src="HdR zines/RSWC Super Stellar Cosmotemp/cosmotemp zine-2.png" alt="Page 2">
                     <img src="HdR zines/RSWC Super Stellar Cosmotemp/cosmotemp zine-3.png" alt="Page 3">
@@ -971,6 +1026,7 @@
                 </div>
                 
                 <div id="typhoon-pages" class="page-gallery">
+                    <button class="page-gallery-close" onclick="closeGallery('typhoon-pages')">✕</button>
                     <img src="HdR zines/RSWC Super Stellar Typhoon/typhoon zine-1.png" alt="Page 1" class="active-page">
                     <img src="HdR zines/RSWC Super Stellar Typhoon/typhoon zine-2.png" alt="Page 2">
                     <img src="HdR zines/RSWC Super Stellar Typhoon/typhoon zine-3.png" alt="Page 3">
@@ -999,6 +1055,7 @@
                 </div>
                 
                 <div id="ume_1-pages" class="page-gallery">
+                    <button class="page-gallery-close" onclick="closeGallery('ume_1-pages')">✕</button>
                     <img src="HdR zines/RSWC UME Tipo 1/ume_1 zine-1.png" alt="Page 1" class="active-page">
                     <img src="HdR zines/RSWC UME Tipo 1/ume_1 zine-2.png" alt="Page 2">
                     <img src="HdR zines/RSWC UME Tipo 1/ume_1 zine-3.png" alt="Page 3">
@@ -1027,6 +1084,7 @@
                 </div>
                 
                 <div id="ume_2-pages" class="page-gallery">
+                    <button class="page-gallery-close" onclick="closeGallery('ume_2-pages')">✕</button>
                     <img src="HdR zines/RSWC UME Tipo 2/ume_2 zine-1.png" alt="Page 1" class="active-page">
                     <img src="HdR zines/RSWC UME Tipo 2/ume_2 zine-2.png" alt="Page 2">
                     <img src="HdR zines/RSWC UME Tipo 2/ume_2 zine-3.png" alt="Page 3">
@@ -1055,6 +1113,7 @@
                 </div>
                 
                 <div id="world_timer-pages" class="page-gallery">
+                    <button class="page-gallery-close" onclick="closeGallery('world_timer-pages')">✕</button>
                     <img src="HdR zines/RSWC Super Stellar World Timer/world_timer zine-1.png" alt="Page 1" class="active-page">
                     <img src="HdR zines/RSWC Super Stellar World Timer/world_timer zine-2.png" alt="Page 2">
                     <img src="HdR zines/RSWC Super Stellar World Timer/world_timer zine-3.png" alt="Page 3">
@@ -1083,6 +1142,7 @@
                 </div>
                 
                 <div id="supersharkomatic-pages" class="page-gallery">
+                    <button class="page-gallery-close" onclick="closeGallery('supersharkomatic-pages')">✕</button>
                     <img src="HdR zines/RSWC Supersharkomatic/supersharkomatic zine-1.png" alt="Page 1" class="active-page">
                     <img src="HdR zines/RSWC Supersharkomatic/supersharkomatic zine-2.png" alt="Page 2">
                     <img src="HdR zines/RSWC Supersharkomatic/supersharkomatic zine-3.png" alt="Page 3">
@@ -1112,6 +1172,7 @@
                 </div>
                 
                 <div id="vainqueur-pages" class="page-gallery">
+                    <button class="page-gallery-close" onclick="closeGallery('vainqueur-pages')">✕</button>
                     <img src="HdR zines/RSWC Vainqueur/vainqueur zine-1.png" alt="Page 1" class="active-page">
                     <img src="HdR zines/RSWC Vainqueur/vainqueur zine-2.png" alt="Page 2">
                     <img src="HdR zines/RSWC Vainqueur/vainqueur zine-3.png" alt="Page 3">
@@ -1140,6 +1201,7 @@
                 </div>
                 
                 <div id="verne-pages" class="page-gallery">
+                    <button class="page-gallery-close" onclick="closeGallery('verne-pages')">✕</button>
                     <img src="HdR zines/RSWC Verne/verne zine-1.png" alt="Page 1" class="active-page">
                     <img src="HdR zines/RSWC Verne/verne zine-2.png" alt="Page 2">
                     <img src="HdR zines/RSWC Verne/verne zine-3.png" alt="Page 3">
@@ -1168,6 +1230,7 @@
                 </div>
                 
                 <div id="ichi-pages" class="page-gallery">
+                    <button class="page-gallery-close" onclick="closeGallery('ichi-pages')">✕</button>
                     <img src="HdR zines/RSWF Ichi/ichi zine-1.png" alt="Page 1" class="active-page">
                     <img src="HdR zines/RSWF Ichi/ichi zine-2.png" alt="Page 2">
                     <img src="HdR zines/RSWF Ichi/ichi zine-3.png" alt="Page 3">
@@ -1196,6 +1259,7 @@
                 </div>
 
                 <div id="kingtuna-pages" class="page-gallery">
+                    <button class="page-gallery-close" onclick="closeGallery('kingtuna-pages')">✕</button>
                     <img src="HdR zines/RSWF King Tuna/kingtuna zine-1.png" alt="Page 1" class="active-page">
                     <img src="HdR zines/RSWF King Tuna/kingtuna zine-2.png" alt="Page 2">
                     <img src="HdR zines/RSWF King Tuna/kingtuna zine-3.png" alt="Page 3">
@@ -1224,6 +1288,7 @@
                 </div>
 
                 <div id="sevenseas-pages" class="page-gallery">
+                    <button class="page-gallery-close" onclick="closeGallery('sevenseas-pages')">✕</button>
                     <img src="HdR zines/RSWF SevenSeas/sevenseas zine-1.png" alt="Page 1" class="active-page">
                     <img src="HdR zines/RSWF SevenSeas/sevenseas zine-2.png" alt="Page 2">
                     <img src="HdR zines/RSWF SevenSeas/sevenseas zine-3.png" alt="Page 3">
@@ -1252,6 +1317,7 @@
                 </div>
                 
                 <div id="caballero-pages" class="page-gallery">
+                    <button class="page-gallery-close" onclick="closeGallery('caballero-pages')">✕</button>
                     <img src="HdR zines/SyS Caballero/caballero zine-1.png" alt="Page 1" class="active-page">
                     <img src="HdR zines/SyS Caballero/caballero zine-2.png" alt="Page 2">
                     <img src="HdR zines/SyS Caballero/caballero zine-3.png" alt="Page 3">
@@ -1280,6 +1346,7 @@
                 </div>
                 
                 <div id="competidor-pages" class="page-gallery">
+                    <button class="page-gallery-close" onclick="closeGallery('competidor-pages')">✕</button>
                     <img src="HdR zines/SyS Competidor/competidor zine-1.png" alt="Page 1" class="active-page">
                     <img src="HdR zines/SyS Competidor/competidor zine-2.png" alt="Page 2">
                     <img src="HdR zines/SyS Competidor/competidor zine-3.png" alt="Page 3">
@@ -1308,6 +1375,7 @@
                 </div>
                 
                 <div id="inmortal-pages" class="page-gallery">
+                    <button class="page-gallery-close" onclick="closeGallery('inmortal-pages')">✕</button>
                     <img src="HdR zines/SyS Inmortal/inmortal zine-1.png" alt="Page 1" class="active-page">
                     <img src="HdR zines/SyS Inmortal/inmortal zine-2.png" alt="Page 2">
                     <img src="HdR zines/SyS Inmortal/inmortal zine-3.png" alt="Page 3">
@@ -1336,6 +1404,7 @@
                 </div>
                 
                 <div id="inmortal_reserva_especial-pages" class="page-gallery">
+                    <button class="page-gallery-close" onclick="closeGallery('inmortal_reserva_especial-pages')">✕</button>
                     <img src="HdR zines/SyS Inmortal Reserva Especial/inmortal_reserva_especial zine-1.png" alt="Page 1" class="active-page">
                     <img src="HdR zines/SyS Inmortal Reserva Especial/inmortal_reserva_especial zine-2.png" alt="Page 2">
                     <img src="HdR zines/SyS Inmortal Reserva Especial/inmortal_reserva_especial zine-3.png" alt="Page 3">
@@ -1364,6 +1433,7 @@
                 </div>
                 
                 <div id="monumental-pages" class="page-gallery">
+                    <button class="page-gallery-close" onclick="closeGallery('monumental-pages')">✕</button>
                     <img src="HdR zines/SyS Monumental/monumental zine-1.png" alt="Page 1" class="active-page">
                     <img src="HdR zines/SyS Monumental/monumental zine-2.png" alt="Page 2">
                     <img src="HdR zines/SyS Monumental/monumental zine-3.png" alt="Page 3">
@@ -1392,6 +1462,7 @@
                 </div>
                 
                 <div id="roquina-pages" class="page-gallery">
+                    <button class="page-gallery-close" onclick="closeGallery('roquina-pages')">✕</button>
                     <img src="HdR zines/SyS Roquina/roquina zine-1.png" alt="Page 1" class="active-page">
                     <img src="HdR zines/SyS Roquina/roquina zine-2.png" alt="Page 2">
                     <img src="HdR zines/SyS Roquina/roquina zine-3.png" alt="Page 3">
@@ -1420,6 +1491,7 @@
                 </div>
                 
                 <div id="viajero-pages" class="page-gallery">
+                    <button class="page-gallery-close" onclick="closeGallery('viajero-pages')">✕</button>
                     <img src="HdR zines/SyS Viajero/viajero zine-1.png" alt="Page 1" class="active-page">
                     <img src="HdR zines/SyS Viajero/viajero zine-2.png" alt="Page 2">
                     <img src="HdR zines/SyS Viajero/viajero zine-3.png" alt="Page 3">
@@ -1623,6 +1695,21 @@
             }
         };
 
+        function closeGallery(galleryId) {
+            const gallery = document.getElementById(galleryId);
+            gallery.classList.remove('active');
+            
+            const btn = document.querySelector(`button[onclick*="${galleryId}"]`);
+            if (btn) {
+                const btnSpan = btn.querySelector('.unfoldBtn');
+                if (btnSpan) {
+                    const lang = currentLanguage;
+                    const t = translations[lang];
+                    btnSpan.textContent = t.unfoldBtn;
+                }
+            }
+        }
+
         function navigatePage(galleryId, direction) {
             const gallery = document.getElementById(galleryId);
             const images = gallery.querySelectorAll('img');
@@ -1647,16 +1734,31 @@
 
         function togglePages(galleryId) {
             const gallery = document.getElementById(galleryId);
-            const btn = event.target;
-            const lang = currentLanguage; // Use tracked language instead of DOM attribute
+            const btn = event.target.closest('button');
+            const btnSpan = btn.querySelector('.unfoldBtn');
+            const lang = currentLanguage;
             const t = translations[lang];
             
             if (gallery.classList.contains('active')) {
                 gallery.classList.remove('active');
-                btn.textContent = t.unfoldBtn;
+                btnSpan.textContent = t.unfoldBtn;
             } else {
+                // Close all other galleries first
+                document.querySelectorAll('.page-gallery.active').forEach(g => {
+                    if (g.id !== galleryId) {
+                        g.classList.remove('active');
+                        const otherGalleryBtn = document.querySelector(`button[onclick*="${g.id}"]`);
+                        if (otherGalleryBtn) {
+                            const otherBtnSpan = otherGalleryBtn.querySelector('.unfoldBtn');
+                            if (otherBtnSpan) {
+                                otherBtnSpan.textContent = t.unfoldBtn;
+                            }
+                        }
+                    }
+                });
+                
                 gallery.classList.add('active');
-                btn.textContent = t.foldBtn;
+                btnSpan.textContent = t.foldBtn;
                 
                 // If this is vainqueur gallery, update images based on current language
                 if (galleryId === 'vainqueur-pages') {
