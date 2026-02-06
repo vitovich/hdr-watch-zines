@@ -77,6 +77,7 @@ endfunction()
 # Define all HdR zines
 # Format: add_hdr_zine(zine_id, source_dir, output_subdir, source_file)
 add_hdr_zine(ala14 "ala14" "RSWC Super Stellar Ala 14" "ala14.typ")
+add_hdr_zine(apocalypse_now "apocalypse_now" "Apocalypse Now" "apocalypse_now.typ")
 add_hdr_zine(bushido "bushido" "RSWC Bushido" "bushido.typ")
 add_hdr_zine(caballero "caballero" "SyS Caballero" "caballero.typ")
 add_hdr_zine(colossus "colossus" "RSWC Super Massive Colossus" "colossus.typ")
