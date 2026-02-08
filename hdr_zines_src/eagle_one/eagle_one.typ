@@ -1,0 +1,178 @@
+#import "../../src/lib.typ": watch_zine
+
+#set document(
+  author: "HdR · RSWC",
+  title: "RSWC Eagle One · Batalla de Inglaterra"
+)
+
+#set text(font: "Carlito", size: 7pt, lang: "es")
+#set page("a4")
+
+#show heading.where(level: 1): hd => {
+  pad(top: 2em, text(10em, align(center, hd.body)))
+}
+
+#show: watch_zine.with(
+  digital: json(bytes(sys.inputs.at("digital", default: "false"))),
+  draw-border: true
+)
+
+///////////////////////////////////////////////////////////////////////////////
+// 1) PORTADA
+///////////////////////////////////////////////////////////////////////////////
+#block({
+  image("eagle_one_front.jpeg", width: 100%, height: 100%, fit: "cover")
+
+  place(top + center, dy: 6mm, box(
+    fill: rgb(0, 0, 0, 150),
+    inset: 8pt,
+    radius: 4pt,
+    text(white, stroke: 0.6pt + black)[
+      #text(size: 20pt)[*RSWC*]\ 
+      #text(size: 18pt)[*Eagle One*]
+    ]
+  ))
+})
+#pagebreak()
+
+///////////////////////////////////////////////////////////////////////////////
+// 2) ESPECIFICACIONES TÉCNICAS
+///////////////////////////////////////////////////////////////////////////////
+*ESPECIFICACIONES TÉCNICAS*
+
+- Modelo: RSWC Eagle One Limited Edition
+- Diámetro: 44,5 mm
+- Grosor: 15 mm
+- Lug to lug: 54,2 mm
+- Material: acero quirúrgico 316L
+- Cristal: zafiro con revestimiento AR interno
+- Movimiento: Seagull ST3621 manual
+- Esfera: efecto gradiente "Fire Pattern" marrón con índices 3D
+- Luminoso: Superluminova C3 verde
+- Corona: roscada
+- Hermeticidad: 100 m
+- Correa: piel marrón 23 mm
+- Hebilla: firmada
+- Peso: 125 g
+- Edición limitada: 50 unidades
+
+#pagebreak()
+
+///////////////////////////////////////////////////////////////////////////////
+// 3) LA BATALLA DE INGLATERRA
+///////////////////////////////////////////////////////////////////////////////
+*LA BATALLA DE INGLATERRA*
+
+Junio de 1940. La Luftwaffe de Hermann Göring concentra 3.600 aeronaves de combate 
+listas para atacar Gran Bretaña. Su objetivo: eliminar la Royal Air Force para 
+invadir la isla.
+
+Churchill rechaza toda rendición: "Jamás nos rendiremos a los nazis."
+
+El 18 de junio pronuncia su célebre discurso: "La Batalla de Francia ha terminado. 
+La Batalla de Inglaterra está a punto de empezar."
+
+Göring convence a Hitler de que en días Inglaterra caería. 
+La Luftwaffe destruiría los aeródromos británicos para asegurar la supremacía aérea.
+
+#pagebreak()
+
+///////////////////////////////////////////////////////////////////////////////
+// 4) LAS FUERZAS EN COMBATE
+///////////////////////////////////////////////////////////////////////////////
+*ÁGUILAS SOBRE EL CANAL*
+
+*Luftwaffe:* Messerschmitt Bf 109, el caza más producido de la guerra (33.984 unidades). 
+Bombarderos Heinkel He 111 y Junkers Ju 88. Los BF 110 "destructores del aire".
+
+*RAF:* Supermarine Spitfire, extremadamente maniobrable y rápido. 
+Hawker Hurricane, responsable del 60% de las victorias británicas.
+
+El 15 de agosto de 1940, Göring ataca con 1.000 bombarderos y 700 cazas. 
+Los pilotos alemanes vuelven sorprendidos: siempre encontraban Spitfires esperándoles.
+
+El secreto británico: radar y centros de mando eficientes que coordinaban 
+defensas exactas contra cada oleada.
+
+#pagebreak()
+
+///////////////////////////////////////////////////////////////////////////////
+// 5) EL ERROR QUE CAMBIÓ LA HISTORIA
+///////////////////////////////////////////////////////////////////////////////
+*LA RABIETA DE HITLER*
+
+La RAF está perdiendo. Sin pilotos, incorporan polacos y otras nacionalidades. 
+El escuadrón polaco 303 derribó 126 aparatos alemanes: el mejor de la batalla.
+
+Entonces ocurre lo inesperado. 
+
+24-25 agosto 1940: bombarderos alemanes atacan Londres por error, 
+contra órdenes de Hitler.
+
+Churchill ordena bombardear Berlín en respuesta. Hitler, enfurecido al ver 
+a los berlineses correr a refugios, cambia de estrategia.
+
+Fatal error: deja de atacar aeródromos para bombardear ciudades. 
+Operación Blitz: 40.000 civiles muertos, pero la RAF se recupera.
+
+#pagebreak()
+
+///////////////////////////////////////////////////////////////////////////////
+// 6) VICTORIA BRITÁNICA
+///////////////////////////////////////////////////////////////////////////////
+*"NUNCA TANTOS DEBIERON TANTO A TAN POCOS"*
+
+La Luftwaffe pierde 2.265 aviones. La RAF, aunque en inferioridad, 
+reconstruye sus bases. Las fábricas británicas producen más Spitfires.
+
+Hitler ve truncado su plan de invasión. Decide mirar hacia el este: 
+la Unión Soviética. Repite el error que él mismo advirtió en Mein Kampf: 
+nunca abrir dos frentes.
+
+La Batalla de Inglaterra fue la primera gran derrota de la Wehrmacht. 
+Churchill tenía razón: Gran Bretaña jamás se rindió.
+
+Winston Churchill, 20 agosto 1940: "Nunca en el campo de los conflictos humanos 
+tantos debieron tanto a tan pocos."
+
+#pagebreak()
+
+///////////////////////////////////////////////////////////////////////////////
+// 7) INSTRUCCIONES DE USO
+///////////////////////////////////////////////////////////////////////////////
+*INSTRUCCIONES DE USO*
+
+*Carga:* Manual, girar corona 20-30 vueltas. 
+ST3621 tiene aprox. 42 horas de reserva.
+
+*Corona:* Posición 0 (normal), 1 (ajuste hora).
+
+*Legibilidad:* Dial Fire Pattern diseñado para lectura 
+en cabina. Superluminova C3 para vuelos nocturnos.
+
+*Resistencia:* 100m, protección ante lluvia e inmersión accidental.
+
+*Mantenimiento:* Limpiar con paño seco. 
+Servicio cada 3-4 años recomendable.
+
+*Correa:* Piel vintage estilo aviador. Ancho 23mm.
+
+#pagebreak()
+
+///////////////////////////////////////////////////////////////////////////////
+// 8) CONTRAPORTADA
+///////////////////////////////////////////////////////////////////////////////
+
+#image("eagle_one_back.jpeg", width: 100%, height: 50%, fit: "cover")
+
+#place(top + left, dx: 5mm, dy: 45mm, box(width: 100% - 10mm, text(black, size: 7pt)[
+*RSWC Eagle One*  
+
+Homenaje a los pilotos de la Batalla de Inglaterra. 
+Agosto-octubre 1940.  
+Vuelo nocturno sobre el Canal de la Mancha.
+]))
+
+#place(bottom + left, dx: 5mm, dy: -5mm, text(black, size: 7pt)[
+_RSWC · Hablemos de Relojes_
+])

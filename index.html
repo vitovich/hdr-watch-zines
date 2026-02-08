@@ -376,6 +376,8 @@
             {"id":"colossus","title":"RSWC Super Massive Colossus","emoji":"🦣","sourceFolder":"hdr_zines_src/colossus","pdfFolder":"HdR zines/RSWC Super Massive Colossus"},
             {"id":"decotimer","title":"RSWC Deco-Timer","emoji":"🌊🔦","sourceFolder":"hdr_zines_src/decotimer","pdfFolder":"HdR zines/RSWC Deco-Timer"},
             {"id":"dirty_fifteen","title":"RSWC Dirty Fifteen","emoji":"⚔️🏅","sourceFolder":"hdr_zines_src/dirty_fifteen","pdfFolder":"HdR zines/RSWC Dirty Fifteen"},
+            {"id":"eagle_one","title":"RSWC Eagle One","emoji":"🦅","sourceFolder":"hdr_zines_src/eagle_one","pdfFolder":"HdR zines/RSWC Eagle One"},
+            {"id":"eagle_two","title":"RSWC Eagle Two","emoji":"🦅⏱️","sourceFolder":"hdr_zines_src/eagle_two","pdfFolder":"HdR zines/RSWC Eagle Two"},
             {"id":"forest_defender","title":"RSWC Forest Defender","emoji":"🚒","sourceFolder":"hdr_zines_src/forest_defender","pdfFolder":"HdR zines/RSWC Forest Defender"},
             {"id":"gamma_gibraltar","title":"RSWC Gamma Gibraltar","emoji":"🐟","sourceFolder":"hdr_zines_src/gamma_gibraltar","pdfFolder":"HdR zines/RSWC Gamma Gibraltar"},
             {"id":"goldmaster","title":"RSWC Goldmaster","emoji":"🎩","sourceFolder":"hdr_zines_src/goldmaster","pdfFolder":"HdR zines/RSWC Goldmaster"},
@@ -463,7 +465,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     
     // Update language after rendering
-    updateLanguage(currentLanguage);
+    const savedLang = localStorage.getItem('preferredLanguage') || 'es';
+    setLanguage(savedLang);
 });
 
         let currentLanguage = 'es'; // Track current language globally
@@ -501,8 +504,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 iberiaDesc: 'Reloj elegante de la colección RSWC',
                 ala14Desc: 'Reloj de piloto de combate validado por el Ejército del Aire',
                 cosmotempDesc: 'Primer digital RSWC con termómetro (-10°C/+50°C) y cronógrafo a 1/1000 seg. Homenaje a los Casio clásicos con cristal de zafiro y acero grado suizo',
-                decotimerDesc: 'Diver cushion con escala deco interna y dobles coronas con lumen. Dos variantes: Challenger Deep (azul) y Devil’s Eye (negro/rojo). Caja exclusiva Swiss grade, PT5000 certificado',
+                decotimerDesc: 'Diver cushion con escala deco interna y dobles coronas con lumen. Dos variantes: Challenger Deep (azul) y Devil\'s Eye (negro/rojo). Caja exclusiva Swiss grade, PT5000 certificado',
                 dirtyFifteenDesc: 'Homenaje a la unidad militar de élite de 15 miembros. Diseño táctico con acabado militar',
+                eagleOneDesc: 'Flieger de 44.5mm con calibre Seagull ST3621 manual. Homenaje a la Batalla de Inglaterra 1940. Dial Fire Pattern marrón, lumen C3, 100m. Edición limitada 50 unidades',
+                eagleTwoDesc: 'Cronógrafo aviador ST19 con regulación cuello de cisne visible. Fondo de zafiro transparente. Homenaje a los pilotos de la RAF y Luftwaffe. 42mm, 50m. Edición limitada 50 unidades',
                 sharkomaticDesc: 'Diver vintage cushion 44mm con estética retro de los años 70',
                 typhoonDesc: 'Instrumento aeroespacial para condiciones extremas',
                 typViiBDesc: 'Tributo al submarino alemán Tipo VII-B. Reloj de buzo de 500m con válvula de helio, PT5000, esfera degradada azul marino y relieve de tiburón en trasera. Edición limitada de 50 unidades',
@@ -562,9 +567,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 iberiaDesc: 'Elegante Uhr aus der RSWC-Kollektion',
                 ala14Desc: 'Kampfpilotenuhr validiert durch die spanische Luftwaffe',
                 cosmotempDesc: 'Erste RSWC Digital mit Thermometer (-10°C/+50°C) und 1/1000 Sek. Chronograph. Hommage an klassische Casio mit Saphirglas und Swiss-Grade-Stahl',
-                decotimerDesc: 'Cushion-Taucheruhr mit interner Deco-Skala und Doppelkronen mit Lumen. Zwei Varianten: Challenger Deep (blau) und Devil’s Eye (schwarz/rot). Exklusive Swiss-Grade-Gehäuse, PT5000 zertifiziert',
-                sharkomaticDesc: 'Vintage Cushion Taucheruhr 44mm mit Retro-Ästhetik der 70er',
+                decotimerDesc: 'Cushion-Taucheruhr mit interner Deco-Skala und Doppelkronen mit Lumen. Zwei Varianten: Challenger Deep (blau) und Devil\'s Eye (schwarz/rot). Exklusive Swiss-Grade-Gehäuse, PT5000 zertifiziert',
                 dirtyFifteenDesc: 'Hommage an die militärische Elite-Einheit von 15 Mitgliedern. Taktisches Design mit militärischem Finish',
+                eagleOneDesc: 'Fliegeruhr 44,5mm mit Seagull ST3621 Handaufzug. Hommage an die Luftschlacht um England 1940. Fire Pattern braunes Zifferblatt, C3-Lumen, 100m. Limitiert auf 50 Stück',
+                eagleTwoDesc: 'Flieger-Chronograph ST19 mit sichtbarer Schwanenhals-Regulierung. Transparenter Saphirboden. Hommage an RAF und Luftwaffe-Piloten. 42mm, 50m. Limitiert auf 50 Stück',
+                sharkomaticDesc: 'Vintage Cushion Taucheruhr 44mm mit Retro-Ästhetik der 70er',
                 typhoonDesc: 'Luft- und Raumfahrtinstrument für extreme Bedingungen',
                 typViiBDesc: 'Hommage an das deutsche U-Boot Typ VII-B. 500m-Taucheruhr mit Heliumventil, PT5000, marineblauem Verlaufszifferblatt und Hai-Relief auf Rückseite. Limitiert auf 50 Einheiten',
                 ume1Desc: 'Hommage an die Militärische Notfalleinheit. Militäruhr mit taktischen Spezifikationen, Orient YN55A, 200m. Robustes und lesbares Design',
@@ -604,8 +611,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 grandeEpreuveDesc: 'Racing chronograph with ST1901 manual-wind movement. Tribute to the great classic motor races with vintage 60s-70s design. Available in panda and reverse panda dials',
                 okeahDesc: 'The last chronograph with Poljot 3133 caliber. Tribute to the legendary 1976 Okeah, closing 35 years of history. International project with 300 units that exhausted the final stock of cases and movements',
                 apocalypseNowDesc: 'Tribute to the Seiko 6105-8100 from the movie. 44mm diver with characteristic crown shroud, crown at 4 and ceramic bezel with full lume. NH35, 200m',
-                gammaGibraltarDesc: 'Tribute to Italian combat divers. Sandwich dial with Super-LumiNova C3',
+                eagleOneDesc: 'Flieger 44.5mm with Seagull ST3621 manual-wind caliber. Tribute to the Battle of Britain 1940. Fire Pattern brown dial, C3 lume, 100m. Limited edition 50 units',
+                eagleTwoDesc: 'Aviation chronograph ST19 with visible swan neck regulation. Transparent sapphire caseback. Tribute to RAF and Luftwaffe pilots. 42mm, 50m. Limited edition 50 units',
                 forestDefenderDesc: 'Firefighter chronograph with special scale and pulsometer',
+                gammaGibraltarDesc: 'Tribute to Italian combat divers. Sandwich dial with Super-LumiNova C3',
                 saltoDeFeDesc: 'The most secret HdR project. Woof woof woof woof woof',
                 scaphandreIIDesc: 'Professional 1000m diver inspired by Cousteau. 45mm monoblock case, 120-click ceramic bezel, NH35 movement. Tribute to French underwater exploration spirit',
                 heianDesc: 'Tribute to vintage Japanese daily-wear watches. Timeless elegance with Seiko NH36A movement, dual Kanji-English calendar and Instant Date.',
@@ -623,14 +632,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 iberiaDesc: 'Elegant timepiece from the RSWC collection',
                 ala14Desc: 'Fighter pilot watch validated by the Spanish Air Force',
                 cosmotempDesc: 'First RSWC digital with thermometer (-10°C/+50°C) and 1/1000 sec chronograph. Tribute to classic Casio with sapphire crystal and Swiss-grade steel',
-                decotimerDesc: 'Cushion diver with internal deco scale and double crowns with lumen. Two variants: Challenger Deep (blue) and Devil’s Eye (black/red). Exclusive Swiss-grade case, certified PT5000',
+                decotimerDesc: 'Cushion diver with internal deco scale and double crowns with lumen. Two variants: Challenger Deep (blue) and Devil\'s Eye (black/red). Exclusive Swiss-grade case, certified PT5000',
+                dirtyFifteenDesc: 'Tribute to the elite military unit of 15 members. Tactical design with military finish',
+                eagleOneDesc: 'Flieger 44.5mm with Seagull ST3621 manual-wind caliber. Tribute to the Battle of Britain 1940. Fire Pattern brown dial, C3 lume, 100m. Limited edition 50 units',
+                eagleTwoDesc: 'Aviation chronograph ST19 with visible swan neck regulation. Transparent sapphire caseback. Tribute to RAF and Luftwaffe pilots. 42mm, 50m. Limited edition 50 units',
                 sharkomaticDesc: 'Vintage cushion diver 44mm with 70s retro aesthetic',
                 typhoonDesc: 'Aerospace instrument for extreme conditions',
                 typViiBDesc: 'Tribute to German Type VII-B submarine. 500m diver watch with helium valve, PT5000, gradient navy blue dial and shark relief caseback. Limited to 50 units',
                 ume1Desc: 'Tribute to the Military Emergency Unit. Military watch with tactical specifications, Orient YN55A, 200m. Robust and legible design',
                 ume2Desc: 'GMT version of the UME tribute. Seiko NH34 GMT for international missions with dual time zone. Official badge on caseback',
                 worldTimerDesc: 'First RSWC digital with 28 time zones. Tribute to classic Casio World Timer with premium materials: sapphire crystal and Swiss-grade steel',
-                dirtyFifteenDesc: 'Tribute to the elite military unit of 15 members. Tactical design with military finish',
                 caballeroDesc: 'Classic design from the Sol y Sombra collection',
                 unfoldBtn: '📖 View pages',
                 foldBtn: '🔼 Hide pages',
@@ -776,6 +787,8 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('cosmotemp-desc').textContent = t.cosmotempDesc;
             document.getElementById('decotimer-desc').textContent = t.decotimerDesc;
             document.getElementById('dirty_fifteen-desc').textContent = t.dirtyFifteenDesc;
+            document.getElementById('eagle_one-desc').textContent = t.eagleOneDesc;
+            document.getElementById('eagle_two-desc').textContent = t.eagleTwoDesc;
             document.getElementById('supersharkomatic-desc').textContent = t.sharkomaticDesc;
             document.getElementById('typhoon-desc').textContent = t.typhoonDesc;
             document.getElementById('typ_vii-b-desc').textContent = t.typViiBDesc;
@@ -832,6 +845,8 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('download-btn-monumental').textContent = t.downloadBtn;
             document.getElementById('download-btn-viajero').textContent = t.downloadBtn;
             document.getElementById('download-btn-dirty-fifteen').textContent = t.downloadBtn;
+            document.getElementById('download-btn-eagle_one').textContent = t.downloadBtn;
+            document.getElementById('download-btn-eagle_two').textContent = t.downloadBtn;
             
             // Update Vainqueur images based on language
             const vainqueurGallery = document.getElementById('vainqueur-pages');
@@ -855,12 +870,6 @@ document.addEventListener('DOMContentLoaded', () => {
             // Save preference
             localStorage.setItem('preferredLanguage', lang);
         }
-
-        // Load saved language or default to Spanish
-        window.addEventListener('DOMContentLoaded', () => {
-            const savedLang = localStorage.getItem('preferredLanguage') || 'es';
-            setLanguage(savedLang);
-        });
     </script>
 </body>
 </html> 

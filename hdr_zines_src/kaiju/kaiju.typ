@@ -25,7 +25,7 @@
 
   place(top + center, dy: 6mm, box(
     text(white, stroke: 0.6pt + black)[
-      #text(size: 20pt)[*RSWC*]\\
+      #text(size: 20pt)[*RSWC*]\ 
       #text(size: 18pt)[*Kaiju*]
     ]
   ))
