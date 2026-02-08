@@ -15,14 +15,17 @@
 
 // cover
 #block({
-  // Replace with your actual cover image file
   image("roquina_front.jpeg", width: 100%, height: 100%, fit: "cover")
-  place(top + center, dy: 5mm, text(white, size: 20pt)[
-    *Sol y Sombra*\ 
-    *Roquina*
-  ])
-})
-#pagebreak()
+  place(top + center, dy: 3mm, box(
+    fill: rgb(0, 0, 0, 150),
+    inset: 8pt,
+    radius: 4pt,
+    text(white, stroke: 0.5pt + black)[
+      #text(size: 12pt)[*Sol y Sombra*]\ 
+      #text(size: 10pt)[*Roquina*]
+    ]
+  ))
+})#pagebreak()
 
 *ESPECIFICACIONES TÉCNICAS*
 - Caja de acero 316L Swiss Grade, 10 ATM

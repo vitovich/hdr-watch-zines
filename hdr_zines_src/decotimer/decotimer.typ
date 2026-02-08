@@ -16,17 +16,16 @@
 // Página 1 - Portada
 #block({
   image("decotimer_front.jpeg", width: 100%, height: 100%, fit: "cover")
-  place(top + center, dy: 5mm, box(
+  place(top + center, dy: 3mm, box(
     fill: rgb(0, 0, 0, 150),
     inset: 8pt,
     radius: 4pt,
-    text(white, size: 20pt, stroke: 0.5pt + black)[
-      *RSWC*\ 
-      *DECO-TIMER*
+    text(white, stroke: 0.5pt + black)[
+      #text(size: 12pt)[*RSWC*]\ 
+      #text(size: 10pt)[*Deco-Timer*]
     ]
   ))
-})
-#pagebreak()
+})#pagebreak()
 
 // Página 2 - Especificaciones técnicas
 *ESPECIFICACIONES TÉCNICAS*

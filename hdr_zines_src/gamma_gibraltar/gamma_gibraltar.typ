@@ -16,14 +16,16 @@
 // cover
 #block({
   image("gamma_gibraltar_front.jpeg", width: 100%, height: 100%, fit: "cover")
-  place(top + center, dy: 5mm, box(
+  place(top + center, dy: 3mm, box(
+    fill: rgb(0, 0, 0, 150),
+    inset: 8pt,
+    radius: 4pt,
     text(white, stroke: 0.5pt + black)[
-      #text(size: 20pt)[*RSWC*]\ 
-      #text(size: 16pt)[*Gamma Gibraltar*]
+      #text(size: 12pt)[*RSWC*]\ 
+      #text(size: 10pt)[*Gamma Gibraltar*]
     ]
   ))
-})
-#pagebreak()
+})#pagebreak()
 
 *ESPECIFICACIONES TÉCNICAS*
 - Caja de acero de 44 mm

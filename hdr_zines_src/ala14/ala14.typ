@@ -17,18 +17,18 @@
 // cover
 
 #block({
-  image("ala14_front.jpeg", width: 100%, height: 100%, fit: "cover")  
-  place(top + center, dy: 5mm, text(white, size: 18pt)[
-      *RSWC*\ 
-      *SUPER STELLAR*\
-      *ALA 14*
-  ])
-  place(bottom + left, dx: 5mm, dy: -5mm, text(white, size: 7pt)[
-      El reloj de los pilotos de combate
-  ])
-})
-
-#pagebreak()
+  image("ala14_front.jpeg", width: 100%, height: 100%, fit: "cover")
+  place(top + center, dy: 3mm, box(
+    fill: rgb(0, 0, 0, 150),
+    inset: 8pt,
+    radius: 4pt,
+    text(white, stroke: 0.5pt + black)[
+      #text(size: 12pt)[*RSWC*]\ 
+      #text(size: 10pt)[*Super Stellar*]\ 
+      #text(size: 10pt)[*Ala 14*]
+    ]
+  ))
+})#pagebreak()
 
 *ESPECIFICACIONES TÉCNICAS*
 

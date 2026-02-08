@@ -18,19 +18,17 @@
 // cover
 
 #block({
-  image("iberia_front.jpeg", width: 100%, height: 100%, fit: "cover")  
-  place(top + center, dy: 5mm, box(
+  image("iberia_front.jpeg", width: 100%, height: 100%, fit: "cover")
+  place(top + center, dy: 3mm, box(
     fill: rgb(0, 0, 0, 150),
     inset: 8pt,
     radius: 4pt,
-    text(white, size: 20pt, stroke: 0.5pt + black)[
-      *RSWC*\ 
-      *Suite Iberia*
+    text(white, stroke: 0.5pt + black)[
+      #text(size: 12pt)[*RSWC*]\ 
+      #text(size: 10pt)[*Suite Iberia*]
     ]
   ))
-})
-
-#pagebreak()
+})#pagebreak()
 
 *ESPECIFICACIONES TÉCNICAS*
 

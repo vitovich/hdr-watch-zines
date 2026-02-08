@@ -16,14 +16,15 @@
 // cover
 #block({
   image("galeno_front.jpeg", width: 100%, height: 100%, fit: "cover")
-  place(top + center, dy: 5mm, box(
+  place(top + center, dy: 3mm, box(
+    fill: rgb(0, 0, 0, 150),
+    inset: 8pt,
+    radius: 4pt,
     text(white, stroke: 0.5pt + black)[
-      #text(size: 20pt)[*GALENO*]\ 
-      #text(size: 14pt)[*Cronógrafo médico*]
+      #text(size: 12pt)[*Galeno*]
     ]
   ))
-})
-#pagebreak()
+})#pagebreak()
 
 *ESPECIFICACIONES TÉCNICAS*
 - Edición numerada para HdR: 300 unidades

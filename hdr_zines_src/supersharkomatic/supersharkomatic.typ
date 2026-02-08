@@ -16,14 +16,16 @@
 // cover
 #block({
   image("supersharkomatic_front.jpeg", width: 100%, height: 100%, fit: "cover")
-  place(top + center, dy: 5mm, box(
+  place(top + center, dy: 3mm, box(
+    fill: rgb(0, 0, 0, 150),
+    inset: 8pt,
+    radius: 4pt,
     text(white, stroke: 0.5pt + black)[
-      #text(size: 20pt)[*RSWC*]\ 
-      #text(size: 16pt)[*Supersharkomatic*]
+      #text(size: 12pt)[*RSWC*]\ 
+      #text(size: 10pt)[*Supersharkomatic*]
     ]
   ))
-})
-#pagebreak()
+})#pagebreak()
 
 *ESPECIFICACIONES TÉCNICAS*
 - Caja en acero 316L de 41 mm

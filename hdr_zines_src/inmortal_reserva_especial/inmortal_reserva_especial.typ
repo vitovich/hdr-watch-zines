@@ -16,15 +16,16 @@
 // cover
 #block({
   image("inmortal_reserva_especial_front.jpeg", width: 100%, height: 100%, fit: "cover")
-  place(top + center, dy: 5mm, text(black, size: 16pt)[
-    *Sol y Sombra*\ 
-    *Inmortal*
-  ])
-  place(top + center,  dy: 32mm, text(black, size: 12pt)[
-    _Reserva Especial_
-  ])
-})
-#pagebreak()
+  place(top + center, dy: 3mm, box(
+    fill: rgb(0, 0, 0, 150),
+    inset: 8pt,
+    radius: 4pt,
+    text(white, stroke: 0.5pt + black)[
+      #text(size: 12pt)[*Sol y Sombra*]\ 
+      #text(size: 10pt)[*Inmortal Reserva Especial*]
+    ]
+  ))
+})#pagebreak()
 
 *ESPECIFICACIONES TÉCNICAS*
 - Caja de acero 316L acabado pulido

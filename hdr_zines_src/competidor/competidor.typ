@@ -16,12 +16,16 @@
 // cover
 #block({
   image("competidor_front.jpeg", width: 100%, height: 100%, fit: "cover")
-  place(top + center, dy: 5mm, text(white, stroke: 0.5pt + black, size: 16pt)[
-    *Sol y Sombra*\ 
-    *Competidor*
-  ])
-})
-#pagebreak()
+  place(top + center, dy: 3mm, box(
+    fill: rgb(0, 0, 0, 150),
+    inset: 8pt,
+    radius: 4pt,
+    text(white, stroke: 0.5pt + black)[
+      #text(size: 12pt)[*Sol y Sombra*]\ 
+      #text(size: 10pt)[*Competidor*]
+    ]
+  ))
+})#pagebreak()
 
 *ESPECIFICACIONES TÉCNICAS*
 - Caja de acero 316L acabado cepillado

@@ -18,14 +18,16 @@
 ///////////////////////////////////////////////////////////////////////////////
 #block({
   image("dirty_fifteen_front.jpeg", width: 100%, height: 100%, fit: "cover")
-  place(top + center, dy: 5mm, box(
+  place(top + center, dy: 3mm, box(
+    fill: rgb(0, 0, 0, 150),
+    inset: 8pt,
+    radius: 4pt,
     text(white, stroke: 0.5pt + black)[
-      #text(size: 20pt)[*DIRTY FIFTEEN*]\\
-      #text(size: 14pt)[*Reloj de oficiales · 2GM*]
+      #text(size: 12pt)[*RSWC*]\ 
+      #text(size: 10pt)[*Dirty Fifteen*]
     ]
   ))
-})
-#pagebreak()
+})#pagebreak()
 
 ///////////////////////////////////////////////////////////////////////////////
 // 2) ESPECIFICACIONES TÉCNICAS
