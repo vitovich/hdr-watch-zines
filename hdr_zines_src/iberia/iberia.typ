@@ -19,10 +19,15 @@
 
 #block({
   image("iberia_front.jpeg", width: 100%, height: 100%, fit: "cover")  
-  place(top + center, dy: 5mm, text(white, size: 20pt)[
+  place(top + center, dy: 5mm, box(
+    fill: rgb(0, 0, 0, 150),
+    inset: 8pt,
+    radius: 4pt,
+    text(white, size: 20pt, stroke: 0.5pt + black)[
       *RSWC*\ 
       *Suite Iberia*
-  ])
+    ]
+  ))
 })
 
 #pagebreak()
