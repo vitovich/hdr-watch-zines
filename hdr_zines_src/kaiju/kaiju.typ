@@ -25,8 +25,8 @@
 
   place(top + center, dy: 6mm, box(
     text(white, stroke: 0.6pt + black)[
-      #text(size: 21pt)[*RSWC KAIJU*]\\
-      #text(size: 12pt)[*Monstruos, Tokio y acero*]
+      #text(size: 20pt)[*RSWC*]\\
+      #text(size: 18pt)[*Kaiju*]
     ]
   ))
 })
@@ -122,21 +122,24 @@ el miedo a lo inmenso… y la fascinación por enfrentarlo.
 #pagebreak()
 
 ///////////////////////////////////////////////////////////////////////////////
-// 7) EL RELOJ · TOKIO EN LA TRASERA
+// 7) INSTRUCCIONES DE USO
 ///////////////////////////////////////////////////////////////////////////////
-*RSWC KAIJU: UN MONSTRUO EN LA MUÑECA*
+*INSTRUCCIONES DE USO*
 
-En HdR, el Kaiju es un homenaje a esas películas y criaturas.
+*Carga:* Dar cuerda manual (20-30 vueltas, corona pegada) o llevar en muñeca. 
+El NH35 tiene aproximadamente 41 horas de reserva de marcha.
 
-La trasera, diseñada por Girolamo, evoca el skyline de Tokio con torres de
-comunicación y el guiño a un edificio con torre de reloj.
+*Corona:* Posición normal (pegada), posición 1 (ajuste de fecha), 
+posición 2 (ajuste de hora). No ajustar la fecha entre las 21:00 y las 03:00.
 
-Rodeando el grabado aparece la advertencia nietzscheana:
+*Bisel:* Giratorio unidireccional con 120 clicks. Para medir tiempos de inmersión, 
+alinear el triángulo con el minutero.
 
-“Quien lucha con monstruos debe procurar no convertirse en monstruo.”
+*Resistencia:* 200m. Apto para buceo recreativo. Comprobar estanqueidad 
+periódicamente.
 
-Caja angular, corona firmada y hebilla grabada completan un reloj con identidad
-propia: un diver contundente, cultural y narrativo.
+*Mantenimiento:* Tras contacto con agua salada, enjuagar con agua dulce y secar. 
+Revisión cada 3-5 años recomendable.
 
 #pagebreak()
 
@@ -144,9 +147,9 @@ propia: un diver contundente, cultural y narrativo.
 // 8) CONTRAPORTADA
 ///////////////////////////////////////////////////////////////////////////////
 
-#image("kaiju_back.jpeg", width: 100%, height: 60%, fit: "cover")
+#image("kaiju_back.jpeg", width: 100%, height: 50%, fit: "cover")
 
-#place(top + left, dx: 5mm, dy: 55mm, box(width: 100% - 10mm, text(black, size: 7pt)[
+#place(top + left, dx: 5mm, dy: 45mm, box(width: 100% - 10mm, text(black, size: 7pt)[
 *RSWC Kaiju*  
 
 Tokio en la trasera. 
