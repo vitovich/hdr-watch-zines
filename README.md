@@ -131,11 +131,56 @@ HdR zines/
    - Third parameter: output subdirectory name under `HdR zines/`
    - Fourth parameter: source `.typ` file name
 
-5. Run CMake to update the build configuration:
+5. Add your zine metadata to `zines_data.json` with all required fields:
+   ```json
+   {
+     "id": "mywatch",
+     "title": "My Watch Name",
+     "brand": "Brand Name",
+     "model": "Model Name",
+     "emoji": "⌚",
+     "year": 2026,
+     "month": 1,
+     "category": "diver",
+     "description_es": "Descripción en español",
+     "description_de": "Beschreibung auf Deutsch",
+     "description_en": "Description in English",
+     "hdr_link": "https://www.hablemosderelojes.com/t/XXXXX",
+     "price": null,
+     "case_diameter": 42,
+     "case_height": 13.5,
+     "strap_width": 20,
+     "movement_type": "automatic",
+     "movement_id": "NH35",
+     "sourceFolder": "hdr_zines_src/mywatch",
+     "pdfFolder": "HdR zines/My Watch Collection",
+     "movement_company": "Seiko",
+     "lane_id": "rswc"
+   }
+   ```
+   
+   Required fields:
+   - `id`: Unique identifier matching directory/file name
+   - `title`: Full display title
+   - `brand`: Watch brand (or empty string)
+   - `model`: Watch model name
+   - `emoji`: Representative emoji(s)
+   - `year`, `month`: Release/project date
+   - `category`: Type (diver, chronograph, pilot, GMT, GADA, dress, digital, anadigi)
+   - `description_es/de/en`: Multilingual descriptions
+   - `hdr_link`: Forum thread URL
+   - `lane_id`: Timeline swimlane ("rswc", "sys", or "otros")
+   - Technical specs: `case_diameter`, `case_height`, `strap_width`
+   - Movement info: `movement_type`, `movement_id`, `movement_company`
+   - Paths: `sourceFolder`, `pdfFolder`
+
+6. Run CMake to build:
    ```bash
    cmake .
    cmake --build . --target pdf-mywatch
    ```
+
+The index and timeline pages are generated dynamically from `zines_data.json`, so no manual HTML edits are needed.
 
 
 # License Notice
