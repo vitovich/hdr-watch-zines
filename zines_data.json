@@ -110,13 +110,12 @@
     "description_de": "Gagarin 50. JubilÃ¤um Projekt. Russische MilitÃ¤ruhr mit weiÃŸem oder schwarzem Zifferblatt.",
     "description_en": "Gagarin 50th Anniversary project. Russian military watch with white or black dial.",
     "hdr_link": "https://www.hablemosderelojes.com/t/47219",
-    "price": 195,
+    "price": 278,
     "case_diameter": 38,
     "case_height": 11.5,
     "strap_width": 18,
     "movement_type": "manual",
     "movement_id": "2609",
-    "notes": "TODO: price estimated 175-195€ range, no confirmed final",
     "sourceFolder": null,
     "pdfFolder": null,
     "movement_company": "Poljot",
@@ -718,7 +717,7 @@
     "description_de": "Das geheimste HdR-Projekt. Wau wau wau wau wau",
     "description_en": "The most secret HdR project. Woof woof woof woof woof",
     "hdr_link": "https://www.hablemosderelojes.com/t/234005",
-    "price": 298,
+    "price": 165,
     "case_diameter": 42,
     "case_height": null,
     "strap_width": 22,
@@ -728,8 +727,7 @@
     "pdfFolder": "HdR zines/RSWC Salto de Fe",
     "movement_company": "Seiko",
     "lane_id": "rswc",
-    "has_zine": true,
-    "notes": "Secret mystery object bundled with Gamma Gibraltar purchase (298€ total: 133€ GG + 165€ mystery object). Limited to 35 units. Not a standalone watch."
+    "has_zine": true
   },
   {
     "id": "scaphandre_II",
@@ -863,11 +861,11 @@
     "description_es": "Reloj de piloto de combate validado por el Ejército del Aire",
     "description_de": "Kampfpilotenuhr validiert durch die spanische Luftwaffe",
     "description_en": "Fighter pilot watch validated by the Spanish Air Force",
-    "hdr_link": "https://www.hablemosderelojes.com/t/249259",
-    "price": null,
-    "case_diameter": 42,
+    "hdr_link": "https://www.hablemosderelojes.com/t/261117",
+    "price": 128,
+    "case_diameter": 48,
     "case_height": null,
-    "strap_width": 22,
+    "strap_width": 24,
     "movement_type": "anadigi",
     "movement_id": [
       "SKMEI 2049",
@@ -878,7 +876,7 @@
     "movement_company": "Miyota",
     "lane_id": "rswc",
     "has_zine": true,
-    "notes": "Price not explicitly stated in thread 249259. Ala 14 and Typhoon announced together but no individual prices found"
+    "notes": "Calculated price: 283€ pack - 155€ Typhoon = 128€. Ala 14 only available as pack with Typhoon"
   },
   {
     "id": "cosmotemp",
@@ -894,7 +892,7 @@
     "hdr_link": "https://www.hablemosderelojes.com/t/249259",
     "price": 105,
     "case_diameter": 42,
-    "case_height": null,
+    "case_height": 11,
     "strap_width": 18,
     "movement_type": "anadigi",
     "movement_id": "2198",
@@ -915,11 +913,11 @@
     "description_es": "Instrumento aeroespacial para condiciones extremas",
     "description_de": "Luft- und Raumfahrtinstrument für extreme Bedingungen",
     "description_en": "Aerospace instrument for extreme conditions",
-    "hdr_link": "https://www.hablemosderelojes.com/t/249259",
-    "price": null,
-    "case_diameter": 42,
+    "hdr_link": "https://www.hablemosderelojes.com/t/261117",
+    "price": 155,
+    "case_diameter": 48,
     "case_height": null,
-    "strap_width": 22,
+    "strap_width": 24,
     "movement_type": "anadigi",
     "movement_id": [
       "SKMEI 2049",
@@ -929,8 +927,7 @@
     "pdfFolder": "HdR zines/RSWC Super Stellar Typhoon",
     "movement_company": "Miyota",
     "lane_id": "rswc",
-    "has_zine": true,
-    "notes": "Price not explicitly stated in thread 249259. Typhoon and Ala 14 announced together but no individual prices found"
+    "has_zine": true
   },
   {
     "id": "world_timer",
@@ -946,7 +943,7 @@
     "hdr_link": "https://www.hablemosderelojes.com/t/249259",
     "price": 85,
     "case_diameter": 42,
-    "case_height": null,
+    "case_height": 11,
     "strap_width": 18,
     "movement_type": "digital",
     "movement_id": "SKMEI 1338",
