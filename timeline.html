@@ -27,26 +27,56 @@
         }
 
         header {
-            text-align: center;
-            margin-bottom: 15px;
-            padding: 10px 15px;
             background: #111111;
+            color: #dddddd;
+            padding: 30px 30px;
+            text-align: center;
+        }
+
+        .nav-links {
+            margin-bottom: 14px;
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #0F82AF;
+            color: white;
+            text-decoration: none;
             border-radius: 6px;
-            border: 1px solid #444444;
+            font-weight: 600;
+            font-size: 0.9em;
+            transition: opacity 0.2s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        .nav-links a.current {
+            background: #666666;
+            cursor: default;
+        }
+
+        .nav-links a.current:hover {
+            opacity: 1;
         }
 
         h1 {
-            font-size: 2.0em;
-            margin-bottom: 3px;
+            font-size: 2em;
+            margin-bottom: 8px;
+            font-weight: 700;
             color: #dddddd;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
         .subtitle {
-            font-size: 0.75em;
+            font-size: 0.95em;
             color: #dddddd;
-            margin-top: 3px;
-            opacity: 0.8;
+            opacity: 0.95;
         }
 
         .timeline-wrapper {
@@ -280,6 +310,11 @@
 <body>
     <div class="container">
         <header>
+            <div class="nav-links">
+                <a href="index.html">📖 Zines</a>
+                <a href="timeline.html" class="current">📅 Timeline</a>
+                <a href="stats.html">📊 Stats</a>
+            </div>
             <h1>📚 HdR Watch Projects Timeline ⌚</h1>
             <p class="subtitle">Hablemos de Relojes - 2026 to 2017</p>
             <div style="margin-top: 8px; font-size: 0.75em; opacity: 0.8;">
@@ -287,8 +322,7 @@
                 <a href="https://www.hablemosderelojes.com/t//268418" target="_blank" style="color: #0F82AF; text-decoration: none; margin: 0 6px;">Índice alfabético (@JOSERRA100)</a> · 
                 <a href="https://www.hablemosderelojes.com/t/228190/71" target="_blank" style="color: #0F82AF; text-decoration: none; margin: 0 6px;">Cronología (@soymicmic)</a>
             </div>
-            <div style="margin-top: 10px; display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
-                <a href="index.html" style="display: inline-block; padding: 10px 20px; background: #0F82AF; color: white; text-decoration: none; border-radius: 6px; font-weight: 600; font-size: 0.9em; transition: opacity 0.2s;">📖 Ver Zines</a>
+            <div style="margin-top: 10px;">
                 <button id="sortToggle" style="padding: 10px 20px; background: #0F82AF; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 600; font-size: 0.9em; transition: opacity 0.2s;">🔄 Invertir orden</button>
             </div>
         </header>

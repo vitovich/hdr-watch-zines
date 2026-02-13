@@ -1,0 +1,1927 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HdR Watch Project Stats</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📚</text></svg>">
+ <script src="https://cdn.jsdelivr.net/npm/chart.js@latest/dist/chart.umd.min.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      line-height: 1.6;
+      color: #dddddd;
+      background: #222222;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: #222222;
+      border-radius: 12px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+      overflow: hidden;
+    }
+
+    header {
+      background: #111111;
+      color: #dddddd;
+      padding: 30px 30px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2em;
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
+
+    header p {
+      font-size: 0.95em;
+      opacity: 0.95;
+    }
+
+    .nav-links {
+      margin-bottom: 14px;
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      display: inline-block;
+      padding: 10px 20px;
+      background: #0F82AF;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.9em;
+      transition: opacity 0.2s;
+    }
+
+    .nav-links a:hover {
+      opacity: 0.8;
+    }
+
+    .nav-links a.current {
+      background: #666666;
+      cursor: default;
+    }
+
+    .nav-links a.current:hover {
+      opacity: 1;
+    }
+
+    .content {
+      padding: 30px;
+    }
+
+    .chart-selector {
+      background: #313131;
+      border-radius: 8px;
+      padding: 20px;
+      border: 1px solid #444444;
+      margin-bottom: 20px;
+    }
+
+    .chart-selector label {
+      display: block;
+      color: #099dd7;
+      font-weight: 600;
+      margin-bottom: 10px;
+      font-size: 1em;
+    }
+
+    .chart-selector select {
+      width: 100%;
+      padding: 10px 14px;
+      background: #222222;
+      color: #dddddd;
+      border: 1px solid #555555;
+      border-radius: 6px;
+      font-size: 0.95em;
+      cursor: pointer;
+      outline: none;
+    }
+
+    .chart-selector select:hover {
+      border-color: #0F82AF;
+    }
+
+    .chart-selector select:focus {
+      border-color: #099dd7;
+      box-shadow: 0 0 0 3px rgba(15, 130, 175, 0.1);
+    }
+
+    .stats-layout {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .stats-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .stats-card {
+      background: #313131;
+      border-radius: 8px;
+      padding: 20px;
+      border: 1px solid #444444;
+      color: #dddddd;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .stats-card h2 {
+      color: #099dd7;
+      margin-bottom: 4px;
+      font-size: 1.1em;
+    }
+
+    .stats-meta {
+      font-size: 0.85em;
+      color: #cccccc;
+    }
+
+    .chart-container {
+      position: relative;
+      width: 100%;
+      height: 400px;
+      margin-top: 4px;
+    }
+
+    canvas {
+      width: 100% !important;
+      height: 100% !important;
+    }
+
+    .summary-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 0.85em;
+    }
+
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .summary-label {
+      color: #dddddd;
+      font-weight: 600;
+    }
+
+    .summary-value {
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.8em;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: #111111;
+      border: 1px solid #444444;
+    }
+
+    .badge-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #0F82AF;
+    }
+
+    .error-banner {
+      display: none;
+      margin-top: 8px;
+      font-size: 0.8em;
+      padding: 8px 10px;
+      border-radius: 6px;
+      background: rgba(239, 68, 68, 0.15);
+      border: 1px solid rgba(248, 113, 113, 0.6);
+      color: #fecaca;
+    }
+
+    .error-banner.visible {
+      display: block;
+    }
+
+    .chart-section {
+      display: none;
+    }
+
+    .chart-section.active {
+      display: block;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px 30px 26px;
+      background: #111111;
+      color: #dddddd;
+      font-size: 0.85em;
+    }
+
+    footer a {
+      color: #099dd7;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="nav-links">
+        <a href="index.html">📖 Zines</a>
+        <a href="timeline.html">📅 Timeline</a>
+        <a href="stats.html" class="current">📊 Stats</a>
+      </div>
+      <h1>⌚ HdR Project Stats</h1>
+      <p>Visualización de estadísticas de proyectos de relojes HdR / RSWC.</p>
+    </header>
+
+    <div class="content">
+      <!-- Chart Selector -->
+      <div class="chart-selector">
+        <label for="chartSelect">📊 Seleccionar gráfico:</label>
+        <select id="chartSelect">
+          <option value="diameter-strap">Diámetro vs Ancho de correa</option>
+          <option value="diameter-height">Diámetro vs Grosor (altura)</option>
+          <option value="yearly-cumulative">Relojes por año (acumulado)</option>
+          <option value="price">Distribución acumulada de precios</option>
+          <option value="movement-type">Tipos de movimiento</option>
+          <option value="movement-company">Fabricante de calibre</option>
+        </select>
+      </div>
+
+      <div class="stats-layout">
+        <!-- Chart Area -->
+        <div id="chartArea">
+          <!-- Diameter vs Strap Width Correlation -->
+          <section class="stats-card chart-section active" id="diameter-strap">
+            <div>
+              <h2>Correlación: Diámetro de caja vs Ancho de correa</h2>
+              <p class="stats-meta">Relación entre el diámetro de caja (mm) y el ancho de correa (mm). Cada punto representa un reloj.</p>
+            </div>
+            <div class="chart-container">
+              <canvas id="diameterStrapChart" aria-label="Gráfico de correlación diámetro-ancho" role="img"></canvas>
+            </div>
+            <div id="diameter-strap-error" class="error-banner"></div>
+          </section>
+
+          <!-- Diameter vs Height Correlation -->
+          <section class="stats-card chart-section" id="diameter-height">
+            <div>
+              <h2>Correlación: Diámetro de caja vs Grosor</h2>
+              <p class="stats-meta">Relación entre el diámetro de caja (mm) y el grosor/altura (mm). Cada punto representa un reloj.</p>
+            </div>
+            <div class="chart-container">
+              <canvas id="diameterHeightChart" aria-label="Gráfico de correlación diámetro-grosor" role="img"></canvas>
+            </div>
+            <div id="diameter-height-error" class="error-banner"></div>
+          </section>
+
+          <!-- Yearly Cumulative Chart -->
+          <section class="stats-card chart-section" id="yearly-cumulative">
+            <div>
+              <h2>Evolución acumulada de proyectos por año</h2>
+              <p class="stats-meta">Muestra el número total acumulado de relojes HdR año tras año. Cada punto representa cuántos proyectos se habían completado hasta ese año.</p>
+            </div>
+            <div class="chart-container">
+              <canvas id="yearlyChart" aria-label="Gráfico acumulado por año" role="img"></canvas>
+            </div>
+            <div id="yearly-error" class="error-banner"></div>
+          </section>
+
+          <!-- Price Chart -->
+          <section class="stats-card chart-section" id="price">
+            <div>
+              <h2>Distribución acumulada de precios</h2>
+              <p class="stats-meta">Precios agrupados en categorías de 10€ (redondeados al alza). Muestra el número acumulado de relojes hasta cada precio.</p>
+            </div>
+            <div class="chart-container">
+              <canvas id="priceChart" aria-label="Distribución acumulada de precios" role="img"></canvas>
+            </div>
+            <div id="price-error" class="error-banner"></div>
+          </section>
+
+          <!-- Movement Type Chart -->
+          <section class="stats-card chart-section" id="movement-type">
+            <div>
+              <h2>Tipos de movimiento</h2>
+              <p class="stats-meta">Conteo de relojes por tipo de movimiento (automático, cuarzo, etc.).</p>
+            </div>
+            <div class="chart-container">
+              <canvas id="movementTypeChart" aria-label="Distribución por tipo de movimiento" role="img"></canvas>
+            </div>
+            <div id="movement-type-error" class="error-banner"></div>
+          </section>
+
+          <!-- Movement Company Chart -->
+          <section class="stats-card chart-section" id="movement-company">
+            <div>
+              <h2>Fabricante de calibre</h2>
+              <p class="stats-meta">Conteo de relojes por fabricante de movimiento (Seiko, Miyota, etc.).</p>
+            </div>
+            <div class="chart-container">
+              <canvas id="movementCompanyChart" aria-label="Distribución por fabricante de calibre" role="img"></canvas>
+            </div>
+            <div id="movement-company-error" class="error-banner"></div>
+          </section>
+        </div>
+
+        <!-- Summary Sidebar -->
+        <aside class="stats-card">
+          <div>
+            <h2>Resumen del dataset</h2>
+            <div class="badge">
+              <span class="badge-dot"></span>
+              Datos en vivo
+            </div>
+          </div>
+          <div class="summary-list">
+            <div class="summary-row">
+              <span class="summary-label">Total de relojes</span>
+              <span class="summary-value" id="stat-total-watches">–</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-label">Con ancho entre asas</span>
+              <span class="summary-value" id="stat-with-strap">–</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-label">Sin ancho entre asas</span>
+              <span class="summary-value" id="stat-missing-strap">–</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-label">Anchos distintos</span>
+              <span class="summary-value" id="stat-distinct-widths">–</span>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+
+    <footer>
+      <p>HdR Watch Zines · Vista de estadísticas. Datos cargados dinámicamente.</p>
+      <p><a href="https://github.com/jefebus/hdr-watch-zines" target="_blank">Repositorio en GitHub</a></p>
+    </footer>
+  </div>
+
+  <script>
+    // Global variable to store watch data
+    let globalWatchData = [];
+
+    // Chart selector functionality
+    function setupChartSelector() {
+      const select = document.getElementById('chartSelect');
+      const chartSections = document.querySelectorAll('.chart-section');
+
+      select.addEventListener('change', (e) => {
+        const selectedChart = e.target.value;
+        
+        // Hide all charts
+        chartSections.forEach(section => {
+          section.classList.remove('active');
+        });
+
+        // Show selected chart
+        const targetSection = document.getElementById(selectedChart);
+        if (targetSection) {
+          targetSection.classList.add('active');
+        }
+
+        // Update summary sidebar
+        updateSummaryForChart(selectedChart, globalWatchData);
+      });
+    }
+
+    function showError(elementId, message) {
+      const banner = document.getElementById(elementId);
+      if (!banner) return;
+      banner.textContent = message;
+      banner.classList.add("visible");
+    }
+
+    function updateSummaryForChart(chartId, watches) {
+      if (!Array.isArray(watches) || watches.length === 0) return;
+
+      const summaryList = document.querySelector('.summary-list');
+      if (!summaryList) return;
+
+      let html = '';
+
+      switch(chartId) {
+        case 'diameter-strap':
+          const withDiam = watches.filter(w => w.case_diameter != null && w.case_diameter !== "").length;
+          const withStrap = watches.filter(w => w.strap_width != null && w.strap_width !== "").length;
+          const withBoth = watches.filter(w => 
+            w.case_diameter != null && w.case_diameter !== "" &&
+            w.strap_width != null && w.strap_width !== ""
+          ).length;
+          html = `
+            <div class="summary-row">
+              <span class="summary-label">Total de relojes</span>
+              <span class="summary-value">${watches.length}</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-label">Con diámetro</span>
+              <span class="summary-value">${withDiam}</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-label">Con ancho de correa</span>
+              <span class="summary-value">${withStrap}</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-label">Con ambos datos</span>
+              <span class="summary-value">${withBoth}</span>
+            </div>
+          `;
+          break;
+
+        case 'diameter-height':
+          const withHeight = watches.filter(w => w.case_height != null && w.case_height !== "" && w.case_height > 0).length;
+          const withDiamHeight = watches.filter(w => 
+            w.case_diameter != null && w.case_diameter !== "" &&
+            w.case_height != null && w.case_height !== "" && w.case_height > 0
+          ).length;
+          html = `
+            <div class="summary-row">
+              <span class="summary-label">Total de relojes</span>
+              <span class="summary-value">${watches.length}</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-label">Con diámetro</span>
+              <span class="summary-value">${watches.filter(w => w.case_diameter != null && w.case_diameter !== "").length}</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-label">Con grosor</span>
+              <span class="summary-value">${withHeight}</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-label">Con ambos datos</span>
+              <span class="summary-value">${withDiamHeight}</span>
+            </div>
+          `;
+          break;
+
+        case 'yearly-cumulative':
+          const years = watches.filter(w => w.year != null && w.year !== "").map(w => w.year);
+          const minYear = years.length > 0 ? Math.min(...years) : 0;
+          const maxYear = years.length > 0 ? Math.max(...years) : 0;
+          const rswcCount = watches.filter(w => w.lane_id === "rswc").length;
+          const sysCount = watches.filter(w => w.lane_id === "sys").length;
+          const otrosCount = watches.filter(w => !w.lane_id || (w.lane_id !== "rswc" && w.lane_id !== "sys")).length;
+          html = `
+            <div class="summary-row">
+              <span class="summary-label">Total de relojes</span>
+              <span class="summary-value">${watches.length}</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-label">Periodo</span>
+              <span class="summary-value">${minYear} - ${maxYear}</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-label">RSWC</span>
+              <span class="summary-value">${rswcCount}</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-label">Sol y Sombra</span>
+              <span class="summary-value">${sysCount}</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-label">Otros</span>
+              <span class="summary-value">${otrosCount}</span>
+            </div>
+          `;
+          break;
+
+        case 'price':
+          const withPrice = watches.filter(w => w.price != null && w.price !== "" && typeof w.price === 'number').length;
+          const prices = watches.filter(w => w.price != null && w.price !== "" && typeof w.price === 'number').map(w => w.price);
+          const avgPrice = prices.length > 0 ? Math.round(prices.reduce((a, b) => a + b, 0) / prices.length) : 0;
+          const minPrice = prices.length > 0 ? Math.min(...prices) : 0;
+          const maxPrice = prices.length > 0 ? Math.max(...prices) : 0;
+          html = `
+            <div class="summary-row">
+              <span class="summary-label">Total de relojes</span>
+              <span class="summary-value">${watches.length}</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-label">Con precio</span>
+              <span class="summary-value">${withPrice}</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-label">Precio medio</span>
+              <span class="summary-value">${avgPrice}€</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-label">Rango</span>
+              <span class="summary-value">${minPrice}€ - ${maxPrice}€</span>
+            </div>
+          `;
+          break;
+
+        case 'movement-type':
+          const withMovType = watches.filter(w => w.movement_type != null && w.movement_type !== "").length;
+          const movTypes = [...new Set(watches.filter(w => w.movement_type != null && w.movement_type !== "").map(w => w.movement_type))];
+          const automatic = watches.filter(w => w.movement_type === "automatic").length;
+          const quartz = watches.filter(w => w.movement_type === "quartz").length;
+          const rswcMovType = watches.filter(w => w.lane_id === "rswc" && w.movement_type != null && w.movement_type !== "").length;
+          const sysMovType = watches.filter(w => w.lane_id === "sys" && w.movement_type != null && w.movement_type !== "").length;
+          html = `
+            <div class="summary-row">
+              <span class="summary-label">Total de relojes</span>
+              <span class="summary-value">${watches.length}</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-label">Con tipo de mov.</span>
+              <span class="summary-value">${withMovType}</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-label">Tipos distintos</span>
+              <span class="summary-value">${movTypes.length}</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-label">Automáticos</span>
+              <span class="summary-value">${automatic}</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-label">Cuarzo</span>
+              <span class="summary-value">${quartz}</span>
+            </div>
+          `;
+          break;
+
+        case 'movement-company':
+          const withMovComp = watches.filter(w => w.movement_company != null && w.movement_company !== "").length;
+          const movComps = [...new Set(watches.filter(w => w.movement_company != null && w.movement_company !== "").map(w => w.movement_company))];
+          const rswcMovComp = watches.filter(w => w.lane_id === "rswc" && w.movement_company != null && w.movement_company !== "").length;
+          const sysMovComp = watches.filter(w => w.lane_id === "sys" && w.movement_company != null && w.movement_company !== "").length;
+          html = `
+            <div class="summary-row">
+              <span class="summary-label">Total de relojes</span>
+              <span class="summary-value">${watches.length}</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-label">Con fabricante</span>
+              <span class="summary-value">${withMovComp}</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-label">Fabricantes distintos</span>
+              <span class="summary-value">${movComps.length}</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-label">RSWC</span>
+              <span class="summary-value">${rswcMovComp}</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-label">Sol y Sombra</span>
+              <span class="summary-value">${sysMovComp}</span>
+            </div>
+          `;
+          break;
+
+        default:
+          html = `
+            <div class="summary-row">
+              <span class="summary-label">Total de relojes</span>
+              <span class="summary-value">${watches.length}</span>
+            </div>
+          `;
+      }
+
+      summaryList.innerHTML = html;
+    }
+
+    function buildDiameterStrapCorrelation(watches) {
+      if (!Array.isArray(watches) || watches.length === 0) {
+        showError("diameter-strap-error", "No hay datos disponibles.");
+        return;
+      }
+
+      // Group data by lane_id
+      const rswcData = [];
+      const rswcInfo = [];
+      const sysData = [];
+      const sysInfo = [];
+      const otrosData = [];
+      const otrosInfo = [];
+
+      for (const w of watches) {
+        if (!w) continue;
+        
+        const diam = w.case_diameter;
+        const strap = w.strap_width;
+        
+        if (diam === null || diam === undefined || diam === "") continue;
+        if (strap === null || strap === undefined || strap === "") continue;
+        
+        const diamVal = typeof diam === "number" ? diam : parseFloat(String(diam).replace(",", "."));
+        const strapVal = typeof strap === "number" ? strap : parseFloat(String(strap).replace(",", "."));
+        
+        if (!Number.isFinite(diamVal) || !Number.isFinite(strapVal)) continue;
+        if (strapVal <= 0 || diamVal <= 0) continue;
+
+        const point = { x: diamVal, y: strapVal };
+        const info = {
+          id: w.id || "(sin id)",
+          model: w.model || w.title || w.id || "?",
+          brand: w.brand || ""
+        };
+
+        const laneId = w.lane_id || "otros";
+        if (laneId === "rswc") {
+          rswcData.push(point);
+          rswcInfo.push(info);
+        } else if (laneId === "sys") {
+          sysData.push(point);
+          sysInfo.push(info);
+        } else {
+          otrosData.push(point);
+          otrosInfo.push(info);
+        }
+      }
+
+      const totalCount = rswcData.length + sysData.length + otrosData.length;
+      if (totalCount === 0) {
+        showError("diameter-strap-error", "No se han encontrado relojes con ambos datos (diámetro y ancho de correa).");
+        return;
+      }
+
+      const allData = [...rswcData, ...sysData, ...otrosData];
+      const diameters = allData.map(d => d.x);
+      const straps = allData.map(d => d.y);
+      const minDiam = Math.min(...diameters);
+      const maxDiam = Math.max(...diameters);
+      const minStrap = Math.min(...straps);
+      const maxStrap = Math.max(...straps);
+
+      const ctx = document.getElementById("diameterStrapChart");
+      if (!ctx) {
+        showError("diameter-strap-error", "No se ha encontrado el lienzo del gráfico.");
+        return;
+      }
+
+      const datasets = [];
+      const allInfo = [];
+
+      if (rswcData.length > 0) {
+        datasets.push({
+          label: "RSWC",
+          data: rswcData,
+          backgroundColor: "rgba(218, 165, 32, 0.7)",
+          borderColor: "rgba(218, 165, 32, 0.95)",
+          borderWidth: 1.5,
+          pointRadius: 5,
+          pointHoverRadius: 7,
+          pointHoverBackgroundColor: "rgba(218, 165, 32, 0.95)",
+          dataStartIndex: 0
+        });
+        allInfo.push(...rswcInfo);
+      }
+
+      if (sysData.length > 0) {
+        datasets.push({
+          label: "Sol y Sombra",
+          data: sysData,
+          backgroundColor: "rgba(139, 92, 246, 0.7)",
+          borderColor: "rgba(139, 92, 246, 0.95)",
+          borderWidth: 1.5,
+          pointRadius: 5,
+          pointHoverRadius: 7,
+          pointHoverBackgroundColor: "rgba(139, 92, 246, 0.95)",
+          dataStartIndex: rswcData.length
+        });
+        allInfo.push(...sysInfo);
+      }
+
+      if (otrosData.length > 0) {
+        datasets.push({
+          label: "Otros",
+          data: otrosData,
+          backgroundColor: "rgba(239, 68, 68, 0.7)",
+          borderColor: "rgba(239, 68, 68, 0.95)",
+          borderWidth: 1.5,
+          pointRadius: 5,
+          pointHoverRadius: 7,
+          pointHoverBackgroundColor: "rgba(239, 68, 68, 0.95)",
+          dataStartIndex: rswcData.length + sysData.length
+        });
+        allInfo.push(...otrosInfo);
+      }
+
+      new Chart(ctx, {
+        type: "scatter",
+        data: {
+          datasets: datasets,
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          layout: { padding: { top: 10, right: 16, left: 4, bottom: 8 } },
+          scales: {
+            x: {
+              type: 'linear',
+              min: Math.floor(minDiam - 2),
+              max: Math.ceil(maxDiam + 2),
+              ticks: {
+                stepSize: 2,
+                color: "#9ca3af",
+                font: { size: 10 },
+              },
+              title: { display: true, text: "Diámetro de caja (mm)", color: "#e5e7eb", font: { size: 11, weight: "500" } },
+              grid: { color: "rgba(55, 65, 81, 0.3)" },
+            },
+            y: {
+              type: 'linear',
+              min: Math.floor(minStrap - 1),
+              max: Math.ceil(maxStrap + 1),
+              ticks: {
+                stepSize: 1,
+                color: "#9ca3af",
+                font: { size: 10 },
+              },
+              title: { display: true, text: "Ancho de correa (mm)", color: "#e5e7eb", font: { size: 11, weight: "500" } },
+              grid: { color: "rgba(55, 65, 81, 0.6)" },
+            },
+          },
+          plugins: {
+            legend: { 
+              display: true,
+              position: 'top',
+              labels: { color: "#e5e7eb", font: { size: 10 } }
+            },
+            tooltip: {
+              backgroundColor: "rgba(15, 23, 42, 0.96)",
+              borderColor: "rgba(148, 163, 184, 0.7)",
+              borderWidth: 1,
+              padding: 10,
+              titleColor: "#e5e7eb",
+              bodyColor: "#e5e7eb",
+              callbacks: {
+                title(items) {
+                  const dataset = items[0].dataset;
+                  const idx = items[0].dataIndex + (dataset.dataStartIndex || 0);
+                  const info = allInfo[idx];
+                  return info ? info.id : "?";
+                },
+                label(context) {
+                  const dataset = context.dataset;
+                  const idx = context.dataIndex + (dataset.dataStartIndex || 0);
+                  const info = allInfo[idx];
+                  const displayName = info && info.brand ? `${info.brand} ${info.model}` : (info ? info.model : "?");
+                  return displayName;
+                },
+                afterLabel(context) {
+                  const diam = context.parsed.x;
+                  const strap = context.parsed.y;
+                  return `Diámetro: ${diam}mm, Ancho: ${strap}mm`;
+                },
+              },
+            },
+          },
+        },
+      });
+    }
+
+    function buildDiameterHeightCorrelation(watches) {
+      if (!Array.isArray(watches) || watches.length === 0) {
+        showError("diameter-height-error", "No hay datos disponibles.");
+        return;
+      }
+
+      // Group data by lane_id
+      const rswcData = [];
+      const rswcInfo = [];
+      const sysData = [];
+      const sysInfo = [];
+      const otrosData = [];
+      const otrosInfo = [];
+
+      for (const w of watches) {
+        if (!w) continue;
+        
+        const diam = w.case_diameter;
+        const height = w.case_height;
+        
+        if (diam === null || diam === undefined || diam === "") continue;
+        if (height === null || height === undefined || height === "") continue;
+        
+        const diamVal = typeof diam === "number" ? diam : parseFloat(String(diam).replace(",", "."));
+        const heightVal = typeof height === "number" ? height : parseFloat(String(height).replace(",", "."));
+        
+        if (!Number.isFinite(diamVal) || !Number.isFinite(heightVal)) continue;
+        if (heightVal <= 0 || diamVal <= 0) continue;
+
+        const point = { x: diamVal, y: heightVal };
+        const info = {
+          id: w.id || "(sin id)",
+          model: w.model || w.title || w.id || "?",
+          brand: w.brand || ""
+        };
+
+        const laneId = w.lane_id || "otros";
+        if (laneId === "rswc") {
+          rswcData.push(point);
+          rswcInfo.push(info);
+        } else if (laneId === "sys") {
+          sysData.push(point);
+          sysInfo.push(info);
+        } else {
+          otrosData.push(point);
+          otrosInfo.push(info);
+        }
+      }
+
+      const totalCount = rswcData.length + sysData.length + otrosData.length;
+      if (totalCount === 0) {
+        showError("diameter-height-error", "No se han encontrado relojes con ambos datos (diámetro y grosor).");
+        return;
+      }
+
+      const allData = [...rswcData, ...sysData, ...otrosData];
+      const diameters = allData.map(d => d.x);
+      const heights = allData.map(d => d.y);
+      const minDiam = Math.min(...diameters);
+      const maxDiam = Math.max(...diameters);
+      const minHeight = Math.min(...heights);
+      const maxHeight = Math.max(...heights);
+
+      const ctx = document.getElementById("diameterHeightChart");
+      if (!ctx) {
+        showError("diameter-height-error", "No se ha encontrado el lienzo del gráfico.");
+        return;
+      }
+
+      const datasets = [];
+      const allInfo = [];
+
+      if (rswcData.length > 0) {
+        datasets.push({
+          label: "RSWC",
+          data: rswcData,
+          backgroundColor: "rgba(218, 165, 32, 0.7)",
+          borderColor: "rgba(218, 165, 32, 0.95)",
+          borderWidth: 1.5,
+          pointRadius: 5,
+          pointHoverRadius: 7,
+          pointHoverBackgroundColor: "rgba(218, 165, 32, 0.95)",
+          dataStartIndex: 0
+        });
+        allInfo.push(...rswcInfo);
+      }
+
+      if (sysData.length > 0) {
+        datasets.push({
+          label: "Sol y Sombra",
+          data: sysData,
+          backgroundColor: "rgba(139, 92, 246, 0.7)",
+          borderColor: "rgba(139, 92, 246, 0.95)",
+          borderWidth: 1.5,
+          pointRadius: 5,
+          pointHoverRadius: 7,
+          pointHoverBackgroundColor: "rgba(139, 92, 246, 0.95)",
+          dataStartIndex: rswcData.length
+        });
+        allInfo.push(...sysInfo);
+      }
+
+      if (otrosData.length > 0) {
+        datasets.push({
+          label: "Otros",
+          data: otrosData,
+          backgroundColor: "rgba(239, 68, 68, 0.7)",
+          borderColor: "rgba(239, 68, 68, 0.95)",
+          borderWidth: 1.5,
+          pointRadius: 5,
+          pointHoverRadius: 7,
+          pointHoverBackgroundColor: "rgba(239, 68, 68, 0.95)",
+          dataStartIndex: rswcData.length + sysData.length
+        });
+        allInfo.push(...otrosInfo);
+      }
+
+      new Chart(ctx, {
+        type: "scatter",
+        data: {
+          datasets: datasets,
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          layout: { padding: { top: 10, right: 16, left: 4, bottom: 8 } },
+          scales: {
+            x: {
+              type: 'linear',
+              min: Math.floor(minDiam - 2),
+              max: Math.ceil(maxDiam + 2),
+              ticks: {
+                stepSize: 2,
+                color: "#9ca3af",
+                font: { size: 10 },
+              },
+              title: { display: true, text: "Diámetro de caja (mm)", color: "#e5e7eb", font: { size: 11, weight: "500" } },
+              grid: { color: "rgba(55, 65, 81, 0.3)" },
+            },
+            y: {
+              type: 'linear',
+              min: Math.floor(minHeight - 1),
+              max: Math.ceil(maxHeight + 1),
+              ticks: {
+                stepSize: 0.5,
+                color: "#9ca3af",
+                font: { size: 10 },
+                callback: function(value) {
+                  return value % 1 === 0 ? value : value.toFixed(1);
+                }
+              },
+              title: { display: true, text: "Grosor de caja (mm)", color: "#e5e7eb", font: { size: 11, weight: "500" } },
+              grid: { color: "rgba(55, 65, 81, 0.6)" },
+            },
+          },
+          plugins: {
+            legend: { 
+              display: true,
+              position: 'top',
+              labels: { color: "#e5e7eb", font: { size: 10 } }
+            },
+            tooltip: {
+              backgroundColor: "rgba(15, 23, 42, 0.96)",
+              borderColor: "rgba(148, 163, 184, 0.7)",
+              borderWidth: 1,
+              padding: 10,
+              titleColor: "#e5e7eb",
+              bodyColor: "#e5e7eb",
+              callbacks: {
+                title(items) {
+                  const dataset = items[0].dataset;
+                  const idx = items[0].dataIndex + (dataset.dataStartIndex || 0);
+                  const info = allInfo[idx];
+                  return info ? info.id : "?";
+                },
+                label(context) {
+                  const dataset = context.dataset;
+                  const idx = context.dataIndex + (dataset.dataStartIndex || 0);
+                  const info = allInfo[idx];
+                  const displayName = info && info.brand ? `${info.brand} ${info.model}` : (info ? info.model : "?");
+                  return displayName;
+                },
+                afterLabel(context) {
+                  const diam = context.parsed.x;
+                  const height = context.parsed.y;
+                  return `Diámetro: ${diam}mm, Grosor: ${height}mm`;
+                },
+              },
+            },
+          },
+        },
+      });
+    }
+
+    function buildYearlyAccumulatedChart(watches) {
+      if (!Array.isArray(watches) || watches.length === 0) {
+        showError("yearly-error", "No hay datos disponibles.");
+        return;
+      }
+
+      // Group by lane_id and year
+      const rswcByYear = Object.create(null);
+      const sysByYear = Object.create(null);
+      const otrosByYear = Object.create(null);
+      const allYears = new Set();
+
+      for (const w of watches) {
+        if (!w) continue;
+        const year = w.year;
+        if (year === null || year === undefined || year === "") continue;
+        if (typeof year !== "number" || !Number.isFinite(year)) continue;
+
+        allYears.add(year);
+        const laneId = w.lane_id || "otros";
+        const key = year.toString();
+
+        if (laneId === "rswc") {
+          rswcByYear[key] = (rswcByYear[key] || 0) + 1;
+        } else if (laneId === "sys") {
+          sysByYear[key] = (sysByYear[key] || 0) + 1;
+        } else {
+          otrosByYear[key] = (otrosByYear[key] || 0) + 1;
+        }
+      }
+
+      if (allYears.size === 0) {
+        showError("yearly-error", "No se han encontrado años válidos.");
+        return;
+      }
+
+      const sortedYears = Array.from(allYears).sort((a, b) => a - b);
+      const minYear = Math.min(...sortedYears);
+      const maxYear = Math.max(...sortedYears);
+
+      // Calculate cumulative data for each lane (for stacking)
+      const rswcData = [];
+      const sysData = [];
+      const otrosData = [];
+      let rswcCumulative = 0;
+      let sysCumulative = 0;
+      let otrosCumulative = 0;
+
+      for (const year of sortedYears) {
+        const key = year.toString();
+        rswcCumulative += rswcByYear[key] || 0;
+        sysCumulative += sysByYear[key] || 0;
+        otrosCumulative += otrosByYear[key] || 0;
+
+        // Push data for every year to maintain continuity
+        rswcData.push({ x: year, y: rswcCumulative });
+        sysData.push({ x: year, y: sysCumulative });
+        otrosData.push({ x: year, y: otrosCumulative });
+      }
+
+      const ctx = document.getElementById("yearlyChart");
+      if (!ctx) {
+        showError("yearly-error", "No se ha encontrado el lienzo del gráfico.");
+        return;
+      }
+
+      const datasets = [];
+
+      // Add datasets in stacking order (bottom to top)
+      if (otrosData.length > 0 && otrosCumulative > 0) {
+        datasets.push({
+          label: "Otros",
+          data: otrosData,
+          backgroundColor: "rgba(239, 68, 68, 0.6)",
+          borderColor: "rgba(239, 68, 68, 0.95)",
+          borderWidth: 2,
+          pointRadius: 4,
+          pointHoverRadius: 6,
+          pointHoverBackgroundColor: "rgba(220, 38, 38, 0.95)",
+          tension: 0,
+          fill: true,
+        });
+      }
+
+      if (sysData.length > 0 && sysCumulative > 0) {
+        datasets.push({
+          label: "Sol y Sombra",
+          data: sysData,
+          backgroundColor: "rgba(139, 92, 246, 0.6)",
+          borderColor: "rgba(139, 92, 246, 0.95)",
+          borderWidth: 2,
+          pointRadius: 4,
+          pointHoverRadius: 6,
+          pointHoverBackgroundColor: "rgba(109, 40, 217, 0.95)",
+          tension: 0,
+          fill: true,
+        });
+      }
+
+      if (rswcData.length > 0 && rswcCumulative > 0) {
+        datasets.push({
+          label: "RSWC",
+          data: rswcData,
+          backgroundColor: "rgba(218, 165, 32, 0.6)",
+          borderColor: "rgba(218, 165, 32, 0.95)",
+          borderWidth: 2,
+          pointRadius: 4,
+          pointHoverRadius: 6,
+          pointHoverBackgroundColor: "rgba(184, 134, 11, 0.95)",
+          tension: 0,
+          fill: true,
+        });
+      }
+
+      new Chart(ctx, {
+        type: "line",
+        data: {
+          datasets: datasets,
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          interaction: {
+            mode: 'index',
+            intersect: false,
+          },
+          layout: { padding: { top: 10, right: 16, left: 4, bottom: 8 } },
+          scales: {
+            x: {
+              type: 'linear',
+              min: minYear - 1,
+              max: maxYear + 1,
+              ticks: {
+                stepSize: 1,
+                color: "#9ca3af",
+                font: { size: 10 },
+                callback: function(value) {
+                  return Number.isInteger(value) ? value : null;
+                }
+              },
+              title: { display: true, text: "Año", color: "#e5e7eb", font: { size: 11, weight: "500" } },
+              grid: { color: "rgba(55, 65, 81, 0.3)" },
+            },
+            y: {
+              stacked: true,
+              beginAtZero: true,
+              title: { display: true, text: "Número de relojes (acumulado)", color: "#e5e7eb", font: { size: 11, weight: "500" } },
+              ticks: { 
+                color: "#9ca3af", 
+                precision: 0, 
+                stepSize: 5, 
+                font: { size: 10 },
+                callback: function(value) {
+                  return Number.isInteger(value) ? value : null;
+                }
+              },
+              grid: { color: "rgba(55, 65, 81, 0.6)" },
+            },
+          },
+          plugins: {
+            legend: { 
+              display: true,
+              position: 'top',
+              labels: { color: "#e5e7eb", font: { size: 10 } }
+            },
+            tooltip: {
+              backgroundColor: "rgba(15, 23, 42, 0.96)",
+              borderColor: "rgba(148, 163, 184, 0.7)",
+              borderWidth: 1,
+              padding: 10,
+              titleColor: "#e5e7eb",
+              bodyColor: "#e5e7eb",
+              callbacks: {
+                title(items) { 
+                  const year = items[0].parsed.x;
+                  return `Hasta ${year}`; 
+                },
+                label(context) { 
+                  const cumulative = context.parsed.y;
+                  const lane = context.dataset.label;
+                  return `${lane}: ${cumulative} ${cumulative === 1 ? "reloj" : "relojes"}`;
+                },
+                footer(items) {
+                  // Calculate total across all lanes
+                  const total = items.reduce((sum, item) => sum + item.parsed.y, 0);
+                  return `Total: ${total} ${total === 1 ? "reloj" : "relojes"}`;
+                }
+              },
+            },
+          },
+        },
+      });
+    }
+
+    function buildStrapWidthHistogram(watches) {
+      if (!Array.isArray(watches) || watches.length === 0) {
+        showError("strap-width-error", "No hay datos disponibles.");
+        return;
+      }
+
+      const bucketCounts = Object.create(null);
+      const idsByWidth = Object.create(null);
+
+      for (const w of watches) {
+        if (!w) continue;
+        let raw = w.strap_width;
+        if (raw === null || raw === undefined || raw === "") continue;
+        if (typeof raw !== "number") {
+          raw = parseFloat(String(raw).replace(",", "."));
+        }
+        if (!Number.isFinite(raw)) continue;
+
+        const key = raw.toString();
+        bucketCounts[key] = (bucketCounts[key] || 0) + 1;
+        if (!idsByWidth[key]) idsByWidth[key] = [];
+        idsByWidth[key].push(w.id || "(no id)");
+      }
+
+      if (Object.keys(bucketCounts).length === 0) {
+        showError("strap-width-error", "No se han encontrado anchos de correa válidos.");
+        return;
+      }
+
+      // Prepare line data points
+      const widths = Object.keys(bucketCounts).map(Number).sort((a, b) => a - b);
+      const lineData = widths.map(w => ({ x: w, y: bucketCounts[w.toString()] }));
+      
+      const minWidth = Math.min(...widths);
+      const maxWidth = Math.max(...widths);
+
+      const ctx = document.getElementById("strapWidthChart");
+      if (!ctx) {
+        showError("strap-width-error", "No se ha encontrado el lienzo del gráfico.");
+        return;
+      }
+
+      new Chart(ctx, {
+        type: "line",
+        data: {
+          datasets: [{
+            label: "Relojes",
+            data: lineData,
+            backgroundColor: "rgba(218, 165, 32, 0.7)",
+            borderColor: "rgba(218, 165, 32, 0.95)",
+            borderWidth: 2,
+            pointRadius: 6,
+            pointHoverRadius: 8,
+            pointHoverBackgroundColor: "rgba(184, 134, 11, 0.95)",
+            tension: 0,
+            fill: false,
+          }],
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          layout: { padding: { top: 10, right: 16, left: 4, bottom: 8 } },
+          scales: {
+            x: {
+              type: 'linear',
+              min: Math.floor(minWidth - 1),
+              max: Math.ceil(maxWidth + 1),
+              ticks: {
+                stepSize: 0.5,
+                color: "#9ca3af",
+                font: { size: 10 },
+                callback: function(value) {
+                  return value % 1 === 0 ? value : value.toFixed(1);
+                }
+              },
+              title: { display: true, text: "Ancho de correa (mm)", color: "#e5e7eb", font: { size: 11, weight: "500" } },
+              grid: { color: "rgba(55, 65, 81, 0.3)" },
+            },
+            y: {
+              beginAtZero: true,
+              title: { display: true, text: "Número de relojes", color: "#e5e7eb", font: { size: 11, weight: "500" } },
+              ticks: { 
+                color: "#9ca3af", 
+                precision: 0, 
+                stepSize: 1, 
+                font: { size: 10 },
+                callback: function(value) {
+                  return Number.isInteger(value) ? value : null;
+                }
+              },
+              grid: { color: "rgba(55, 65, 81, 0.6)" },
+            },
+          },
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              backgroundColor: "rgba(15, 23, 42, 0.96)",
+              borderColor: "rgba(148, 163, 184, 0.7)",
+              borderWidth: 1,
+              padding: 10,
+              titleColor: "#e5e7eb",
+              bodyColor: "#e5e7eb",
+              callbacks: {
+                title(items) { 
+                  const width = items[0].parsed.x;
+                  return `Ancho de correa: ${width} mm`; 
+                },
+                label(context) { 
+                  return `${context.parsed.y} ${context.parsed.y === 1 ? "reloj" : "relojes"}`; 
+                },
+                afterBody(items) {
+                  const width = items[0].parsed.x.toString();
+                  const ids = idsByWidth[width] || [];
+                  if (!ids.length) return "";
+                  const shown = ids.slice(0, 14);
+                  const remaining = ids.length - shown.length;
+                  return `IDs: ${shown.join(", ")}${remaining > 0 ? ` … (+${remaining} más)` : ""}`;
+                },
+              },
+            },
+          },
+        },
+      });
+    }
+
+    function buildCaseHeightLine(watches) {
+      if (!Array.isArray(watches) || watches.length === 0) {
+        showError("case-height-error", "No hay datos disponibles.");
+        return;
+      }
+
+      const heightCounts = Object.create(null);
+      const idsByHeight = Object.create(null);
+
+      for (const w of watches) {
+        if (!w) continue;
+        const height = w.case_height;
+        if (height === null || height === undefined || height === "") continue;
+        if (typeof height !== "number" || !Number.isFinite(height)) continue;
+
+        const key = height.toString();
+        heightCounts[key] = (heightCounts[key] || 0) + 1;
+        if (!idsByHeight[key]) idsByHeight[key] = [];
+        idsByHeight[key].push(w.id || "(sin id)");
+      }
+
+      if (Object.keys(heightCounts).length === 0) {
+        showError("case-height-error", "No se han encontrado grosores válidos.");
+        return;
+      }
+
+      const heights = Object.keys(heightCounts).map(Number).sort((a, b) => a - b);
+      const lineData = heights.map(h => ({ x: h, y: heightCounts[h.toString()] }));
+      
+      const minHeight = Math.min(...heights);
+      const maxHeight = Math.max(...heights);
+
+      const ctx = document.getElementById("caseHeightChart");
+      if (!ctx) {
+        showError("case-height-error", "No se ha encontrado el lienzo del gráfico.");
+        return;
+      }
+
+      new Chart(ctx, {
+        type: "line",
+        data: {
+          datasets: [{
+            label: "Relojes",
+            data: lineData,
+            backgroundColor: "rgba(52, 211, 153, 0.7)",
+            borderColor: "rgba(16, 185, 129, 0.95)",
+            borderWidth: 2,
+            pointRadius: 6,
+            pointHoverRadius: 8,
+            pointHoverBackgroundColor: "rgba(16, 185, 129, 0.95)",
+            tension: 0,
+            fill: false,
+          }],
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          layout: { padding: { top: 10, right: 16, left: 4, bottom: 8 } },
+          scales: {
+            x: {
+              type: 'linear',
+              min: Math.floor(minHeight - 1),
+              max: Math.ceil(maxHeight + 1),
+              ticks: {
+                stepSize: 0.5,
+                color: "#9ca3af",
+                font: { size: 10 },
+                callback: function(value) {
+                  return value % 1 === 0 ? value : value.toFixed(1);
+                }
+              },
+              title: { display: true, text: "Grosor de caja (mm)", color: "#e5e7eb", font: { size: 11, weight: "500" } },
+              grid: { color: "rgba(55, 65, 81, 0.3)" },
+            },
+            y: {
+              beginAtZero: true,
+              title: { display: true, text: "Número de relojes", color: "#e5e7eb", font: { size: 11, weight: "500" } },
+              ticks: { 
+                color: "#9ca3af", 
+                precision: 0, 
+                stepSize: 1, 
+                font: { size: 10 },
+                callback: function(value) {
+                  return Number.isInteger(value) ? value : null;
+                }
+              },
+              grid: { color: "rgba(55, 65, 81, 0.6)" },
+            },
+          },
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              backgroundColor: "rgba(15, 23, 42, 0.96)",
+              borderColor: "rgba(148, 163, 184, 0.7)",
+              borderWidth: 1,
+              padding: 10,
+              titleColor: "#e5e7eb",
+              bodyColor: "#e5e7eb",
+              callbacks: {
+                title(items) { 
+                  const height = items[0].parsed.x;
+                  return `Grosor: ${height} mm`; 
+                },
+                label(context) { 
+                  return `${context.parsed.y} ${context.parsed.y === 1 ? "reloj" : "relojes"}`; 
+                },
+                afterBody(items) {
+                  const height = items[0].parsed.x.toString();
+                  const ids = idsByHeight[height] || [];
+                  if (!ids.length) return "";
+                  const shown = ids.slice(0, 14);
+                  const remaining = ids.length - shown.length;
+                  return `IDs: ${shown.join(", ")}${remaining > 0 ? ` … (+${remaining} más)` : ""}`;
+                },
+              },
+            },
+          },
+        },
+      });
+    }
+
+    function buildPriceLine(watches) {
+      if (!Array.isArray(watches) || watches.length === 0) {
+        showError("price-error", "No hay datos disponibles.");
+        return;
+      }
+
+      const priceCounts = Object.create(null);
+      const idsByPrice = Object.create(null);
+
+      for (const w of watches) {
+        if (!w) continue;
+        const price = w.price;
+        if (price === null || price === undefined || price === "") continue;
+        if (typeof price !== "number" || !Number.isFinite(price)) continue;
+
+        // Round up to nearest 10€
+        const roundedPrice = Math.ceil(price / 10) * 10;
+        const key = roundedPrice.toString();
+        
+        priceCounts[key] = (priceCounts[key] || 0) + 1;
+        if (!idsByPrice[key]) idsByPrice[key] = [];
+        idsByPrice[key].push(w.id || "(sin id)");
+      }
+
+      if (Object.keys(priceCounts).length === 0) {
+        showError("price-error", "No se han encontrado precios válidos.");
+        return;
+      }
+
+      // Sort prices and calculate cumulative counts
+      const sortedPrices = Object.keys(priceCounts).map(Number).sort((a, b) => a - b);
+      const minPrice = Math.min(...sortedPrices);
+      const maxPrice = Math.max(...sortedPrices);
+      
+      // Create cumulative data
+      const cumulativeData = [];
+      let cumulative = 0;
+      
+      for (const price of sortedPrices) {
+        cumulative += priceCounts[price.toString()];
+        cumulativeData.push({ x: price, y: cumulative });
+      }
+
+      const ctx = document.getElementById("priceChart");
+      if (!ctx) {
+        showError("price-error", "No se ha encontrado el lienzo del gráfico.");
+        return;
+      }
+
+      new Chart(ctx, {
+        type: "line",
+        data: {
+          datasets: [{
+            label: "Relojes acumulados",
+            data: cumulativeData,
+            backgroundColor: "rgba(218, 165, 32, 0.7)",
+            borderColor: "rgba(218, 165, 32, 0.95)",
+            borderWidth: 2,
+            pointRadius: 6,
+            pointHoverRadius: 8,
+            pointHoverBackgroundColor: "rgba(184, 134, 11, 0.95)",
+            tension: 0,
+            fill: false,
+          }],
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          layout: { padding: { top: 10, right: 16, left: 4, bottom: 8 } },
+          scales: {
+            x: {
+              type: 'linear',
+              min: Math.floor((minPrice - 10) / 10) * 10,
+              max: Math.ceil((maxPrice + 10) / 10) * 10,
+              ticks: {
+                stepSize: 10,
+                color: "#9ca3af",
+                font: { size: 10 },
+              },
+              title: { display: true, text: "Precio (€)", color: "#e5e7eb", font: { size: 11, weight: "500" } },
+              grid: { color: "rgba(55, 65, 81, 0.3)" },
+            },
+            y: {
+              beginAtZero: true,
+              title: { display: true, text: "Número de relojes (acumulado)", color: "#e5e7eb", font: { size: 11, weight: "500" } },
+              ticks: { 
+                color: "#9ca3af", 
+                precision: 0, 
+                stepSize: 1, 
+                font: { size: 10 },
+                callback: function(value) {
+                  return Number.isInteger(value) ? value : null;
+                }
+              },
+              grid: { color: "rgba(55, 65, 81, 0.6)" },
+            },
+          },
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              backgroundColor: "rgba(15, 23, 42, 0.96)",
+              borderColor: "rgba(148, 163, 184, 0.7)",
+              borderWidth: 1,
+              padding: 10,
+              titleColor: "#e5e7eb",
+              bodyColor: "#e5e7eb",
+              callbacks: {
+                title(items) { 
+                  const price = items[0].parsed.x;
+                  return `Hasta ${price}€`; 
+                },
+                label(context) { 
+                  const cumulative = context.parsed.y;
+                  const price = context.parsed.x;
+                  const atThisPrice = priceCounts[price.toString()] || 0;
+                  return [
+                    `Total acumulado: ${cumulative} ${cumulative === 1 ? "reloj" : "relojes"}`,
+                    `En categoría ${price}€: ${atThisPrice} ${atThisPrice === 1 ? "reloj" : "relojes"}`
+                  ];
+                },
+                afterBody(items) {
+                  const price = items[0].parsed.x.toString();
+                  const ids = idsByPrice[price] || [];
+                  if (!ids.length) return "";
+                  const shown = ids.slice(0, 14);
+                  const remaining = ids.length - shown.length;
+                  return `IDs en ${price}€: ${shown.join(", ")}${remaining > 0 ? ` … (+${remaining} más)` : ""}`;
+                },
+              },
+            },
+          },
+        },
+      });
+    }
+
+    function buildCaseDiameterScatter(watches) {
+      if (!Array.isArray(watches) || watches.length === 0) {
+        showError("case-diameter-error", "No hay datos disponibles.");
+        return;
+      }
+
+      const diameterCounts = Object.create(null);
+      const idsByDiameter = Object.create(null);
+
+      for (const w of watches) {
+        if (!w) continue;
+        const diam = w.case_diameter;
+        if (diam === null || diam === undefined || diam === "") continue;
+        if (typeof diam !== "number" || !Number.isFinite(diam)) continue;
+
+        const key = diam.toString();
+        diameterCounts[key] = (diameterCounts[key] || 0) + 1;
+        if (!idsByDiameter[key]) idsByDiameter[key] = [];
+        idsByDiameter[key].push(w.id || "(sin id)");
+      }
+
+      if (Object.keys(diameterCounts).length === 0) {
+        showError("case-diameter-error", "No se han encontrado diámetros válidos.");
+        return;
+      }
+
+      // Prepare scatter data points
+      const scatterData = [];
+      const diameters = Object.keys(diameterCounts).map(Number).sort((a, b) => a - b);
+      
+      for (const diam of diameters) {
+        scatterData.push({ x: diam, y: diameterCounts[diam.toString()] });
+      }
+
+      const minDiam = Math.min(...diameters);
+      const maxDiam = Math.max(...diameters);
+
+      const ctx = document.getElementById("caseDiameterChart");
+      if (!ctx) {
+        showError("case-diameter-error", "No se ha encontrado el lienzo del gráfico.");
+        return;
+      }
+
+      new Chart(ctx, {
+        type: "line",
+        data: {
+          datasets: [{
+            label: "Relojes",
+            data: scatterData,
+            backgroundColor: "rgba(56, 189, 248, 0.7)",
+            borderColor: "rgba(56, 189, 248, 0.95)",
+            borderWidth: 2,
+            pointRadius: 6,
+            pointHoverRadius: 8,
+            pointHoverBackgroundColor: "rgba(56, 189, 248, 0.95)",
+            tension: 0,
+            fill: false,
+          }],
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          layout: { padding: { top: 10, right: 16, left: 4, bottom: 8 } },
+          scales: {
+            x: {
+              type: 'linear',
+              min: Math.floor(minDiam - 1),
+              max: Math.ceil(maxDiam + 1),
+              ticks: {
+                stepSize: 0.5,
+                color: "#9ca3af",
+                font: { size: 10 },
+                callback: function(value) {
+                  return value % 1 === 0 ? value : value.toFixed(1);
+                }
+              },
+              title: { display: true, text: "Diámetro de caja (mm)", color: "#e5e7eb", font: { size: 11, weight: "500" } },
+              grid: { color: "rgba(55, 65, 81, 0.3)" },
+            },
+            y: {
+              beginAtZero: true,
+              title: { display: true, text: "Número de relojes", color: "#e5e7eb", font: { size: 11, weight: "500" } },
+              ticks: { 
+                color: "#9ca3af", 
+                precision: 0, 
+                stepSize: 1, 
+                font: { size: 10 },
+                callback: function(value) {
+                  return Number.isInteger(value) ? value : null;
+                }
+              },
+              grid: { color: "rgba(55, 65, 81, 0.6)" },
+            },
+          },
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              backgroundColor: "rgba(15, 23, 42, 0.96)",
+              borderColor: "rgba(148, 163, 184, 0.7)",
+              borderWidth: 1,
+              padding: 10,
+              titleColor: "#e5e7eb",
+              bodyColor: "#e5e7eb",
+              callbacks: {
+                title(items) { 
+                  const diam = items[0].parsed.x;
+                  return `Diámetro: ${diam} mm`; 
+                },
+                label(context) { 
+                  return `${context.parsed.y} ${context.parsed.y === 1 ? "reloj" : "relojes"}`; 
+                },
+                afterBody(items) {
+                  const diam = items[0].parsed.x.toString();
+                  const ids = idsByDiameter[diam] || [];
+                  if (!ids.length) return "";
+                  const shown = ids.slice(0, 14);
+                  const remaining = ids.length - shown.length;
+                  return `IDs: ${shown.join(", ")}${remaining > 0 ? ` … (+${remaining} más)` : ""}`;
+                },
+              },
+            },
+          },
+        },
+      });
+    }
+
+    function buildChart(watches, config) {
+      const { chartId, errorId, field, title, xLabel, yLabel, color, borderColor } = config;
+      
+      if (!Array.isArray(watches) || watches.length === 0) {
+        showError(errorId, "No hay datos disponibles.");
+        return;
+      }
+
+      // Group by value and lane_id
+      const rswcCounts = Object.create(null);
+      const sysCounts = Object.create(null);
+      const otrosCounts = Object.create(null);
+      const allValues = new Set();
+
+      for (const w of watches) {
+        if (!w) continue;
+        let raw = w[field];
+        if (raw === null || raw === undefined || raw === "") continue;
+        
+        if (typeof raw !== "number" && typeof raw !== "string") continue;
+        
+        const value = typeof raw === "number" ? raw : (typeof raw === "string" ? raw.trim() : parseFloat(String(raw).replace(",", ".")));
+        if (typeof value === "number" && !Number.isFinite(value)) continue;
+        if (typeof value === "string" && !value) continue;
+
+        const key = value.toString();
+        allValues.add(key);
+        
+        const laneId = w.lane_id || "otros";
+        if (laneId === "rswc") {
+          rswcCounts[key] = (rswcCounts[key] || 0) + 1;
+        } else if (laneId === "sys") {
+          sysCounts[key] = (sysCounts[key] || 0) + 1;
+        } else {
+          otrosCounts[key] = (otrosCounts[key] || 0) + 1;
+        }
+      }
+
+      if (allValues.size === 0) {
+        showError(errorId, `No se han encontrado valores válidos para ${field}.`);
+        return;
+      }
+
+      const isNumeric = typeof Object.keys(Object.fromEntries(allValues.entries())).map(k => parseFloat(k))[0] === "number" && Number.isFinite(parseFloat(Array.from(allValues)[0]));
+      const labels = isNumeric 
+        ? Array.from(allValues).map(Number).filter((v) => Number.isFinite(v)).sort((a, b) => a - b).map(String)
+        : Array.from(allValues).sort((a, b) => a.localeCompare(b));
+
+      const ctx = document.getElementById(chartId);
+      if (!ctx) {
+        showError(errorId, "No se ha encontrado el lienzo del gráfico.");
+        return;
+      }
+
+      const datasets = [];
+
+      // Create datasets for each lane_id with their specific colors
+      const rswcData = labels.map(label => rswcCounts[label] || 0);
+      const sysData = labels.map(label => sysCounts[label] || 0);
+      const otrosData = labels.map(label => otrosCounts[label] || 0);
+
+      if (rswcData.some(v => v > 0)) {
+        datasets.push({
+          label: "RSWC",
+          data: rswcData,
+          backgroundColor: "rgba(218, 165, 32, 0.7)",
+          borderColor: "rgba(218, 165, 32, 0.95)",
+          borderWidth: 1.2,
+          borderRadius: 6,
+          hoverBackgroundColor: "rgba(184, 134, 11, 0.95)",
+        });
+      }
+
+      if (sysData.some(v => v > 0)) {
+        datasets.push({
+          label: "Sol y Sombra",
+          data: sysData,
+          backgroundColor: "rgba(139, 92, 246, 0.7)",
+          borderColor: "rgba(139, 92, 246, 0.95)",
+          borderWidth: 1.2,
+          borderRadius: 6,
+          hoverBackgroundColor: "rgba(109, 40, 217, 0.95)",
+        });
+      }
+
+      if (otrosData.some(v => v > 0)) {
+        datasets.push({
+          label: "Otros",
+          data: otrosData,
+          backgroundColor: "rgba(239, 68, 68, 0.7)",
+          borderColor: "rgba(239, 68, 68, 0.95)",
+          borderWidth: 1.2,
+          borderRadius: 6,
+          hoverBackgroundColor: "rgba(220, 38, 38, 0.95)",
+        });
+      }
+
+      new Chart(ctx, {
+        type: "bar",
+        data: {
+          labels,
+          datasets: datasets,
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          interaction: {
+            mode: 'index',
+            intersect: false,
+          },
+          layout: { padding: { top: 10, right: 16, left: 4, bottom: 8 } },
+          scales: {
+            x: {
+              stacked: true,
+              title: { display: true, text: xLabel, color: "#e5e7eb", font: { size: 11, weight: "500" } },
+              ticks: { color: "#9ca3af", font: { size: 10 } },
+              grid: { display: false },
+            },
+            y: {
+              stacked: true,
+              beginAtZero: true,
+              title: { display: true, text: yLabel, color: "#e5e7eb", font: { size: 11, weight: "500" } },
+              ticks: { color: "#9ca3af", precision: 0, stepSize: 1, font: { size: 10 } },
+              grid: { color: "rgba(55, 65, 81, 0.6)" },
+            },
+          },
+          plugins: {
+            legend: { 
+              display: true,
+              position: 'top',
+              labels: { color: "#e5e7eb", font: { size: 10 } }
+            },
+            tooltip: {
+              backgroundColor: "rgba(15, 23, 42, 0.96)",
+              borderColor: "rgba(148, 163, 184, 0.7)",
+              borderWidth: 1,
+              padding: 10,
+              titleColor: "#e5e7eb",
+              bodyColor: "#e5e7eb",
+              callbacks: {
+                title(items) { return `${title}: ${items[0].label}`; },
+                label(context) { 
+                  const count = context.parsed.y;
+                  const lane = context.dataset.label;
+                  return `${lane}: ${count} ${count === 1 ? "reloj" : "relojes"}`; 
+                },
+                footer(items) {
+                  const total = items.reduce((sum, item) => sum + item.parsed.y, 0);
+                  return `Total: ${total} ${total === 1 ? "reloj" : "relojes"}`;
+                }
+              },
+            },
+          },
+        },
+      });
+    }
+
+    async function init() {
+      setupChartSelector();
+
+      let data;
+      try {
+        const response = await fetch("zines_data.json", { cache: "no-store" });
+        if (!response.ok) throw new Error(`Could not load data (status ${response.status})`);
+        data = await response.json();
+      } catch (error) {
+        console.error(error);
+        showError("strap-width-error", "No se han podido cargar los datos.");
+        return;
+      }
+
+      if (typeof Chart === "undefined") {
+        console.error("Chart.js no está disponible.");
+        showError("strap-width-error", "Chart.js no se ha podido cargar.");
+        return;
+      }
+
+      // Store data globally
+      globalWatchData = data;
+
+      // Build all charts
+      try { buildDiameterStrapCorrelation(data); } catch (e) { console.error(e); }
+
+      try { buildDiameterHeightCorrelation(data); } catch (e) { console.error(e); }
+
+      try { buildYearlyAccumulatedChart(data); } catch (e) { console.error(e); }
+
+      try { buildPriceLine(data); } catch (e) { console.error(e); }
+
+      try {
+        buildChart(data, {
+          chartId: "movementTypeChart",
+          errorId: "movement-type-error",
+          field: "movement_type",
+          title: "Tipo",
+          xLabel: "Tipo de movimiento",
+          yLabel: "Número de relojes",
+          color: "rgba(129, 140, 248, 0.45)",
+          borderColor: "rgba(79, 70, 229, 0.95)"
+        });
+      } catch (e) { console.error(e); }
+
+      try {
+        buildChart(data, {
+          chartId: "movementCompanyChart",
+          errorId: "movement-company-error",
+          field: "movement_company",
+          title: "Fabricante",
+          xLabel: "Fabricante de calibre",
+          yLabel: "Número de relojes",
+          color: "rgba(251, 113, 133, 0.45)",
+          borderColor: "rgba(244, 63, 94, 0.95)"
+        });
+      } catch (e) { console.error(e); }
+
+      // Update summary for initial chart
+      updateSummaryForChart('diameter-strap', data);
+    }
+
+    document.addEventListener("DOMContentLoaded", init);
+  </script>
+</body>
+</html>

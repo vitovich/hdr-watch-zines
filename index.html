@@ -33,7 +33,7 @@
         header {
             background: #111111;
             color: #dddddd;
-            padding: 40px 30px;
+            padding: 30px 30px;
             text-align: center;
             position: relative;
         }
@@ -67,13 +67,13 @@
         }
         
         header h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
+            font-size: 2em;
+            margin-bottom: 8px;
             font-weight: 700;
         }
         
         header p {
-            font-size: 1.1em;
+            font-size: 0.95em;
             opacity: 0.95;
         }
         
@@ -299,6 +299,39 @@
             font-size: 1.2em;
             color: #999;
         }
+
+        .nav-links {
+            margin-bottom: 14px;
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .nav-links a {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #0F82AF;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.9em;
+            transition: opacity 0.2s;
+        }
+        
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+        
+        .nav-links a.current {
+            background: #666666;
+            cursor: default;
+        }
+        
+        .nav-links a.current:hover {
+            opacity: 1;
+        }
     </style>
 </head>
 <body>
@@ -309,15 +342,17 @@
                 <button class="lang-btn" onclick="setLanguage('de')">DE</button>
                 <button class="lang-btn" onclick="setLanguage('en')">EN</button>
             </div>
+            <div class="nav-links">
+                <a href="index.html" class="current">📖 Zines</a>
+                <a href="timeline.html">📅 Timeline</a>
+                <a href="stats.html">📊 Stats</a>
+            </div>
             <h1>⌚ HdR Watch Zines</h1>
             <p id="header-subtitle">Folletos de instrucciones imprimibles para aficionados a la relojería</p>
             <div style="margin-top: 10px; font-size: 0.85em; opacity: 0.8;">
                 📚 Fuentes: 
                 <a href="https://www.hablemosderelojes.com/t//268418" target="_blank" style="color: #0F82AF; text-decoration: none; margin: 0 8px;">Índice alfabético (@JOSERRA100)</a> · 
                 <a href="https://www.hablemosderelojes.com/t/228190/71" target="_blank" style="color: #0F82AF; text-decoration: none; margin: 0 8px;">Cronología (@soymicmic)</a>
-            </div>
-            <div style="margin-top: 15px;">
-                <a href="timeline.html" style="display: inline-block; padding: 10px 20px; background: #0F82AF; color: white; text-decoration: none; border-radius: 6px; font-weight: 600; font-size: 0.9em; transition: opacity 0.2s;">📅 Ver Timeline de Proyectos</a>
             </div>
         </header>
         
