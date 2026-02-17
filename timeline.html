@@ -251,6 +251,54 @@
             background: #8b78fe;
         }
 
+        .project-status {
+            display: inline-flex;
+            align-items: center;
+            padding: 3px 7px;
+            border-radius: 20px;
+            font-size: 0.65em;
+            font-weight: 300;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+            border: 2px solid;
+        }
+
+        .status-delivered {
+            background: #1a5d1a;
+            color: #90ee90;
+            border-color: #2d7a2d;
+        }
+
+        .status-in_delivery {
+            background: #1a4a5d;
+            color: #87ceeb;
+            border-color: #2d6a7a;
+        }
+
+        .status-production {
+            background: #5d451a;
+            color: #ffd700;
+            border-color: #7a5e2d;
+        }
+
+        .status-prototyping {
+            background: #5d1a5d;
+            color: #dda0dd;
+            border-color: #7a2d7a;
+        }
+
+        .status-payment {
+            background: #5d1a1a;
+            color: #ff6b6b;
+            border-color: #7a2d2d;
+        }
+
+        .status-active {
+            background: #1a3d5d;
+            color: #6ba3ff;
+            border-color: #2d577a;
+        }
+
         .empty-slot {
             height: 20px;
         }
@@ -428,9 +476,24 @@
                 '</div>';
         }
 
+        function getStatusLabel(status) {
+            const labels = {
+                'delivered': 'Entregado',
+                'in_delivery': 'En reparto',
+                'production': 'Producción',
+                'prototyping': 'Prototipo',
+                'payment': 'Pago',
+                'active': 'Activo'
+            };
+            return labels[status] || status;
+        }
+
         function renderSingleCard(zine) {
             // Check if the watch has a zine
             const hasZine = zine.has_zine !== false;
+            const statusBadge = zine.project_status ? 
+                `<span class="project-status status-${zine.project_status}">${getStatusLabel(zine.project_status)}</span>` : 
+                '';
 
             if (!hasZine) {
                 // Watches without zines - show only title and forum link
@@ -439,6 +502,7 @@
                         <h3 class="project-title">${zine.title}</h3>
                         <div class="project-links">
                             <a href="${zine.hdr_link}" class="project-link forum" target="_blank">💬 HdR</a>
+                            ${statusBadge}
                         </div>
                     </div>
                 `;
@@ -454,6 +518,7 @@
                     <div class="project-links">
                         <a href="${zine.pdfFolder}/${zine.id} zine.pdf" class="project-link pdf" download>📥 PDF</a>
                         <a href="${zine.hdr_link}" class="project-link forum" target="_blank">💬 HdR</a>
+                        ${statusBadge}
                     </div>
                 </div>
             `;

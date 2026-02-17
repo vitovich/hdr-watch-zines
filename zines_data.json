@@ -20,11 +20,12 @@
       "2409",
       "2415"
     ],
-    "sourceFolder": null,
-    "pdfFolder": null,
+    "sourceFolder": "hdr_zines_src/agat_194_195",
+    "pdfFolder": "HdR zines/Agat 194-195",
     "movement_company": "Vostok",
     "lane_id": "otros",
-    "has_zine": false
+    "has_zine": false,
+    "project_status": "delivered"
   },
   {
     "id": "apocalypse_now",
@@ -48,7 +49,8 @@
     "pdfFolder": "HdR zines/Apocalypse Now",
     "movement_company": "Seiko",
     "lane_id": "otros",
-    "has_zine": true
+    "has_zine": true,
+    "project_status": "delivered"
   },
   {
     "id": "grand_belize",
@@ -73,7 +75,8 @@
     "movement_company": "STP",
     "lane_id": "otros",
     "has_zine": true,
-    "notes": "Grand Belize Candino COSC certified, 7-year project. Price not found in thread 105642"
+    "notes": "Grand Belize Candino COSC certified, 7-year project. Price not found in thread 105642",
+    "project_status": "delivered"
   },
   {
     "id": "ferroviario",
@@ -97,7 +100,8 @@
     "pdfFolder": "HdR zines/Ferroviario",
     "movement_company": "Seagull",
     "lane_id": "otros",
-    "has_zine": true
+    "has_zine": true,
+    "project_status": "delivered"
   },
   {
     "id": "gagarin_50",
@@ -117,11 +121,12 @@
     "strap_width": 18,
     "movement_type": "manual",
     "movement_id": "2609",
-    "sourceFolder": null,
-    "pdfFolder": null,
+    "sourceFolder": "hdr_zines_src/gagarin_50",
+    "pdfFolder": "HdR zines/Gagarin 50",
     "movement_company": "Poljot",
     "lane_id": "otros",
-    "has_zine": false
+    "has_zine": false,
+    "project_status": "delivered"
   },
   {
     "id": "gagarin_poyejali",
@@ -141,11 +146,12 @@
     "strap_width": 18,
     "movement_type": "manual",
     "movement_id": "2609",
-    "sourceFolder": null,
-    "pdfFolder": null,
+    "sourceFolder": "hdr_zines_src/gagarin_poyejali",
+    "pdfFolder": "HdR zines/Gagarin Poyejali",
     "movement_company": "Poljot",
     "lane_id": "rswc",
-    "has_zine": false
+    "has_zine": false,
+    "project_status": "delivered"
   },
   {
     "id": "galeno",
@@ -170,31 +176,34 @@
     "pdfFolder": "HdR zines/Galeno",
     "movement_company": "Seagull",
     "lane_id": "otros",
-    "has_zine": true
+    "has_zine": true,
+    "project_status": "delivered"
   },
   {
     "id": "luch_monoaguja",
     "title": "Luch Monoaguja",
     "brand": "Luch",
     "model": "Monoaguja",
-    "emoji": "🕐",
+    "emoji": "�⌚",
     "year": 2013,
     "month": 4,
-    "description_es": "Proyecto Luch Monoaguja 60º Aniversario. Reloj de una sola aguja.",
-    "description_de": "Luch Einzeiger Projekt 60. Jubiläum. Einzeigeruhr.",
-    "description_en": "Luch Single-Hand project 60th Anniversary. Single-hand watch.",
+    "category": "dress",
+    "description_es": "Proyecto HdR 60º Aniversario de la fábrica Luch de Minsk. 200 unidades monoaguja con calibre in-house 1801.1, símbolo de la horología pausada y la filosofía del tiempo esencial. Diales champán y negro.",
+    "description_de": "HdR-Projekt zum 60. Jubiläum der Luch-Fabrik in Minsk. 200 Einheiten Einzeiger mit In-House-Kaliber 1801.1, Symbol für ruhige Zeitmessung und die Philosophie der wesentlichen Zeit. Champagner- und schwarze Zifferblätter.",
+    "description_en": "HdR project for the 60th anniversary of the Luch factory in Minsk. 200 single-hand units with in-house caliber 1801.1, symbol of unhurried horology and the philosophy of essential time. Champagne and black dials.",
     "hdr_link": "https://www.hablemosderelojes.com/t/70271",
     "price": 44,
     "case_diameter": 36,
-    "case_height": null,
+    "case_height": 10.2,
     "strap_width": 20,
     "movement_type": "manual",
     "movement_id": "1801.1",
-    "sourceFolder": null,
-    "pdfFolder": null,
+    "sourceFolder": "hdr_zines_src/luch_monoaguja",
+    "pdfFolder": "HdR zines/Luch Monoaguja",
     "movement_company": "Luch",
     "lane_id": "otros",
-    "has_zine": false
+    "has_zine": true,
+    "project_status": "delivered"
   },
   {
     "id": "okeah",
@@ -218,7 +227,8 @@
     "pdfFolder": "HdR zines/Okeah Final Edition",
     "movement_company": "Poljot",
     "lane_id": "otros",
-    "has_zine": true
+    "has_zine": true,
+    "project_status": "delivered"
   },
   {
     "id": "parnis_marina",
@@ -238,12 +248,13 @@
     "strap_width": null,
     "movement_type": "automatic",
     "movement_id": "ST-2542",
-    "sourceFolder": null,
-    "pdfFolder": null,
+    "sourceFolder": "hdr_zines_src/parnis_marina",
+    "pdfFolder": "HdR zines/Parnis Marina Militare",
     "movement_company": "Seagull",
     "lane_id": "otros",
     "has_zine": false,
-    "notes": "Specs refer to X002 model with HdR personalization. Project included multiple Parnis models."
+    "notes": "Specs refer to X002 model with HdR personalization. Project included multiple Parnis models.",
+    "project_status": "delivered"
   },
   {
     "id": "radio_room_operator",
@@ -259,15 +270,16 @@
     "hdr_link": "https://www.hablemosderelojes.com/t/34845",
     "price": 275,
     "case_diameter": 38,
-    "case_height": null,
-    "strap_width": null,
+    "case_height": 11.25,
+    "strap_width": 20,
     "movement_type": "automatic",
     "movement_id": "2824-2",
-    "sourceFolder": null,
-    "pdfFolder": null,
+    "sourceFolder": "hdr_zines_src/radio_room_operator",
+    "pdfFolder": "HdR zines/Radio Room Operator",
     "movement_company": "ETA",
     "lane_id": "otros",
-    "has_zine": false
+    "has_zine": true,
+    "project_status": "delivered"
   },
   {
     "id": "airliner",
@@ -292,7 +304,8 @@
     "pdfFolder": "HdR zines/RSWC Airliner GMT",
     "movement_company": "Hangzhou",
     "lane_id": "rswc",
-    "has_zine": true
+    "has_zine": true,
+    "project_status": "delivered"
   },
   {
     "id": "airliner_ii",
@@ -317,7 +330,8 @@
     "pdfFolder": "HdR zines/RSWC Airliner II",
     "movement_company": "Hangzhou",
     "lane_id": "rswc",
-    "has_zine": true
+    "has_zine": true,
+    "project_status": "delivered"
   },
   {
     "id": "bushido",
@@ -341,7 +355,8 @@
     "pdfFolder": "HdR zines/RSWC Bushido",
     "movement_company": "Seiko",
     "lane_id": "rswc",
-    "has_zine": true
+    "has_zine": true,
+    "project_status": "delivered"
   },
   {
     "id": "decotimer",
@@ -366,7 +381,8 @@
     "movement_company": "Hangzhou",
     "lane_id": "rswc",
     "has_zine": true,
-    "lug_to_lug": 49
+    "lug_to_lug": 49,
+    "project_status": "delivered"
   },
   {
     "id": "dirty_fifteen",
@@ -390,7 +406,8 @@
     "pdfFolder": "HdR zines/RSWC Dirty Fifteen",
     "movement_company": "Seagull",
     "lane_id": "rswc",
-    "has_zine": true
+    "has_zine": true,
+    "project_status": "delivered"
   },
   {
     "id": "eagle_one",
@@ -415,7 +432,8 @@
     "movement_company": "Seagull",
     "lane_id": "rswc",
     "has_zine": true,
-    "lug_to_lug": 54.2
+    "lug_to_lug": 54.2,
+    "project_status": "delivered"
   },
   {
     "id": "eagle_two",
@@ -440,7 +458,8 @@
     "movement_company": "Seagull",
     "lane_id": "rswc",
     "has_zine": true,
-    "lug_to_lug": 51
+    "lug_to_lug": 51,
+    "project_status": "delivered"
   },
   {
     "id": "forest_defender",
@@ -465,7 +484,8 @@
     "movement_company": "Peacock",
     "lane_id": "rswc",
     "has_zine": true,
-    "lug_to_lug": 51
+    "lug_to_lug": 51,
+    "project_status": "payment"
   },
   {
     "id": "gamma_gibraltar",
@@ -489,7 +509,8 @@
     "pdfFolder": "HdR zines/RSWC Gamma Gibraltar",
     "movement_company": "Seagull",
     "lane_id": "rswc",
-    "has_zine": true
+    "has_zine": true,
+    "project_status": "delivered"
   },
   {
     "id": "goldmaster",
@@ -514,7 +535,8 @@
     "movement_company": "Seiko",
     "lane_id": "rswc",
     "has_zine": true,
-    "lug_to_lug": 49
+    "lug_to_lug": 49,
+    "project_status": "delivered"
   },
   {
     "id": "grande_epreuve",
@@ -539,7 +561,8 @@
     "movement_company": "Seagull",
     "lane_id": "rswc",
     "has_zine": true,
-    "lug_to_lug": 48.5
+    "lug_to_lug": 48.5,
+    "project_status": "delivered"
   },
   {
     "id": "heian",
@@ -563,7 +586,8 @@
     "pdfFolder": "HdR zines/RSWC Heian",
     "movement_company": "Seiko",
     "lane_id": "rswc",
-    "has_zine": true
+    "has_zine": true,
+    "project_status": "delivered"
   },
   {
     "id": "kaiju",
@@ -588,7 +612,8 @@
     "movement_company": "Seiko",
     "lane_id": "rswc",
     "has_zine": true,
-    "lug_to_lug": 50
+    "lug_to_lug": 50,
+    "project_status": "delivered"
   },
   {
     "id": "kaiju_yuki_otoko",
@@ -613,7 +638,8 @@
     "movement_company": "Seiko",
     "lane_id": "rswc",
     "has_zine": true,
-    "lug_to_lug": 50
+    "lug_to_lug": 50,
+    "project_status": "delivered"
   },
   {
     "id": "majetek",
@@ -637,7 +663,8 @@
     "pdfFolder": "HdR zines/RSWC Majetek",
     "movement_company": "Seagull",
     "lane_id": "rswc",
-    "has_zine": true
+    "has_zine": true,
+    "project_status": "delivered"
   },
   {
     "id": "racing",
@@ -661,7 +688,8 @@
     "pdfFolder": "HdR zines/RSWC Racing",
     "movement_company": "Seiko",
     "lane_id": "rswc",
-    "has_zine": true
+    "has_zine": true,
+    "project_status": "delivered"
   },
   {
     "id": "rex_caeli",
@@ -685,7 +713,8 @@
     "pdfFolder": "HdR zines/RSWC Rex Caeli",
     "movement_company": "Seiko",
     "lane_id": "rswc",
-    "has_zine": true
+    "has_zine": true,
+    "project_status": "delivered"
   },
   {
     "id": "rex_maris",
@@ -709,7 +738,8 @@
     "pdfFolder": "HdR zines/RSWC Rex Maris",
     "movement_company": "Seiko",
     "lane_id": "rswc",
-    "has_zine": true
+    "has_zine": true,
+    "project_status": "delivered"
   },
   {
     "id": "rex_terrae",
@@ -733,7 +763,8 @@
     "pdfFolder": "HdR zines/RSWC Rex Terrae",
     "movement_company": "Hangzhou",
     "lane_id": "rswc",
-    "has_zine": true
+    "has_zine": true,
+    "project_status": "delivered"
   },
   {
     "id": "salto_de_fe",
@@ -757,7 +788,8 @@
     "pdfFolder": "HdR zines/RSWC Salto de Fe",
     "movement_company": "Seiko",
     "lane_id": "rswc",
-    "has_zine": true
+    "has_zine": true,
+    "project_status": "delivered"
   },
   {
     "id": "scaphandre_i",
@@ -782,7 +814,8 @@
     "pdfFolder": "HdR zines/RSWC Scaphandre I",
     "movement_company": "Seiko",
     "lane_id": "rswc",
-    "has_zine": true
+    "has_zine": true,
+    "project_status": "delivered"
   },
   {
     "id": "scaphandre_ii",
@@ -806,7 +839,8 @@
     "pdfFolder": "HdR zines/RSWC Scaphandre II",
     "movement_company": "Seiko",
     "lane_id": "rswc",
-    "has_zine": true
+    "has_zine": true,
+    "project_status": "delivered"
   },
   {
     "id": "scaphandre_iii",
@@ -831,7 +865,8 @@
     "pdfFolder": "HdR zines/RSWC Scaphandre III",
     "movement_company": "Seiko",
     "lane_id": "rswc",
-    "has_zine": true
+    "has_zine": true,
+    "project_status": "delivered"
   },
   {
     "id": "skygraph",
@@ -856,7 +891,8 @@
     "movement_company": "Peacock",
     "lane_id": "rswc",
     "has_zine": true,
-    "lug_to_lug": 49
+    "lug_to_lug": 49,
+    "project_status": "production"
   },
   {
     "id": "iberia",
@@ -880,7 +916,8 @@
     "pdfFolder": "HdR zines/RSWC Suite Iberia",
     "movement_company": "Seagull",
     "lane_id": "rswc",
-    "has_zine": true
+    "has_zine": true,
+    "project_status": "delivered"
   },
   {
     "id": "colossus",
@@ -905,7 +942,8 @@
     "movement_company": "Seiko",
     "lane_id": "rswc",
     "has_zine": true,
-    "lug_to_lug": 56
+    "lug_to_lug": 56,
+    "project_status": "delivered"
   },
   {
     "id": "ala14",
@@ -934,7 +972,8 @@
     "lane_id": "rswc",
     "has_zine": true,
     "notes": "Calculated price: 283€ pack - 155€ Typhoon = 128€. Ala 14 only available as pack with Typhoon",
-    "lug_to_lug": 48
+    "lug_to_lug": 48,
+    "project_status": "production"
   },
   {
     "id": "cosmotemp",
@@ -959,7 +998,8 @@
     "movement_company": "SKMEI",
     "lane_id": "rswc",
     "has_zine": true,
-    "lug_to_lug": 52
+    "lug_to_lug": 52,
+    "project_status": "delivered"
   },
   {
     "id": "typhoon",
@@ -987,7 +1027,8 @@
     "movement_company": "Miyota",
     "lane_id": "rswc",
     "has_zine": true,
-    "lug_to_lug": 52
+    "lug_to_lug": 52,
+    "project_status": "production"
   },
   {
     "id": "world_timer",
@@ -1012,7 +1053,8 @@
     "movement_company": "SKMEI",
     "lane_id": "rswc",
     "has_zine": true,
-    "lug_to_lug": 52
+    "lug_to_lug": 52,
+    "project_status": "delivered"
   },
   {
     "id": "supersharkomatic",
@@ -1037,7 +1079,8 @@
     "movement_company": "Seiko",
     "lane_id": "rswc",
     "has_zine": true,
-    "lug_to_lug": 46.5
+    "lug_to_lug": 46.5,
+    "project_status": "delivered"
   },
   {
     "id": "typ_vii-b",
@@ -1061,7 +1104,8 @@
     "pdfFolder": "HdR zines/RSWC Typ VII-B",
     "movement_company": "Hangzhou",
     "lane_id": "rswc",
-    "has_zine": true
+    "has_zine": true,
+    "project_status": "delivered"
   },
   {
     "id": "ume_1",
@@ -1085,7 +1129,8 @@
     "pdfFolder": "HdR zines/RSWC UME Tipo 1",
     "movement_company": "Orient",
     "lane_id": "rswc",
-    "has_zine": true
+    "has_zine": true,
+    "project_status": "delivered"
   },
   {
     "id": "ume_2",
@@ -1109,7 +1154,8 @@
     "pdfFolder": "HdR zines/RSWC UME Tipo 2",
     "movement_company": "Seiko",
     "lane_id": "rswc",
-    "has_zine": true
+    "has_zine": true,
+    "project_status": "delivered"
   },
   {
     "id": "vainqueur",
@@ -1134,7 +1180,8 @@
     "movement_company": "Peacock",
     "lane_id": "rswc",
     "has_zine": true,
-    "lug_to_lug": 46.5
+    "lug_to_lug": 46.5,
+    "project_status": "delivered"
   },
   {
     "id": "verne",
@@ -1158,7 +1205,8 @@
     "pdfFolder": "HdR zines/RSWC Verne",
     "movement_company": "Hangzhou",
     "lane_id": "rswc",
-    "has_zine": true
+    "has_zine": true,
+    "project_status": "delivered"
   },
   {
     "id": "ichi",
@@ -1183,7 +1231,8 @@
     "pdfFolder": "HdR zines/RSWF Ichi",
     "movement_company": "Orient",
     "lane_id": "otros",
-    "has_zine": true
+    "has_zine": true,
+    "project_status": "delivered"
   },
   {
     "id": "kingtuna",
@@ -1207,7 +1256,8 @@
     "pdfFolder": "HdR zines/RSWF King Tuna",
     "movement_company": "Seiko",
     "lane_id": "rswc",
-    "has_zine": true
+    "has_zine": true,
+    "project_status": "delivered"
   },
   {
     "id": "sevenseas",
@@ -1231,7 +1281,8 @@
     "pdfFolder": "HdR zines/RSWF SevenSeas",
     "movement_company": "Seiko",
     "lane_id": "rswc",
-    "has_zine": true
+    "has_zine": true,
+    "project_status": "delivered"
   },
   {
     "id": "caballero",
@@ -1255,7 +1306,8 @@
     "pdfFolder": "HdR zines/SyS Caballero",
     "movement_company": "Sellita",
     "lane_id": "sys",
-    "has_zine": true
+    "has_zine": true,
+    "project_status": "delivered"
   },
   {
     "id": "competidor",
@@ -1280,7 +1332,8 @@
     "movement_company": "Seagull",
     "lane_id": "sys",
     "has_zine": true,
-    "lug_to_lug": 47
+    "lug_to_lug": 47,
+    "project_status": "delivered"
   },
   {
     "id": "inmortal",
@@ -1305,7 +1358,8 @@
     "movement_company": "Seagull",
     "lane_id": "sys",
     "has_zine": true,
-    "lug_to_lug": 49
+    "lug_to_lug": 49,
+    "project_status": "delivered"
   },
   {
     "id": "inmortal_reserva_especial",
@@ -1329,7 +1383,8 @@
     "pdfFolder": "HdR zines/SyS Inmortal Reserva Especial",
     "movement_company": "Seagull",
     "lane_id": "sys",
-    "has_zine": true
+    "has_zine": true,
+    "project_status": "delivered"
   },
   {
     "id": "monumental",
@@ -1354,7 +1409,8 @@
     "movement_company": "Seagull",
     "lane_id": "sys",
     "has_zine": true,
-    "notes": "Price not explicitly stated in thread 254341. Monumental and Viajero presented together with ST-1901"
+    "notes": "Price not explicitly stated in thread 254341. Monumental and Viajero presented together with ST-1901",
+    "project_status": "delivered"
   },
   {
     "id": "roquina",
@@ -1379,7 +1435,8 @@
     "movement_company": "Seiko",
     "lane_id": "sys",
     "has_zine": true,
-    "lug_to_lug": 46
+    "lug_to_lug": 46,
+    "project_status": "payment"
   },
   {
     "id": "viajero",
@@ -1404,7 +1461,8 @@
     "movement_company": "Seagull",
     "lane_id": "sys",
     "has_zine": true,
-    "notes": "Price not explicitly stated in thread 254341. Viajero presented with Monumental but no individual pricing"
+    "notes": "Price not explicitly stated in thread 254341. Viajero presented with Monumental but no individual pricing",
+    "project_status": "delivered"
   },
   {
     "id": "vostok_amphibia_5_6",
@@ -1424,12 +1482,13 @@
     "strap_width": null,
     "movement_type": "automatic",
     "movement_id": "2416B",
-    "sourceFolder": null,
-    "pdfFolder": null,
+    "sourceFolder": "hdr_zines_src/vostok_amphibia_5_6",
+    "pdfFolder": "HdR zines/Vostok Amphibia 5-6",
     "movement_company": "Vostok",
     "lane_id": "otros",
     "has_zine": false,
-    "notes": "Project includes two models: AM-420 (85€ EU) and AMM-710 Ministry (95€ EU). Multiple dial colors available."
+    "notes": "Project includes two models: AM-420 (85€ EU) and AMM-710 Ministry (95€ EU). Multiple dial colors available.",
+    "project_status": "delivered"
   },
   {
     "id": "vostok_k43",
@@ -1449,10 +1508,11 @@
     "strap_width": null,
     "movement_type": "manual",
     "movement_id": "2415",
-    "sourceFolder": null,
-    "pdfFolder": null,
+    "sourceFolder": "hdr_zines_src/vostok_k43",
+    "pdfFolder": "HdR zines/Vostok K43",
     "movement_company": "Vostok",
     "lane_id": "otros",
-    "has_zine": false
+    "has_zine": false,
+    "project_status": "delivered"
   }
 ]
