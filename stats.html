@@ -270,8 +270,9 @@
         <select id="chartSelect">
           <option value="diameter-strap">Diámetro vs Ancho de correa</option>
           <option value="diameter-height">Diámetro vs Grosor (altura)</option>
+          <option value="diameter-lug">Diámetro vs Lug to Lug</option>
           <option value="yearly-cumulative">Relojes por año (acumulado)</option>
-          <option value="price">Distribución acumulada de precios</option>
+          <option value="price">Distribución de precios</option>
           <option value="movement-type">Tipos de movimiento</option>
           <option value="movement-company">Fabricante de calibre</option>
         </select>
@@ -304,6 +305,18 @@
             <div id="diameter-height-error" class="error-banner"></div>
           </section>
 
+          <!-- Diameter vs Lug to Lug Correlation -->
+          <section class="stats-card chart-section" id="diameter-lug">
+            <div>
+              <h2>Correlación: Diámetro de caja vs Lug to Lug</h2>
+              <p class="stats-meta">Relación entre el diámetro de caja (mm) y la distancia lug to lug (mm). Cada punto representa un reloj.</p>
+            </div>
+            <div class="chart-container">
+              <canvas id="diameterLugChart" aria-label="Gráfico de correlación diámetro-lug to lug" role="img"></canvas>
+            </div>
+            <div id="diameter-lug-error" class="error-banner"></div>
+          </section>
+
           <!-- Yearly Cumulative Chart -->
           <section class="stats-card chart-section" id="yearly-cumulative">
             <div>
@@ -319,11 +332,11 @@
           <!-- Price Chart -->
           <section class="stats-card chart-section" id="price">
             <div>
-              <h2>Distribución acumulada de precios</h2>
-              <p class="stats-meta">Precios agrupados en categorías de 10€ (redondeados al alza). Muestra el número acumulado de relojes hasta cada precio.</p>
+              <h2>Distribución de precios</h2>
+              <p class="stats-meta">Cada punto representa un reloj individual. Líneas verticales cada 20€ marcan rangos de precio. Colores por colección.</p>
             </div>
             <div class="chart-container">
-              <canvas id="priceChart" aria-label="Distribución acumulada de precios" role="img"></canvas>
+              <canvas id="priceChart" aria-label="Distribución de precios" role="img"></canvas>
             </div>
             <div id="price-error" class="error-banner"></div>
           </section>
@@ -483,6 +496,32 @@
           `;
           break;
 
+        case 'diameter-lug':
+          const withLug = watches.filter(w => w.lug_to_lug != null && w.lug_to_lug !== "" && w.lug_to_lug > 0).length;
+          const withDiamLug = watches.filter(w => 
+            w.case_diameter != null && w.case_diameter !== "" &&
+            w.lug_to_lug != null && w.lug_to_lug !== "" && w.lug_to_lug > 0
+          ).length;
+          html = `
+            <div class="summary-row">
+              <span class="summary-label">Total de relojes</span>
+              <span class="summary-value">${watches.length}</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-label">Con diámetro</span>
+              <span class="summary-value">${watches.filter(w => w.case_diameter != null && w.case_diameter !== "").length}</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-label">Con lug to lug</span>
+              <span class="summary-value">${withLug}</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-label">Con ambos datos</span>
+              <span class="summary-value">${withDiamLug}</span>
+            </div>
+          `;
+          break;
+
         case 'yearly-cumulative':
           const years = watches.filter(w => w.year != null && w.year !== "").map(w => w.year);
           const minYear = years.length > 0 ? Math.min(...years) : 0;
@@ -520,6 +559,9 @@
           const avgPrice = prices.length > 0 ? Math.round(prices.reduce((a, b) => a + b, 0) / prices.length) : 0;
           const minPrice = prices.length > 0 ? Math.min(...prices) : 0;
           const maxPrice = prices.length > 0 ? Math.max(...prices) : 0;
+          const rswcWithPrice = watches.filter(w => w.lane_id === "rswc" && w.price != null && w.price !== "" && typeof w.price === 'number').length;
+          const sysWithPrice = watches.filter(w => w.lane_id === "sys" && w.price != null && w.price !== "" && typeof w.price === 'number').length;
+          const otrosWithPrice = watches.filter(w => (!w.lane_id || (w.lane_id !== "rswc" && w.lane_id !== "sys")) && w.price != null && w.price !== "" && typeof w.price === 'number').length;
           html = `
             <div class="summary-row">
               <span class="summary-label">Total de relojes</span>
@@ -536,6 +578,18 @@
             <div class="summary-row">
               <span class="summary-label">Rango</span>
               <span class="summary-value">${minPrice}€ - ${maxPrice}€</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-label">RSWC</span>
+              <span class="summary-value">${rswcWithPrice}</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-label">Sol y Sombra</span>
+              <span class="summary-value">${sysWithPrice}</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-label">Otros</span>
+              <span class="summary-value">${otrosWithPrice}</span>
             </div>
           `;
           break;
@@ -645,7 +699,8 @@
         const info = {
           id: w.id || "(sin id)",
           model: w.model || w.title || w.id || "?",
-          brand: w.brand || ""
+          brand: w.brand || "",
+          shape: w.case_shape || "round"
         };
 
         const laneId = w.lane_id || "otros";
@@ -694,6 +749,7 @@
           pointRadius: 5,
           pointHoverRadius: 7,
           pointHoverBackgroundColor: "rgba(218, 165, 32, 0.95)",
+          pointStyle: rswcInfo.map(info => info.shape === "square" ? "rect" : "circle"),
           dataStartIndex: 0
         });
         allInfo.push(...rswcInfo);
@@ -709,6 +765,7 @@
           pointRadius: 5,
           pointHoverRadius: 7,
           pointHoverBackgroundColor: "rgba(139, 92, 246, 0.95)",
+          pointStyle: sysInfo.map(info => info.shape === "square" ? "rect" : "circle"),
           dataStartIndex: rswcData.length
         });
         allInfo.push(...sysInfo);
@@ -724,6 +781,7 @@
           pointRadius: 5,
           pointHoverRadius: 7,
           pointHoverBackgroundColor: "rgba(239, 68, 68, 0.95)",
+          pointStyle: otrosInfo.map(info => info.shape === "square" ? "rect" : "circle"),
           dataStartIndex: rswcData.length + sysData.length
         });
         allInfo.push(...otrosInfo);
@@ -836,7 +894,8 @@
         const info = {
           id: w.id || "(sin id)",
           model: w.model || w.title || w.id || "?",
-          brand: w.brand || ""
+          brand: w.brand || "",
+          shape: w.case_shape || "round"
         };
 
         const laneId = w.lane_id || "otros";
@@ -885,6 +944,7 @@
           pointRadius: 5,
           pointHoverRadius: 7,
           pointHoverBackgroundColor: "rgba(218, 165, 32, 0.95)",
+          pointStyle: rswcInfo.map(info => info.shape === "square" ? "rect" : "circle"),
           dataStartIndex: 0
         });
         allInfo.push(...rswcInfo);
@@ -900,6 +960,7 @@
           pointRadius: 5,
           pointHoverRadius: 7,
           pointHoverBackgroundColor: "rgba(139, 92, 246, 0.95)",
+          pointStyle: sysInfo.map(info => info.shape === "square" ? "rect" : "circle"),
           dataStartIndex: rswcData.length
         });
         allInfo.push(...sysInfo);
@@ -915,6 +976,7 @@
           pointRadius: 5,
           pointHoverRadius: 7,
           pointHoverBackgroundColor: "rgba(239, 68, 68, 0.95)",
+          pointStyle: otrosInfo.map(info => info.shape === "square" ? "rect" : "circle"),
           dataStartIndex: rswcData.length + sysData.length
         });
         allInfo.push(...otrosInfo);
@@ -989,6 +1051,201 @@
                   const diam = context.parsed.x;
                   const height = context.parsed.y;
                   return `Diámetro: ${diam}mm, Grosor: ${height}mm`;
+                },
+              },
+            },
+          },
+        },
+      });
+    }
+
+    function buildDiameterLugCorrelation(watches) {
+      if (!Array.isArray(watches) || watches.length === 0) {
+        showError("diameter-lug-error", "No hay datos disponibles.");
+        return;
+      }
+
+      // Group data by lane_id
+      const rswcData = [];
+      const rswcInfo = [];
+      const sysData = [];
+      const sysInfo = [];
+      const otrosData = [];
+      const otrosInfo = [];
+
+      for (const w of watches) {
+        if (!w) continue;
+        
+        const diam = w.case_diameter;
+        const lug = w.lug_to_lug;
+        
+        if (diam === null || diam === undefined || diam === "") continue;
+        if (lug === null || lug === undefined || lug === "") continue;
+        
+        const diamVal = typeof diam === "number" ? diam : parseFloat(String(diam).replace(",", "."));
+        const lugVal = typeof lug === "number" ? lug : parseFloat(String(lug).replace(",", "."));
+        
+        if (!Number.isFinite(diamVal) || !Number.isFinite(lugVal)) continue;
+        if (lugVal <= 0 || diamVal <= 0) continue;
+
+        const point = { x: diamVal, y: lugVal };
+        const info = {
+          id: w.id || "(sin id)",
+          model: w.model || w.title || w.id || "?",
+          brand: w.brand || "",
+          shape: w.case_shape || "round"
+        };
+
+        const laneId = w.lane_id || "otros";
+        if (laneId === "rswc") {
+          rswcData.push(point);
+          rswcInfo.push(info);
+        } else if (laneId === "sys") {
+          sysData.push(point);
+          sysInfo.push(info);
+        } else {
+          otrosData.push(point);
+          otrosInfo.push(info);
+        }
+      }
+
+      const totalCount = rswcData.length + sysData.length + otrosData.length;
+      if (totalCount === 0) {
+        showError("diameter-lug-error", "No se han encontrado relojes con ambos datos (diámetro y lug to lug).");
+        return;
+      }
+
+      const allData = [...rswcData, ...sysData, ...otrosData];
+      const diameters = allData.map(d => d.x);
+      const lugs = allData.map(d => d.y);
+      const minDiam = Math.min(...diameters);
+      const maxDiam = Math.max(...diameters);
+      const minLug = Math.min(...lugs);
+      const maxLug = Math.max(...lugs);
+
+      const ctx = document.getElementById("diameterLugChart");
+      if (!ctx) {
+        showError("diameter-lug-error", "No se ha encontrado el lienzo del gráfico.");
+        return;
+      }
+
+      const datasets = [];
+      const allInfo = [];
+
+      if (rswcData.length > 0) {
+        datasets.push({
+          label: "RSWC",
+          data: rswcData,
+          backgroundColor: "rgba(218, 165, 32, 0.7)",
+          borderColor: "rgba(218, 165, 32, 0.95)",
+          borderWidth: 1.5,
+          pointRadius: 5,
+          pointHoverRadius: 7,
+          pointHoverBackgroundColor: "rgba(218, 165, 32, 0.95)",
+          pointStyle: rswcInfo.map(info => info.shape === "square" ? "rect" : "circle"),
+          dataStartIndex: 0
+        });
+        allInfo.push(...rswcInfo);
+      }
+
+      if (sysData.length > 0) {
+        datasets.push({
+          label: "Sol y Sombra",
+          data: sysData,
+          backgroundColor: "rgba(139, 92, 246, 0.7)",
+          borderColor: "rgba(139, 92, 246, 0.95)",
+          borderWidth: 1.5,
+          pointRadius: 5,
+          pointHoverRadius: 7,
+          pointHoverBackgroundColor: "rgba(139, 92, 246, 0.95)",
+          pointStyle: sysInfo.map(info => info.shape === "square" ? "rect" : "circle"),
+          dataStartIndex: rswcData.length
+        });
+        allInfo.push(...sysInfo);
+      }
+
+      if (otrosData.length > 0) {
+        datasets.push({
+          label: "Otros",
+          data: otrosData,
+          backgroundColor: "rgba(239, 68, 68, 0.7)",
+          borderColor: "rgba(239, 68, 68, 0.95)",
+          borderWidth: 1.5,
+          pointRadius: 5,
+          pointHoverRadius: 7,
+          pointHoverBackgroundColor: "rgba(239, 68, 68, 0.95)",
+          pointStyle: otrosInfo.map(info => info.shape === "square" ? "rect" : "circle"),
+          dataStartIndex: rswcData.length + sysData.length
+        });
+        allInfo.push(...otrosInfo);
+      }
+
+      new Chart(ctx, {
+        type: "scatter",
+        data: {
+          datasets: datasets,
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          layout: { padding: { top: 10, right: 16, left: 4, bottom: 8 } },
+          scales: {
+            x: {
+              type: 'linear',
+              min: Math.floor(minDiam - 2),
+              max: Math.ceil(maxDiam + 2),
+              ticks: {
+                stepSize: 2,
+                color: "#9ca3af",
+                font: { size: 10 },
+              },
+              title: { display: true, text: "Diámetro de caja (mm)", color: "#e5e7eb", font: { size: 11, weight: "500" } },
+              grid: { color: "rgba(55, 65, 81, 0.3)" },
+            },
+            y: {
+              type: 'linear',
+              min: Math.floor(minLug - 2),
+              max: Math.ceil(maxLug + 2),
+              ticks: {
+                stepSize: 2,
+                color: "#9ca3af",
+                font: { size: 10 },
+              },
+              title: { display: true, text: "Lug to Lug (mm)", color: "#e5e7eb", font: { size: 11, weight: "500" } },
+              grid: { color: "rgba(55, 65, 81, 0.6)" },
+            },
+          },
+          plugins: {
+            legend: { 
+              display: true,
+              position: 'top',
+              labels: { color: "#e5e7eb", font: { size: 10 } }
+            },
+            tooltip: {
+              backgroundColor: "rgba(15, 23, 42, 0.96)",
+              borderColor: "rgba(148, 163, 184, 0.7)",
+              borderWidth: 1,
+              padding: 10,
+              titleColor: "#e5e7eb",
+              bodyColor: "#e5e7eb",
+              callbacks: {
+                title(items) {
+                  const dataset = items[0].dataset;
+                  const idx = items[0].dataIndex + (dataset.dataStartIndex || 0);
+                  const info = allInfo[idx];
+                  return info ? info.id : "?";
+                },
+                label(context) {
+                  const dataset = context.dataset;
+                  const idx = context.dataIndex + (dataset.dataStartIndex || 0);
+                  const info = allInfo[idx];
+                  const displayName = info && info.brand ? `${info.brand} ${info.model}` : (info ? info.model : "?");
+                  return displayName;
+                },
+                afterLabel(context) {
+                  const diam = context.parsed.x;
+                  const lug = context.parsed.y;
+                  return `Diámetro: ${diam}mm, Lug to Lug: ${lug}mm`;
                 },
               },
             },
@@ -1444,8 +1701,13 @@
         return;
       }
 
-      const priceCounts = Object.create(null);
-      const idsByPrice = Object.create(null);
+      // Group watches by lane_id with price data
+      const rswcData = [];
+      const rswcInfo = [];
+      const sysData = [];
+      const sysInfo = [];
+      const otrosData = [];
+      const otrosInfo = [];
 
       for (const w of watches) {
         if (!w) continue;
@@ -1453,33 +1715,66 @@
         if (price === null || price === undefined || price === "") continue;
         if (typeof price !== "number" || !Number.isFinite(price)) continue;
 
-        // Round up to nearest 10€
-        const roundedPrice = Math.ceil(price / 10) * 10;
-        const key = roundedPrice.toString();
-        
-        priceCounts[key] = (priceCounts[key] || 0) + 1;
-        if (!idsByPrice[key]) idsByPrice[key] = [];
-        idsByPrice[key].push(w.id || "(sin id)");
+        const info = {
+          id: w.id || "(sin id)",
+          model: w.model || w.title || w.id || "?",
+          brand: w.brand || "",
+          price: price
+        };
+
+        const laneId = w.lane_id || "otros";
+        if (laneId === "rswc") {
+          rswcInfo.push(info);
+        } else if (laneId === "sys") {
+          sysInfo.push(info);
+        } else {
+          otrosInfo.push(info);
+        }
       }
 
-      if (Object.keys(priceCounts).length === 0) {
+      const totalCount = rswcInfo.length + sysInfo.length + otrosInfo.length;
+      if (totalCount === 0) {
         showError("price-error", "No se han encontrado precios válidos.");
         return;
       }
 
-      // Sort prices and calculate cumulative counts
-      const sortedPrices = Object.keys(priceCounts).map(Number).sort((a, b) => a - b);
-      const minPrice = Math.min(...sortedPrices);
-      const maxPrice = Math.max(...sortedPrices);
+      // Sort each group by price
+      rswcInfo.sort((a, b) => a.price - b.price);
+      sysInfo.sort((a, b) => a.price - b.price);
+      otrosInfo.sort((a, b) => a.price - b.price);
+
+      // Create scatter data with jitter to prevent overlapping
+      const jitterAmount = 0.3; // Small horizontal displacement
       
-      // Create cumulative data
-      const cumulativeData = [];
-      let cumulative = 0;
-      
-      for (const price of sortedPrices) {
-        cumulative += priceCounts[price.toString()];
-        cumulativeData.push({ x: price, y: cumulative });
+      // Helper function to add jitter
+      const createScatterPoints = (infoArray, baseY) => {
+        const priceCount = new Map();
+        return infoArray.map(info => {
+          const price = info.price;
+          const count = priceCount.get(price) || 0;
+          priceCount.set(price, count + 1);
+          
+          // Add jitter based on how many watches have this price
+          const jitter = (Math.random() - 0.5) * jitterAmount * 2;
+          return { x: price, y: baseY + jitter };
+        });
+      };
+
+      // Assign different X levels for each lane to spread them out
+      if (rswcInfo.length > 0) {
+        rswcData.push(...createScatterPoints(rswcInfo, 2).map(p => ({x: p.y, y: p.x})));
       }
+      if (sysInfo.length > 0) {
+        sysData.push(...createScatterPoints(sysInfo, 1).map(p => ({x: p.y, y: p.x})));
+      }
+      if (otrosInfo.length > 0) {
+        otrosData.push(...createScatterPoints(otrosInfo, 0).map(p => ({x: p.y, y: p.x})));
+      }
+
+      // Get price range
+      const allPrices = [...rswcInfo, ...sysInfo, ...otrosInfo].map(i => i.price);
+      const minPrice = Math.min(...allPrices);
+      const maxPrice = Math.max(...allPrices);
 
       const ctx = document.getElementById("priceChart");
       if (!ctx) {
@@ -1487,21 +1782,62 @@
         return;
       }
 
+      const datasets = [];
+      const allInfo = [];
+
+      if (otrosData.length > 0) {
+        datasets.push({
+          label: "Otros",
+          data: otrosData,
+          backgroundColor: "rgba(239, 68, 68, 0.7)",
+          borderColor: "rgba(239, 68, 68, 0.95)",
+          borderWidth: 1.5,
+          pointRadius: 5,
+          pointHoverRadius: 7,
+          pointHoverBackgroundColor: "rgba(239, 68, 68, 0.95)",
+          dataStartIndex: 0
+        });
+        allInfo.push(...otrosInfo);
+      }
+
+      if (sysData.length > 0) {
+        datasets.push({
+          label: "Sol y Sombra",
+          data: sysData,
+          backgroundColor: "rgba(139, 92, 246, 0.7)",
+          borderColor: "rgba(139, 92, 246, 0.95)",
+          borderWidth: 1.5,
+          pointRadius: 5,
+          pointHoverRadius: 7,
+          pointHoverBackgroundColor: "rgba(139, 92, 246, 0.95)",
+          dataStartIndex: otrosInfo.length
+        });
+        allInfo.push(...sysInfo);
+      }
+
+      if (rswcData.length > 0) {
+        datasets.push({
+          label: "RSWC",
+          data: rswcData,
+          backgroundColor: "rgba(218, 165, 32, 0.7)",
+          borderColor: "rgba(218, 165, 32, 0.95)",
+          borderWidth: 1.5,
+          pointRadius: 5,
+          pointHoverRadius: 7,
+          pointHoverBackgroundColor: "rgba(218, 165, 32, 0.95)",
+          dataStartIndex: otrosInfo.length + sysInfo.length
+        });
+        allInfo.push(...rswcInfo);
+      }
+
+      // Calculate grid lines for 20€ intervals
+      const minGridPrice = Math.floor(minPrice / 20) * 20;
+      const maxGridPrice = Math.ceil(maxPrice / 20) * 20;
+
       new Chart(ctx, {
-        type: "line",
+        type: "scatter",
         data: {
-          datasets: [{
-            label: "Relojes acumulados",
-            data: cumulativeData,
-            backgroundColor: "rgba(218, 165, 32, 0.7)",
-            borderColor: "rgba(218, 165, 32, 0.95)",
-            borderWidth: 2,
-            pointRadius: 6,
-            pointHoverRadius: 8,
-            pointHoverBackgroundColor: "rgba(184, 134, 11, 0.95)",
-            tension: 0,
-            fill: false,
-          }],
+          datasets: datasets,
         },
         options: {
           responsive: true,
@@ -1509,34 +1845,40 @@
           layout: { padding: { top: 10, right: 16, left: 4, bottom: 8 } },
           scales: {
             x: {
-              type: 'linear',
-              min: Math.floor((minPrice - 10) / 10) * 10,
-              max: Math.ceil((maxPrice + 10) / 10) * 10,
-              ticks: {
-                stepSize: 10,
-                color: "#9ca3af",
-                font: { size: 10 },
-              },
-              title: { display: true, text: "Precio (€)", color: "#e5e7eb", font: { size: 11, weight: "500" } },
-              grid: { color: "rgba(55, 65, 81, 0.3)" },
+              display: false, // Hide X axis as it's just for jitter
+              min: -0.5,
+              max: 2.5,
             },
             y: {
-              beginAtZero: true,
-              title: { display: true, text: "Número de relojes (acumulado)", color: "#e5e7eb", font: { size: 11, weight: "500" } },
-              ticks: { 
-                color: "#9ca3af", 
-                precision: 0, 
-                stepSize: 1, 
+              type: 'linear',
+              min: Math.max(0, minGridPrice - 20),
+              max: maxGridPrice + 20,
+              ticks: {
+                stepSize: 20,
+                color: "#9ca3af",
                 font: { size: 10 },
                 callback: function(value) {
-                  return Number.isInteger(value) ? value : null;
+                  return value + '€';
                 }
               },
-              grid: { color: "rgba(55, 65, 81, 0.6)" },
+              title: { display: true, text: "Precio (€)", color: "#e5e7eb", font: { size: 11, weight: "500" } },
+              grid: { 
+                color: function(context) {
+                  // Highlight every 20€ with a stronger line
+                  return context.tick.value % 20 === 0 ? "rgba(148, 163, 184, 0.4)" : "rgba(55, 65, 81, 0.2)";
+                },
+                lineWidth: function(context) {
+                  return context.tick.value % 20 === 0 ? 1.5 : 0.5;
+                }
+              },
             },
           },
           plugins: {
-            legend: { display: false },
+            legend: { 
+              display: true,
+              position: 'top',
+              labels: { color: "#e5e7eb", font: { size: 10 } }
+            },
             tooltip: {
               backgroundColor: "rgba(15, 23, 42, 0.96)",
               borderColor: "rgba(148, 163, 184, 0.7)",
@@ -1545,26 +1887,29 @@
               titleColor: "#e5e7eb",
               bodyColor: "#e5e7eb",
               callbacks: {
-                title(items) { 
-                  const price = items[0].parsed.x;
-                  return `Hasta ${price}€`; 
+                title(items) {
+                  const dataset = items[0].dataset;
+                  const idx = items[0].dataIndex + (dataset.dataStartIndex || 0);
+                  const info = allInfo[idx];
+                  return info ? info.id : "?";
                 },
-                label(context) { 
-                  const cumulative = context.parsed.y;
-                  const price = context.parsed.x;
-                  const atThisPrice = priceCounts[price.toString()] || 0;
+                label(context) {
+                  const dataset = context.dataset;
+                  const idx = context.dataIndex + (dataset.dataStartIndex || 0);
+                  const info = allInfo[idx];
+                  const displayName = info && info.brand ? `${info.brand} ${info.model}` : (info ? info.model : "?");
+                  return displayName;
+                },
+                afterLabel(context) {
+                  const dataset = context.dataset;
+                  const idx = context.dataIndex + (dataset.dataStartIndex || 0);
+                  const info = allInfo[idx];
+                  const price = info ? info.price : context.parsed.y;
+                  const priceRange = Math.floor(price / 20) * 20;
                   return [
-                    `Total acumulado: ${cumulative} ${cumulative === 1 ? "reloj" : "relojes"}`,
-                    `En categoría ${price}€: ${atThisPrice} ${atThisPrice === 1 ? "reloj" : "relojes"}`
+                    `Precio: ${price}€`,
+                    `Rango: ${priceRange}€ - ${priceRange + 20}€`
                   ];
-                },
-                afterBody(items) {
-                  const price = items[0].parsed.x.toString();
-                  const ids = idsByPrice[price] || [];
-                  if (!ids.length) return "";
-                  const shown = ids.slice(0, 14);
-                  const remaining = ids.length - shown.length;
-                  return `IDs en ${price}€: ${shown.join(", ")}${remaining > 0 ? ` … (+${remaining} más)` : ""}`;
                 },
               },
             },
@@ -1883,6 +2228,8 @@
       try { buildDiameterStrapCorrelation(data); } catch (e) { console.error(e); }
 
       try { buildDiameterHeightCorrelation(data); } catch (e) { console.error(e); }
+
+      try { buildDiameterLugCorrelation(data); } catch (e) { console.error(e); }
 
       try { buildYearlyAccumulatedChart(data); } catch (e) { console.error(e); }
 

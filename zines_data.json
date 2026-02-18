@@ -24,7 +24,7 @@
     "pdfFolder": "HdR zines/Agat 194-195",
     "movement_company": "Vostok",
     "lane_id": "otros",
-    "has_zine": false,
+    "has_zine": true,
     "project_status": "delivered"
   },
   {
@@ -125,7 +125,7 @@
     "pdfFolder": "HdR zines/Gagarin 50",
     "movement_company": "Poljot",
     "lane_id": "otros",
-    "has_zine": false,
+    "has_zine": true,
     "project_status": "delivered"
   },
   {
@@ -150,7 +150,7 @@
     "pdfFolder": "HdR zines/Gagarin Poyejali",
     "movement_company": "Poljot",
     "lane_id": "rswc",
-    "has_zine": false,
+    "has_zine": true,
     "project_status": "delivered"
   },
   {
@@ -203,6 +203,7 @@
     "movement_company": "Luch",
     "lane_id": "otros",
     "has_zine": true,
+    "lug_to_lug": 44,
     "project_status": "delivered"
   },
   {
@@ -252,7 +253,7 @@
     "pdfFolder": "HdR zines/Parnis Marina Militare",
     "movement_company": "Seagull",
     "lane_id": "otros",
-    "has_zine": false,
+    "has_zine": true,
     "notes": "Specs refer to X002 model with HdR personalization. Project included multiple Parnis models.",
     "project_status": "delivered"
   },
@@ -764,6 +765,7 @@
     "movement_company": "Hangzhou",
     "lane_id": "rswc",
     "has_zine": true,
+    "lug_to_lug": 48.5,
     "project_status": "delivered"
   },
   {
@@ -972,7 +974,7 @@
     "lane_id": "rswc",
     "has_zine": true,
     "notes": "Calculated price: 283€ pack - 155€ Typhoon = 128€. Ala 14 only available as pack with Typhoon",
-    "lug_to_lug": 48,
+    "lug_to_lug": 52,
     "project_status": "production"
   },
   {
@@ -1332,7 +1334,7 @@
     "movement_company": "Seagull",
     "lane_id": "sys",
     "has_zine": true,
-    "lug_to_lug": 47,
+    "lug_to_lug": 49,
     "project_status": "delivered"
   },
   {
@@ -1358,7 +1360,7 @@
     "movement_company": "Seagull",
     "lane_id": "sys",
     "has_zine": true,
-    "lug_to_lug": 49,
+    "lug_to_lug": 47,
     "project_status": "delivered"
   },
   {
@@ -1384,6 +1386,7 @@
     "movement_company": "Seagull",
     "lane_id": "sys",
     "has_zine": true,
+    "lug_to_lug": 48,
     "project_status": "delivered"
   },
   {
@@ -1435,7 +1438,7 @@
     "movement_company": "Seiko",
     "lane_id": "sys",
     "has_zine": true,
-    "lug_to_lug": 46,
+    "lug_to_lug": 44.5,
     "project_status": "payment"
   },
   {
@@ -1461,6 +1464,7 @@
     "movement_company": "Seagull",
     "lane_id": "sys",
     "has_zine": true,
+    "lug_to_lug": 48,
     "notes": "Price not explicitly stated in thread 254341. Viajero presented with Monumental but no individual pricing",
     "project_status": "delivered"
   },
@@ -1487,7 +1491,7 @@
     "pdfFolder": "HdR zines/Vostok Amphibia 5-6",
     "movement_company": "Vostok",
     "lane_id": "otros",
-    "has_zine": false,
+    "has_zine": true,
     "notes": "Design by @El_Monitor. Dial design inspired by USSR commemorative postal stamps celebrating the Vostok 5/6 missions. Water resistance: 20 ATM (200m).",
     "project_status": "delivered"
   },
@@ -1513,7 +1517,7 @@
     "pdfFolder": "HdR zines/Vostok K43",
     "movement_company": "Vostok",
     "lane_id": "otros",
-    "has_zine": false,
+    "has_zine": true,
     "project_status": "delivered"
   }
 ]
