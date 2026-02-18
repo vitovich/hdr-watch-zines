@@ -4,7 +4,7 @@ Project for creating small typst watch zines for your watch case. Includes zines
 
 ## Text and Photographs
 
-The watch descriptions for the RSWC and SyS (Sol y Sombra) zines are based on the watch descriptions from the "Hablemos de Relojes" forum, primarily written by user **@Gasparacha**.
+The watch descriptions for the RSWC and SyS (Sol y Sombra) zines are based on the watch descriptions from the "Hablemos de Relojes" forum, primarily written by users **@Gasparacha**, **@El_Monitor**, **@bcdf**, **@4Hz**, **@submariner**, **@manrique**, **@Girolamo**, **@Tortuga_Shelly**, 
 
 Photographs featured in the zines were taken from the forum and were created by:
 - **@submariner**
@@ -21,6 +21,12 @@ Photographs featured in the zines were taken from the forum and were created by:
 - **@pguirado**
 - **@verni**
 - **@Pedro843cc**
+- **@Joserra100**
+- **@Montijo**
+- **@lucense**
+- **@Ancora**
+- **@pato_sentado**
+- **@Dablancha**
 
 All content is used with appreciation for the collaborative spirit of the watch enthusiast community.
 
